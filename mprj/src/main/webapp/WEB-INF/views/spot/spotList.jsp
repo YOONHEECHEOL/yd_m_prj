@@ -10,7 +10,7 @@
       <div class="col-7">
         <div class="row">
           <div class="col-12">
-            <div class="row">
+            <div class="row g-1">
               <div class="col-12">
                 <div class="row">
                   <div class="col-4">
@@ -28,23 +28,23 @@
                   </div>
                 </div>
               </div>
-              <div class="row mt20">
+              <div class="row mt20 g-1">
                 <div class="col-auto">
-                  <select name="contentType" id="contentTypeSel" class="form-select">
-                    <option value="">contentType 선택</option>
+                  <select name="contentType" id="contentTypeSel" class="form-select wid140">
+                    <option value="">선택</option>
                     <option value="12">관광지</option>
 <!--                     <option value="32">숙박</option> -->
 <!--                      <option value="39">음식점</option>                             -->
                   </select>
                 </div>
                 <div class="col-auto">
-                  <select name="cat1" id="cat1" class="form-select"></select>
+                  <select name="cat1" id="cat1" class="form-select wid140"></select>
                 </div>
                 <div class="col-auto">
-                  <select name="cat2" id="cat2" class="form-select"></select>
+                  <select name="cat2" id="cat2" class="form-select wid140"></select>
                 </div>
                 <div class="col-auto">
-                  <select name="cat3" id="cat3" class="form-select"></select>
+                  <select name="cat3" id="cat3" class="form-select wid140"></select>
                 </div>
                 <div class="col-auto">
                   <button type="button" class="btn btn-primary btn-block" onclick="submitFrm()">확인하기</button>
