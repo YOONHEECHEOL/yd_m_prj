@@ -1,0 +1,116 @@
+@charset "UTF-8";
+/* 공통사항 */
+body {
+	font-family: 'Noto Sans KR', sans-serif !important;
+	font-size: 16px !important;
+}
+a {
+	color: #222;
+	text-decoration: none;
+}
+ul {
+	padding: 0px;
+	margin: 0px;
+}
+ul li {
+	list-style: none;
+	padding: 0px;
+}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.mt8 {margin-top: 8px;}
+.mt20 {margin-top: 20px;}
+.mt36 {margin-top: 36px;}
+.mr8 {margin-right: 8px;}
+.mr20 {margin-right: 20px;}
+.mr36 {margin-right: 36px;}
+.ml8 {margin-left: 8px;}
+.ml20 {margin-left: 20px;}
+.ml36 {margin-left: 36px;}
+.mb8 {margin-bottom: 8px;}
+.mb20 {margin-bottom: 20px;}
+.mb36 {margin-bottom: 36px;}
+
+.hDisplay {
+	min-height: calc(100vh - 100px - 116px - 80px);
+	margin: 0 0 58px 0;
+}
+
+.header {
+	height: 100px;
+}
+.header__cont {
+	height: 100px;
+}
+
+/* nav */
+.navbar {
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
+.logo {
+	font-family: 'Anton', sans-serif;
+	color: #222;
+}
+
+/* menu */
+.menu__list > li a {
+	display: block;
+}
+.menu__cate1 {
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: 1px solid #222;
+	padding: 0 0 8px 0;
+	margin: 20px 0 8px 0;
+}
+
+/* products */
+.products_item {
+	overflow: hidden;
+}
+.products_item img, .products_item product__img {
+	width: 100%;
+}
+.products_item p {
+	margin: 8px 0 0;
+	padding: 8px 0 0;
+	border-top: 1px solid #bbb;
+}
+
+.cate--detail {
+	display: inline-block;
+}
+.cate__fc {
+	color: #999;
+}
+.cate__fcl {
+	color: #222;
+	border-bottom: 1px solid #222;
+}
+.cate__sc {
+	color: #999;
+}
+.cate__scl {
+	color: #222;
+	border-bottom: 1px solid #222;
+}
+.cate__tc {
+	color: #222;
+	border-bottom: 1px solid #222;
+}
+.psBtn {
+	display: block;
+	width: 100%;
+	height: 38px;
+}
+
+
+/* footer */
+.footer {
+	padding: 20px 0;
+	background-color: #ddd;
+}
