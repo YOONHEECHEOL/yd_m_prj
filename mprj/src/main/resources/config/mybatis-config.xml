@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <!-- configuration : myBatisc 환경설정 -->
+<configuration>
+	<!-- 환경파일 읽기 : https://mybatis.org/mybatis-3/ko/configuration.html#properties -->
+	<properties resource="/config/db.properties"/>
+	<!-- https://mybatis.org/mybatis-3/ko/configuration.html#settings : 없으면 error -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL"/>
+	</settings>
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC"/>
+      <!-- dataSource type="POOLED" : Connection pool -->
+      <dataSource type="POOLED">
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+  	<!--  package -> folder -->
+    <mapper resource="com/yd05/mprj/member/service/member-map.xml"/>
+  </mappers>
+</configuration>

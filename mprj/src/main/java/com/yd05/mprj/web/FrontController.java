@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
+import com.yd05.mprj.member.command.MemberList;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -29,6 +30,7 @@ public class FrontController extends HttpServlet {
 		super.init(config);
 		
 		map.put("/home.do", new HomeCommand());
+		map.put("/memberList.do", new MemberList());
 		
 	}
 
