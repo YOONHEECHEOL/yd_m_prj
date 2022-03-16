@@ -35,8 +35,7 @@ ul li {
 .mb36 {margin-bottom: 36px;}
 
 .hDisplay {
-	min-height: calc(100vh - 100px - 116px - 80px);
-	margin: 0 0 58px 0;
+	min-height: calc(100vh - 204px - 58px);
 }
 
 .header {
@@ -112,5 +111,6 @@ ul li {
 /* footer */
 .footer {
 	padding: 20px 0;
-	background-color: #ddd;
+	color: #565c7a;
+	background-color: #292c3a;
 }

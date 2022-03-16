@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
+import com.yd05.mprj.user.command.Login;
+import com.yd05.mprj.user.command.SignUp;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -30,8 +32,13 @@ public class FrontController extends HttpServlet {
 		super.init(config);
 		
 		map.put("/home.do", new HomeCommand());
+		
+		// member (test 용)
 		map.put("/memberList.do", new MemberList());
 		
+		// user
+		map.put("/login.do", new Login()); // 로그인
+		map.put("/signUp.do", new SignUp()); // 회원가입
 	}
 
 	@Override
