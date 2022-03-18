@@ -14,7 +14,7 @@
 					<input placeholder="password ..." class="form-control" type="password" name="pwd" id="pwd"
 						required>
 				</div>
-	
+	<!-- dfdsaf -->
 				<!-- <button class="btn btn-secondary mt20">취소</button> -->
 				<button class="btn btn-primary mt20">로그인</button>
 			</form>		
