@@ -49,6 +49,7 @@ public class FrontController extends HttpServlet {
 		
 		// ======================been=======================
 		// 이곳에 작성
+		// YES
 		
 		
 		// ======================domin=======================
