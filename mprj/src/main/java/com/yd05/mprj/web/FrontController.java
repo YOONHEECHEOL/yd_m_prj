@@ -30,7 +30,9 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		// FrontController 에 추가 시 자기 이름 아래에 작성하세요.
 		
+		// ======================yoon=======================
 		map.put("/home.do", new HomeCommand());
 		
 		// member (test 용)
@@ -39,6 +41,19 @@ public class FrontController extends HttpServlet {
 		// user
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/signUp.do", new SignUp()); // 회원가입
+		
+		
+		// ======================woong=======================
+		// 이곳에 작성
+		
+		
+		// ======================been=======================
+		// 이곳에 작성
+		
+		
+		// ======================domin=======================
+		// 이곳에 작성
+		
 	}
 
 	@Override
