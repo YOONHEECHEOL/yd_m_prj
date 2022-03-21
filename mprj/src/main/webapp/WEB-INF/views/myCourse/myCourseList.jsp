@@ -4,6 +4,7 @@
 
 <h1>myCourse</h1>
 <div id="input"></div>
+<!-- push test -->
 <script>
   fetch('http://api.visitkorea.or.kr/openapi/service/rest/KorService/categoryCode?serviceKey=YEoy%2B93A%2Fp1nbyehg%2F0UcWMYX5ZjT73RId2NuFd3L0M6%2FEMlAYbTyjfB7gJzZvC5t2qVeHOrFCaviPGo%2BWx5rA%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&contentTypeId=12&cat1=A01&cat2=A0101&cat3=A01010100', {
       method: 'get'
