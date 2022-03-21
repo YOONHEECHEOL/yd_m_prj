@@ -14,8 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
+import com.yd05.mprj.myCourse.command.MyCourseList;
+import com.yd05.mprj.notice.command.NoticeList;
+import com.yd05.mprj.spot.command.CateSpotList;
+import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.user.command.Login;
 import com.yd05.mprj.user.command.SignUp;
+import com.yd05.mprj.user.command.VisitedList;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -42,6 +47,11 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/signUp.do", new SignUp()); // 회원가입
 		
+		map.put("/myCourseList.do", new MyCourseList());
+		map.put("/visitedList.do", new VisitedList());
+		map.put("/cateSpotList.do", new CateSpotList());
+		map.put("/noticeList.do", new NoticeList());
+		map.put("/recSpot.do", new RecSpot());
 		
 		// ======================woong=======================
 		// 이곳에 작성
