@@ -48,22 +48,21 @@ public class FrontController extends HttpServlet {
 		map.put("/signUp.do", new SignUp()); // 회원가입
 		
 		map.put("/myCourseList.do", new MyCourseList());
-		map.put("/visitedList.do", new VisitedList());
-		map.put("/cateSpotList.do", new CateSpotList());
-		map.put("/noticeList.do", new NoticeList());
-		map.put("/recSpot.do", new RecSpot());
+		
 		
 		// ======================woong=======================
 		// 이곳에 작성
-		
+		map.put("/cateSpotList.do", new CateSpotList());
+		map.put("/recSpot.do", new RecSpot());
 		
 		// ======================been=======================
 		// 이곳에 작성
-		// YES
+		map.put("/visitedList.do", new VisitedList());
 		
 		
 		// ======================domin=======================
 		// 이곳에 작성
+		map.put("/noticeList.do", new NoticeList());
 		
 	}
 
