@@ -63,7 +63,7 @@ public class FrontController extends HttpServlet {
 		// ======================domin=======================
 		// 이곳에 작성
 		map.put("/noticeList.do", new NoticeList());
-		
+		// yes
 	}
 
 	@Override
