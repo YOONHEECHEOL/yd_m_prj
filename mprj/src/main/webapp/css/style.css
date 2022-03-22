@@ -68,16 +68,11 @@ ul li {
 }
 
 /* products */
-.products_item {
+.colImg {
 	overflow: hidden;
 }
-.products_item img, .products_item product__img {
+.colImg img {
 	width: 100%;
-}
-.products_item p {
-	margin: 8px 0 0;
-	padding: 8px 0 0;
-	border-top: 1px solid #bbb;
 }
 
 .cate--detail {
