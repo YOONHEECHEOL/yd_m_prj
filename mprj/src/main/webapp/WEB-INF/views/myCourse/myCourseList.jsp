@@ -88,6 +88,11 @@
 	})
 
 	function submitFrm() {
+		while(output.firstChild) {
+			output.removeChild(output.firstChild);
+		}
+		
+
 		let contentTypeSel = document.querySelector('#contentTypeSel').value;
 		console.log(contentTypeSel)
 		let cat1 = document.querySelector('#cat1').value;
