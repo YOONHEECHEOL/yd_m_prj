@@ -3,3 +3,4 @@
 <!DOCTYPE html>
 
 	<a href="memberList.do">Memeber List TEST</a>
+     <a href="noticeList.tiles">게시글 목록</a>
