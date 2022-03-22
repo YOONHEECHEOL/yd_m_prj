@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yd05.mprj.category.command.Accom;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
@@ -39,6 +40,13 @@ public class FrontController extends HttpServlet {
 		// user
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/signUp.do", new SignUp()); // 회원가입
+		
+		
+		//카테고리
+		
+		map.put("/accom.do", new Accom());//숙박조회(테스트)
+		
+		
 	}
 
 	@Override
