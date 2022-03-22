@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.notice.service.NoticeMapper">
+<resultMap type="com.yd05.mprj.notice.service.NoticeVO" id="noticeMap">
+<id property="nId" column="n_id"/>
+<result property="nTitle" column="n_title"/>
+<result property="nContent" column="n_content"/>
+<result property="nDate" column="n_date"/>
+<result property="nHit" column="n_hit"/>
+</resultMap>
+
+<select id="noticeSelectList" resultMap="noticeMap">
+    SELECT * FROM NOTICE
+    </select>
+    
+    <select id="noticeSortList" parameterType="String" resultMap="noticeMap">
+    SELECT * FROM NOTICE ORDER BY n_id
+    <if test='key == "A"'>ASC</if>
+    <if test='key == "D"'>DESC</if>
+    </select>
+    
+    <select id="noticeSelect" parameterType="com.yd05.mprj.notice.service.NoticeVO" resultMap="noticeMap">
+	SELECT * FROM NOTICE WHERE n_id = #{nId}
+	
+	
+	</select>
+	
+	<insert id="noticeInsert" parameterType="com.yd05.mprj.notice.service.NoticeVO">
+	<selectKey keyProperty="nId" resultType="int" order="BEFORE">
+	SELECT CASE WHEN MAX(N_ID)IS NULL THEN 1 ELSE MAX(N_ID)+1 END AS ID FROM NOTICE
+	</selectKey>
+	
+	INSERT INTO NOTICE 
+	VALUES(#{nId}, #{nTitle}, #{nContent}, #{nDate}, 0)
+	</insert>
+	
+	<update id="noticeUpdate">
+	
+	</update>
+	
+	<delete id="noticeDelete">
+	
+	</delete>
+	
+	<select id="noticeSelectSearchList" resultMap="noticeMap">
+         select * from notice
+         where 
+                     <!-- 항상 true -->
+         <if test="key == '전체'">1 = 1</if>
+         <if test="key == '제목'">N_TITLE LIKE '%' || #{val } || '%'</if>
+         <if test="key == '내용'">N_CONTENT LIKE '%' || #{val } || '%'</if>
+         ORDER BY N_ID DESC 
+   </select>
+   
+   <update id="noticeUpdateHit" parameterType="int">
+   UPDATE NOTICE SET N_HIT = N_HIT + 1 WHERE N_ID = #{id}
+   </update>
+</mapper>

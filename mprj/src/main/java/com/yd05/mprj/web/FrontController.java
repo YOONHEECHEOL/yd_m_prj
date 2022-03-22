@@ -6,7 +6,6 @@ import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,12 @@ import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.MyCourseList;
+import com.yd05.mprj.notice.command.AjaxNoticeSearch;
+import com.yd05.mprj.notice.command.AjaxSortNotice;
+import com.yd05.mprj.notice.command.NoticeInsert;
+import com.yd05.mprj.notice.command.NoticeInsertForm;
 import com.yd05.mprj.notice.command.NoticeList;
+import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.user.command.Login;
@@ -63,6 +67,12 @@ public class FrontController extends HttpServlet {
 		// ======================domin=======================
 		// 이곳에 작성
 		map.put("/noticeList.do", new NoticeList());
+		map.put("/noticeInsertForm.do", new NoticeInsertForm());
+		map.put("/noticeInsert.do", new NoticeInsert());
+		map.put("/noticeView.do", new NoticeView());
+	    map.put("ajaxNoticeSearch.do", new AjaxNoticeSearch());
+	    map.put("/ajaxSortNotice.do", new AjaxSortNotice());
+
 		// yes
 	}
 
