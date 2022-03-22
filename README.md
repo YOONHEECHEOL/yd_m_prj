@@ -1,2 +1,1 @@
-# yd_m_prj
-Yedam middle project
+# 예담 중간프로젝트 4조

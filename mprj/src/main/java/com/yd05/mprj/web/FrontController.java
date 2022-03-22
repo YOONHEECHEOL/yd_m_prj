@@ -6,17 +6,21 @@ import java.util.HashMap;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.yd05.mprj.category.command.Accom;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
+import com.yd05.mprj.myCourse.command.MyCourseList;
+import com.yd05.mprj.notice.command.NoticeList;
+import com.yd05.mprj.spot.command.CateSpotList;
+import com.yd05.mprj.spot.command.RecSpot;
+import com.yd05.mprj.spot.command.SpotList;
 import com.yd05.mprj.user.command.Login;
 import com.yd05.mprj.user.command.SignUp;
+import com.yd05.mprj.user.command.VisitedList;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -31,7 +35,9 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
+		// FrontController 에 추가 시 자기 이름 아래에 작성하세요.
 		
+		// ======================yoon=======================
 		map.put("/home.do", new HomeCommand());
 		
 		// member (test 용)
@@ -41,12 +47,24 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/signUp.do", new SignUp()); // 회원가입
 		
-		
-		//카테고리
-		
-		map.put("/accom.do", new Accom());//숙박조회(테스트)
+		map.put("/myCourseList.do", new MyCourseList());
+		map.put("/spotList.do", new SpotList());
 		
 		
+		// ======================woong=======================
+		// 이곳에 작성
+		map.put("/cateSpotList.do", new CateSpotList());
+		map.put("/recSpot.do", new RecSpot());
+		
+		// ======================been=======================
+		// 이곳에 작성
+		map.put("/visitedList.do", new VisitedList());
+		
+		
+		// ======================domin=======================
+		// 이곳에 작성
+		map.put("/noticeList.do", new NoticeList());
+		// yes
 	}
 
 	@Override
