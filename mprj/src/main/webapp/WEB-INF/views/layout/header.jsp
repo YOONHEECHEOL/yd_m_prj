@@ -8,7 +8,7 @@
 		</div>
 		<div class="col text-end align-self-center">			
 			<a class="mr20" href="">로그인<i class="material-icons md-36">login</i></a>
-			<a class="mr20" href="">회원가입<i class="material-icons md-36">signin</i></a>
+			<a class="mr20" href="">회원가입<i class="material-icons md-36">assignment_ind</i></a>
 		</div>
 	</div>
 </header>
