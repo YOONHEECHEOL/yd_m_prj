@@ -25,6 +25,7 @@ import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
 import com.yd05.mprj.user.command.Login;
+import com.yd05.mprj.user.command.LoginCheck;
 import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.VisitedList;
 
@@ -51,6 +52,7 @@ public class FrontController extends HttpServlet {
 		
 		// user
 		map.put("/login.do", new Login()); // 로그인
+		map.put("/loginCheck.do", new LoginCheck()); // 로그인 검증		
 		map.put("/signUp.do", new SignUp()); // 회원가입
 		
 		map.put("/myCourseList.do", new MyCourseList());

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.user.service.UserMapper">
+	<resultMap type="com.yd05.mprj.user.service.UserVO" id="userMap">
+		<id property="uId" column="u_id"/>
+		<result property="uPwd" column="u_pwd"/>
+		<result property="uName" column="u_name"/>
+		<result property="uAuthor" column="u_author"/>
+	</resultMap>
+
+	<!-- 선택 -->
+	<select id="userSelect" resultMap="userMap" parameterType="com.yd05.mprj.user.service.UserVO">
+		select * from users where u_id = #{uId} and u_pwd = #{uPwd}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="userUpdate" parameterType="com.yd05.mprj.user.service.UserVO">
+		update users set u_author = #{uAuthor}, u_pwd = #{uPwd}, u_name = #{uName} where u_id = #{uId}
+	</update>
+	
+	<!-- 등록 -->
+	<insert id="userInsert" parameterType="com.yd05.mprj.user.service.UserVO">
+		insert into users values(#{uId}, #{uPwd}, #{uName}, 'USER')
+	</insert>
+	
+	<!-- idCheck -->
+	<select id="idCheck" parameterType="String">
+		select case when count(u_id) = 1 then 0 else 1 end as u_id
+		from users where u_id = #{CheckStr}
+	</select>
+	
+</mapper>
