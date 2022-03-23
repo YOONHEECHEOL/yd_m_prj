@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
+import com.yd05.mprj.delicious.command.DeliciousList;
+import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
@@ -22,7 +24,6 @@ import com.yd05.mprj.notice.command.NoticeList;
 import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.notice.service.NoticeInsert;
 import com.yd05.mprj.spot.command.CateSpotList;
-import com.yd05.mprj.spot.command.DeliciousList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
 import com.yd05.mprj.user.command.AjaxloginCheck;
@@ -79,7 +80,8 @@ public class FrontController extends HttpServlet {
 		// ======================been=======================
 		// 이곳에 작성
 		map.put("/visitedList.do", new VisitedList());
-		map.put("/deliciousList.do", new DeliciousList());
+		map.put("/deliciousList.do", new DeliciousList()); //맛집 검색
+		map.put("/deliciousSelect.do", new DeliciousSelect()); //맛집 개별 화면
 		
 		
 		// ======================domin=======================
