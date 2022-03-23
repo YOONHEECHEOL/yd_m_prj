@@ -1,16 +1,16 @@
-package com.yd05.mprj.notice.command;
+package com.yd05.mprj.category.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 
-public class NoticeInsertForm implements Command {
+public class Accom implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "notice/noticeInsertForm.tiles";
+		// 숙박정보 조회
+		return "category/accom.tiles";
 	}
 
 }

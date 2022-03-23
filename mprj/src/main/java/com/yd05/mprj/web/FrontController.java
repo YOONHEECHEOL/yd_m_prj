@@ -16,11 +16,12 @@ import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.notice.command.AjaxNoticeSearch;
 import com.yd05.mprj.notice.command.AjaxSortNotice;
-import com.yd05.mprj.notice.command.NoticeInsert;
 import com.yd05.mprj.notice.command.NoticeInsertForm;
 import com.yd05.mprj.notice.command.NoticeList;
 import com.yd05.mprj.notice.command.NoticeView;
+import com.yd05.mprj.notice.service.NoticeInsert;
 import com.yd05.mprj.spot.command.CateSpotList;
+import com.yd05.mprj.spot.command.DeliciousList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
 import com.yd05.mprj.user.command.Login;
@@ -66,6 +67,7 @@ public class FrontController extends HttpServlet {
 		// ======================been=======================
 		// 이곳에 작성
 		map.put("/visitedList.do", new VisitedList());
+		map.put("/deliciousList.do", new DeliciousList());
 		
 		
 		// ======================domin=======================
