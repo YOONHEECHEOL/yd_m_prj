@@ -92,7 +92,7 @@ public class FrontController extends HttpServlet {
 		Command comm = map.get(page);
 		String viewPage = comm.excute(request, response);			
 		
-		if(viewPage != null) {
+		if(viewPage != null) { 
 			if(viewPage.startsWith("ajax:")) {
 				response.setContentType("text/html;charset=utf-8");
 				response.getWriter().append(viewPage.substring(5));

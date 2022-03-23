@@ -13,7 +13,7 @@
 						<div class="row align-items-center">
 							<div class="col-7">
 								<div class="input-group">
-									<input type="text" placeholder="id ..." name="userId" id="userId" class="form-control" required>
+									<input type="text" placeholder="id ..." name="uId" id="uId" class="form-control" required>
 									<span class="input-group-text">@</span>
 									<input type="text" value=""	name="mailVal" class="form-control" id="mailVal">
 								</div>
@@ -32,16 +32,10 @@
 						</div>				 
 					</div>
 					<div class="form-group mt8">
-						<input type="password" name="pwd" id="pwd" placeholder="password ..." class="form-control" required>
+						<input type="password" name="uPwd" id="uPwd" placeholder="password ..." class="form-control" required>
 					</div>
 					<div class="form-group mt8">
-						<input type="text" name="tel" id="tel" placeholder="phone number ..." class="form-control">
-					</div>
-					<div class="form-group mt8">
-						<input type="text" name="address" id="address" placeholder="address ..." class="form-control">
-					</div>
-					<div class="form-group mt8">
-						<input type="text" name="userName" id="userName" placeholder="your name ..." class="form-control">
+						<input type="text" name="uName" id="uName" placeholder="your name ..." class="form-control">
 					</div>
 					
 					<input type="hidden" value="0" id="validateVal">

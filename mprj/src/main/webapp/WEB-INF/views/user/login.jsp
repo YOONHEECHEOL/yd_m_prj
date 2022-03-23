@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <div class="row text-center justify-content-center align-items-center hDisplay">
 	<div class="col-4 card">
 		<div class="card-body">
