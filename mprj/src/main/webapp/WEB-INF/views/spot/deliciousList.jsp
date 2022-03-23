@@ -2,59 +2,38 @@
     pageEncoding="UTF-8"%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js" integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<h1>Delicious</h1>
-<div id="input"></div>
-<!-- push test -->
+<div align="center">
+	<h1>Delicious List</h1>
+	<div id="input"></div>
+	<!-- push test -->
 
-http://api.visitkorea.or.kr/openapi/service/rest/KorService/categoryCode?serviceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&contentTypeId=12&cat1=A01&cat2=A0101&cat3=A01010100
-
-<h6>list 출력 필요한 값</h6>
-<p>
-    http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?<br>
-    ServiceKey=인증키<br>
-    &contentTypeId=39<br>
-    &areaCode= <br>
-    &sigunguCode= <br>
-    &cat1= <br>
-    &cat2= <br>
-    &cat3= <br>
-    &listYN=Y<br>
-    &MobileOS=ETC&MobileApp=TourAPI3.0_Guide<br>
-    &arrange=A<br>
-    &numOfRows=12<br>
-    &pageNo=1 (각 페이지별로 번호값 매기기)
-</p>
-<div>
-   <span>ContentTypeId (관광지 | 숙박 | 음식점)</span>      
-   <select name="contentType" id="contentTypeSel">
-      <option value="">선택</option>
-      <option value="12">관광지</option>
-      <option value="32">숙박</option>
-      <option value="39">음식점</option>
-   </select><br>
-   <span></span>
-   <!-- <input type="hidden" id="areaCode" value="areaCode=">
+	<div>
+		<span>ContentTypeId (관광지 | 숙박 | 음식점)</span> <select name="contentType"
+			id="contentTypeSel">
+			<option value="">선택</option>
+			<option value="12">관광지</option>
+			<option value="32">숙박</option>
+			<option value="39">음식점</option>
+		</select><br> <span></span>
+		<!-- <input type="hidden" id="areaCode" value="areaCode=">
    <input type="hidden" id="sigunguCode" value="sigunguCode="> -->
-   <!-- <input type="text" placeholder="cat1=" id="cat1"> -->
-   <select name="cat1" id="cat1">
-   </select>
+		<!-- <input type="text" placeholder="cat1=" id="cat1"> -->
+		<select name="cat1" id="cat1">
+		</select> <select name="cat2" id="cat2">
+		</select> <select name="cat3" id="cat3">
+		</select>
 
-   <select name="cat2" id="cat2">
-   </select>
-
-   <select name="cat3" id="cat3">
-   </select>
-
-   <!-- <input type="hidden" value="listYN=Y" id="listYN">
+		<!-- <input type="hidden" value="listYN=Y" id="listYN">
    <input type="hidden" value="MobileOS=ETC&MobileApp=TourAPI3.0_Guide">
    <input type="hidden" value="arrange=A"> -->
-   <input type="text" placeholder="numOfRows=12">
-   <input type="text" placeholder="pageNo=1">
-   <button onclick="submitFrm()">확인하기</button>
-</div>
+		<input type="text" placeholder="numOfRows=12"> <input
+			type="text" placeholder="pageNo=1">
+		<button onclick="submitFrm()">확인하기</button>
+	</div>
 
-<div id="output" class="row">
-    <!-- 이곳에 출력 -->
+	<div id="output" class="row">
+		<!-- 이곳에 출력 -->
+	</div>
 </div>
 
 
@@ -163,23 +142,24 @@ http://api.visitkorea.or.kr/openapi/service/rest/KorService/categoryCode?service
             let div = document.createElement('div');
             div.setAttribute('class', 'col-3 colImg');
 			
-            
-            let a = document.createElement('a');
-            a.setAttribute('action', 'clickImg()');
             let img = document.createElement('img');
             img.setAttribute('src', item.firstimage);
+            
             let h6 = document.createElement('h6');
             h6.innerText = item.title;
 			
-            a.append(img, h6);
-            div.append(a);
+            div.append(img, h6);
 
             output.append(div);
          }
+
+         let imgs = document.getElementsByTagName("img");
+         for(let i=0; i<imgs.length; i++){
+            imgs[i].onclick = function(){
+               alert('test');
+            }
+         }
   })
    }
-   
-   function clickImg(){
-	   
-   }
+ 
 </script>
