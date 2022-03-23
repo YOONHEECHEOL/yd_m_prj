@@ -10,7 +10,7 @@ public class NoticeInsertForm implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		return "notice/noticeInsertForm";
+		return "notice/noticeInsertForm.tiles";
 	}
 
 }

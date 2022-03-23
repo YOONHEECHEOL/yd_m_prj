@@ -20,16 +20,18 @@
 						<option value="전체">전체</option>
 						<option value="제목">제목</option>
 						<option value="내용">내용</option>
-					</select> <span><input type="text" id="searchVal">&nbsp; 
-					                <input type="button" onclick="searchList()" value="검색"> 
-					          </span>
+					</select> 
+					<span>
+					<input type="text" id="searchVal">&nbsp; 
+					<input type="button" onclick="searchList()" value="검색"> 
+					</span>
 				</div>
 				<div>
 					<table border="1" id="content">
 						<thead>
 							<tr>
-								<th width="150"><span style="color:red" onclick="sortNotice('A')">A </span>글번호
-												<span style="color:red" onclick="sortNotice('D')"> D</span></th>
+								<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
+												<span style="color:red" onclick="sortBorder('D')"> D</span></th>
 								<th width="300">제 목</th>
 								<th width="150">작성일자</th>
 								<th width="70">조회수</th>
@@ -42,10 +44,10 @@
 								</tr>
 							</c:if>
 							<c:if test="${not empty notices }">
-								<c:forEach items="${notices }" var="b">
+								<c:forEach items="${notices }" var="n">
 									<tr onmouseover='this.style.background="#fcecae";'
 									    onmouseleave='this.style.background="#FFFFFF";'
-									    onclick="nContent('${n.nId }')">
+									    onclick='nContent("${n.nId }")'>
 										<td>${n.nId }</td>
 										<td>${n.nTitle }</td>
 										<td>${n.nDate }</td>
@@ -58,7 +60,7 @@
 				</div>
 				<br>
 				<div>
-					<button type="button" onclick="location.href='noticeInsertForm.tiles'">글쓰기</button>
+					<button type="button" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
 				</div>
 				<input type="hidden" id="nId" name="nId">
 			</form>
