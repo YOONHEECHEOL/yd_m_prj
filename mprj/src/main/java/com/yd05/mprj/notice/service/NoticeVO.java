@@ -6,22 +6,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
-@ToString
 public class NoticeVO {
-	
-	
-	
-		
-	@JsonFormat(pattern = "yyyy-MM-dd", timezone="Asia/Seoul")
-	private Date nDate;
-	
 	private int nId;
 	private String nTitle;
 	private String nContent;
+			
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone="Asia/Seoul")
+	private Date nDate;
+	
 	private int nHit;
 	
 

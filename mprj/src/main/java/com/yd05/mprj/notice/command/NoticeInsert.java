@@ -1,4 +1,4 @@
-package com.yd05.mprj.notice.service;
+package com.yd05.mprj.notice.command;
 
 import java.sql.Date;
 
@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
+import com.yd05.mprj.notice.service.NoticeService;
+import com.yd05.mprj.notice.service.NoticeVO;
 import com.yd05.mprj.notice.serviceImpl.NoticeServiceImpl;
 
 public class NoticeInsert implements Command {
