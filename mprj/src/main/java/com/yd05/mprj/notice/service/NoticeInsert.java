@@ -1,4 +1,4 @@
-package com.yd05.mprj.notice.command;
+package com.yd05.mprj.notice.service;
 
 import java.sql.Date;
 
@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
-import com.yd05.mprj.notice.service.NoticeService;
-import com.yd05.mprj.notice.service.NoticeVO;
 import com.yd05.mprj.notice.serviceImpl.NoticeServiceImpl;
 
 public class NoticeInsert implements Command {
@@ -17,9 +15,9 @@ public class NoticeInsert implements Command {
 		NoticeService noticeDao = new NoticeServiceImpl();
 		NoticeVO vo = new NoticeVO();
 		
+		vo.setNDate(Date.valueOf(request.getParameter("nDate")));
 		vo.setNTitle(request.getParameter("nTitle"));
 		vo.setNContent(request.getParameter("nContent"));
-		vo.setNDate(Date.valueOf(request.getParameter("nDate")));
 		
 		int n  = noticeDao.noticeInsert(vo);
 		if(n != 0 ) {
