@@ -32,17 +32,17 @@
 		<button onclick="submitFrm()">확인하기</button>
 	</div>
 
-	<form id="frm" name="frm" action="deliciousSelect.do" method="post">
+	<form id="frm" name="frm" action="deliciousInsert.do" method="post">
 		<input type="hidden" id="contentid" name="contentid">
 		<input type="hidden" id="addr1" name="addr1">
 		<input type="hidden" id=firstimage name="firstimage">
 		<input type="hidden" id="tel" name="tel">
 		<input type="hidden" id="title" name="title">
-		<br/>
+	</form>
+	<br/>
 	<div id="output" class="row">
 		<!-- 이곳에 출력 -->
 	</div>
-	</form>
 </div>
 
 
@@ -127,7 +127,7 @@
       console.log(jsonObj)
 
          // 값 위치
-      console.log(jsonObj.response.body.items.item[0])
+      console.log(jsonObj.response.body.items.item[0]);
          
 // 			addr1: "경기도 남양주시 강변북로632번길 57-28"
 // 			areacode: "31"
@@ -149,7 +149,7 @@
 // 			title: "가든갤러리"
 // 			zipcode: "12268"
 
-//			내가 필요한 정보
+//			필요한 정보
 //			addr1, contentid, firstimage, tel, title
 
          let output = document.querySelector('#output');
@@ -178,6 +178,8 @@
          let imgs = document.getElementsByTagName("img");
          for(let i=0; i<imgs.length; i++){
             imgs[i].onclick = function(contentid){
+            	imgs[i].setAttribute('name', jsonObj.response.body.items.item[i].contentid);
+            	console.log(jsonObj.response.body.items.item[i].contentid);
             	frm.contentid.value = contentid;
             	frm.submit();
             }

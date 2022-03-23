@@ -9,7 +9,8 @@ public class DeliciousSelect implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// 맛집 개별 화면
+		// TODO Auto-generated method stub
+		
 		
 		return "delicious/deliciousSelect.tiles";
 	}
