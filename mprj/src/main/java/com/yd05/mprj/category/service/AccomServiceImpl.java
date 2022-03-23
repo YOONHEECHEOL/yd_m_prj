@@ -16,4 +16,10 @@ public class AccomServiceImpl implements AccomService {
 		return map.AccomList();
 	}
 
+	@Override
+	public AccomVO AccomRecList(int accomId) {
+		
+		return map.AccomRecList(accomId);
+	}
+
 }

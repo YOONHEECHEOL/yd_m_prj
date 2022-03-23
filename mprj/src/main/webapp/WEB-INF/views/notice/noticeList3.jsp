@@ -27,14 +27,14 @@
 					</span>
 				</div>
 				<div>
-					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<table border="1" id="content">
 						<thead>
 							<tr>
-								<th width="150" style="background-color: #eeeeee; text-align: center;"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
+								<th width="150"><span style="color:red" onclick="sortBorder('A')">A </span>글번호
 												<span style="color:red" onclick="sortBorder('D')"> D</span></th>
-								<th width="300" style="background-color: #eeeeee; text-align: center;">제 목</th>
-								<th width="150" style="background-color: #eeeeee; text-align: center;">작성일자</th>
-								<th width="70" style="background-color: #eeeeee; text-align: center;">조회수</th>
+								<th width="300">제 목</th>
+								<th width="150">작성일자</th>
+								<th width="70">조회수</th>
 							</tr>
 						</thead>
 						<tbody id="noticeBody">
@@ -60,7 +60,7 @@
 				</div>
 				<br>
 				<div>
-					<button type="button" class="btn btn-primary pull-right" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
+					<button type="button" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
 				</div>
 				<input type="hidden" id="nId" name="nId">
 			</form>

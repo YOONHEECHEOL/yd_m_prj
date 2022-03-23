@@ -4,4 +4,6 @@
 	<select id="AccomList" resultType="com.yd05.mprj.category.service.AccomVO">
 		SELECT * FROM ACCOM
 	</select>
+	<select id="AccomRecList" resultType="com.yd05.mprj.category.service.AccomVO">
+	</select>
 </mapper>

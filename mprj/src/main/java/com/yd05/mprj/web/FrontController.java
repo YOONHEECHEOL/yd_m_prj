@@ -19,10 +19,12 @@ import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.notice.command.AjaxNoticeSearch;
 import com.yd05.mprj.notice.command.AjaxSortNotice;
+import com.yd05.mprj.notice.command.NoticeDelete;
+import com.yd05.mprj.notice.command.NoticeInsert;
 import com.yd05.mprj.notice.command.NoticeInsertForm;
 import com.yd05.mprj.notice.command.NoticeList;
+import com.yd05.mprj.notice.command.NoticeUpdate;
 import com.yd05.mprj.notice.command.NoticeView;
-import com.yd05.mprj.notice.service.NoticeInsert;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
@@ -92,6 +94,8 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeView.do", new NoticeView());
 	    map.put("ajaxNoticeSearch.do", new AjaxNoticeSearch());
 	    map.put("/ajaxSortNotice.do", new AjaxSortNotice());
+	    map.put("/noticeUpdate.do", new NoticeUpdate());
+	    map.put("/noticeDelete.do", new NoticeDelete());
 
 		// yes
 	}
