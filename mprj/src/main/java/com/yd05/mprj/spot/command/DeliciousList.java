@@ -1,4 +1,4 @@
-package com.yd05.mprj.delicious.command;
+package com.yd05.mprj.spot.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

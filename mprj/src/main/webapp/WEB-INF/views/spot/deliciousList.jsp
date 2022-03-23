@@ -99,11 +99,14 @@
       let cat3 = document.querySelector('#cat3').value;
       console.log(cat3)
 
-      fetch('http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D&contentTypeId='+ contentTypeSel +'&areaCode=&sigunguCode=&cat1=' + cat1 +'&cat2=' + cat2 + '&cat3=' + cat3 + '&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1', {
-      method: 'get'
-  })
-  .then(res => res.text())
-  .then(res => {
+      fetch('http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?'
+    		  +'ServiceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D'
+    		  +'&contentTypeId='+ contentTypeSel +'&areaCode=&sigunguCode=&cat1=' + cat1 +'&cat2=' + cat2 + '&cat3=' + cat3 + '&listYN=Y&MobileOS=ETC'
+    		  +'&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1', {
+      	method: 'get'
+  		})
+  	 .then(res => res.text())
+ 	 .then(res => {
       const parser = new DOMParser();
       const xml = parser.parseFromString(res, "application/xml");
       console.log(xml);
