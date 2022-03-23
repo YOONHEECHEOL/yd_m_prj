@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js" integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	pageEncoding="UTF-8"%>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"
+	integrity="sha512-HX+/SvM7094YZEKOCtG9EyjRYvK8dKlFhdYAnVCGNxMkA59BZNSZTZrqdDlLXp0O6/NjDb1uKnmutUeuzHb3iQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <div align="center">
 	<h1>Delicious List</h1>
@@ -15,8 +18,7 @@
 			<option value="32">숙박</option>
 			<option value="39">음식점</option>
 		</select><br> <span></span>
-		<!-- <input type="hidden" id="areaCode" value="areaCode=">
-   <input type="hidden" id="sigunguCode" value="sigunguCode="> -->
+
 		<!-- <input type="text" placeholder="cat1=" id="cat1"> -->
 		<select name="cat1" id="cat1">
 		</select> <select name="cat2" id="cat2">
@@ -24,16 +26,24 @@
 		</select>
 
 		<!-- <input type="hidden" value="listYN=Y" id="listYN">
-   <input type="hidden" value="MobileOS=ETC&MobileApp=TourAPI3.0_Guide">
-   <input type="hidden" value="arrange=A"> -->
+   			<input type="hidden" value="MobileOS=ETC&MobileApp=TourAPI3.0_Guide">
+   			<input type="hidden" value="arrange=A"> -->
 		<input type="text" placeholder="numOfRows=12"> <input
 			type="text" placeholder="pageNo=1">
 		<button onclick="submitFrm()">확인하기</button>
 	</div>
 
+	<form id="frm" name="frm" action="deliciousSelect.do" method="post">
+		<input type="hidden" id="contentid" name="contentid">
+		<input type="hidden" id="addr1" name="addr1">
+		<input type="hidden" id=firstimage name="firstimage">
+		<input type="hidden" id="tel" name="tel">
+		<input type="hidden" id="title" name="title">
+		<br/>
 	<div id="output" class="row">
 		<!-- 이곳에 출력 -->
 	</div>
+	</form>
 </div>
 
 
@@ -140,17 +150,27 @@
 // 			title: "가든갤러리"
 // 			zipcode: "12268"
 
+//			내가 필요한 정보
+//			addr1, contentid, firstimage, tel, title
+
          let output = document.querySelector('#output');
          for(let item of jsonObj.response.body.items.item){
             let div = document.createElement('div');
             div.setAttribute('class', 'col-3 colImg');
 			
             let img = document.createElement('img');
-            img.setAttribute('src', item.firstimage);
+           	if(item.firstimage != null){
+            	img.setAttribute('src', item.firstimage);
+            } else{
+            	img.setAttribute('src', 'images/noImage.jpg');
+            }
             
             let h6 = document.createElement('h6');
             h6.innerText = item.title;
-			
+            
+            let p = document.createElement('p');
+            p.innerHTML = item.contentid;
+            
             div.append(img, h6);
 
             output.append(div);
@@ -158,8 +178,9 @@
 
          let imgs = document.getElementsByTagName("img");
          for(let i=0; i<imgs.length; i++){
-            imgs[i].onclick = function(){
-               alert('test');
+            imgs[i].onclick = function(contentid){
+            	frm.contentid.value = contentid;
+            	frm.submit();
             }
          }
   })
