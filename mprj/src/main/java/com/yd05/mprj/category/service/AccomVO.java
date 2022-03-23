@@ -8,6 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AccomVO {
+	int accmId; // 숙박시설의 번호 or 오늘의 추천 숙박을 뽑아줄 기준(sequence)
 	String accomcountlodging; // 수용가능인원
 	String checkintime; // 입실시간
 	String checkouttime; // 퇴실시간
