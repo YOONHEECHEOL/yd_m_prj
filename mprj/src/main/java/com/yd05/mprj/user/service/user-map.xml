@@ -24,7 +24,7 @@
 	</insert>
 	
 	<!-- idCheck -->
-	<select id="idCheck" parameterType="String">
+	<select id="idCheck" parameterType="String" resultType="String">
 		select case when count(u_id) = 1 then 0 else 1 end as u_id
 		from users where u_id = #{CheckStr}
 	</select>

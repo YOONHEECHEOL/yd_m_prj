@@ -61,7 +61,7 @@
 	
 	// id 중복 체크
 	function idCheck() {
-		let id = document.querySelector('#userId').value;
+		let id = document.querySelector('#uId').value;
 		let mailVal = document.querySelector('#mailVal').value;
 		let submitVal = id + '@' + mailVal;
 		console.log(submitVal)
@@ -78,7 +78,7 @@
 		fetch('ajaxloginCheck.do?', {
 			method: 'post',
 			headers: {'Content-type': 'application/x-www-form-urlencoded'},
-            body: 'id=' + submitVal
+            body: 'rId=' + submitVal
 		})
 		.then(res => res.text())
 		.then(res => {

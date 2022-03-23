@@ -24,9 +24,13 @@ import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.DeliciousList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
+import com.yd05.mprj.user.command.AjaxloginCheck;
 import com.yd05.mprj.user.command.Login;
 import com.yd05.mprj.user.command.LoginCheck;
+import com.yd05.mprj.user.command.Logout;
+import com.yd05.mprj.user.command.Mypage;
 import com.yd05.mprj.user.command.SignUp;
+import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.user.command.VisitedList;
 
 // @WebServlet("*.do")
@@ -54,6 +58,12 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new Login()); // 로그인
 		map.put("/loginCheck.do", new LoginCheck()); // 로그인 검증		
 		map.put("/signUp.do", new SignUp()); // 회원가입
+		map.put("/signUpCheck.do", new SignUpCheck()); // 회원가입 체크 및 dao 수행		
+		map.put("/logout.do", new Logout()); // 로그아웃
+		map.put("/mypage.do", new Mypage()); // 마이페이지
+		map.put("/ajaxloginCheck.do", new AjaxloginCheck()); // 아이디 중복체크
+		
+		
 		
 		map.put("/myCourseList.do", new MyCourseList());
 		map.put("/spotList.do", new SpotList());
