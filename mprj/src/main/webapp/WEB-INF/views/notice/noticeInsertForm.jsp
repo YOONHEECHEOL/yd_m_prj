@@ -7,36 +7,34 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div align="center">
-		<div>
-			<h1>게시글 작성</h1>
-		</div>
-		<div>
-			<form id="frm" action="noticeInsert.do" method="post">
-				<div>
-					<table border="1">
+	<div class="container">
+		<div class="row">
+			<form id="frm" method="post" action="noticeInsert.do">
+				<table class="table table-striped"
+					style="text-align: center; border: 1px solid #dddddd">
+					<thead>
 						<tr>
-							<th width="100">작성일자</th>
-							<td width="150"><input type="date" id="nDate"
-								name="nDate" required="required"></td>
+							<th colspan="2"
+								style="background-color: #eeeeee; text-align: center;">게시판
+								글쓰기</th>
+
 						</tr>
+					</thead>
+					<tbody>
+					<tr>
+							<td><input type="date" class="form-control" placeholder="글 제목" id="nDate" name="nDate"required="required" maxlength="50"></td>
+							</tr>
 						<tr>
-							<th>제목</th>
-							<td colspan="3"><input type="text" id="nTitle"
-								name="nTitle" required="required"></td>
+							<td><input type="text" class="form-control" placeholder="글 제목" id="nTitle" name="nTitle" required="required" maxlength="50"></td>
+							</tr>	
+							<tr>								
+							<td><textarea  class="form-control" placeholder="글 내용" name="nContent" maxlength="2048" style="height: 350px;"></textarea></td>
 						</tr>
-						<tr>
-							<th>내용</th>
-							<td colspan="3"><textarea rows="10" cols="80"
-									name="nContent"></textarea></td>
-						</tr>
-					</table>
-				</div><br>
-				<div>
-				<button type="submit" >글등록</button>&nbsp;&nbsp;&nbsp;
-				<button type="reset">취 소</button>&nbsp;&nbsp;&nbsp;
-				<button type="button" onclick="location.href='noticeList.do'">목 록</button>
-				</div>
+					</tbody>
+				</table>
+				<%-- <c:if test="${not empty id }"> --%>
+					<input type="submit" class="btn btn-primary pull-right" onClick="location.href='noticeList.do'" value="등록">
+			    <%-- </c:if> --%>
 			</form>
 		</div>
 	</div>
