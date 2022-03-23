@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.member.command.MemberList;
+import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.notice.command.AjaxNoticeSearch;
 import com.yd05.mprj.notice.command.AjaxSortNotice;
@@ -62,6 +63,7 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout()); // 로그아웃
 		map.put("/mypage.do", new Mypage()); // 마이페이지
 		map.put("/ajaxloginCheck.do", new AjaxloginCheck()); // 아이디 중복체크
+		map.put("/addMyCourse.do", new AddMyCourse()); // 
 		
 		
 		
