@@ -20,16 +20,15 @@
 		</select><br> <span></span>
 
 		<!-- <input type="text" placeholder="cat1=" id="cat1"> -->
-		<select name="cat1" id="cat1">
-		</select> <select name="cat2" id="cat2">
-		</select> <select name="cat3" id="cat3">
-		</select>
+		<select name="cat1" id="cat1"></select>
+		<select name="cat2" id="cat2"></select>
+		<select name="cat3" id="cat3"></select>
 
 		<!-- <input type="hidden" value="listYN=Y" id="listYN">
    			<input type="hidden" value="MobileOS=ETC&MobileApp=TourAPI3.0_Guide">
    			<input type="hidden" value="arrange=A"> -->
-		<input type="text" placeholder="numOfRows=12"> <input
-			type="text" placeholder="pageNo=1">
+		<input type="text" placeholder="numOfRows=12">
+		<input type="text" placeholder="pageNo=1">
 		<button onclick="submitFrm()">확인하기</button>
 	</div>
 
