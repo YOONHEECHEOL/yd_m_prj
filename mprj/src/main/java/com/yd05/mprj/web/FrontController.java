@@ -24,6 +24,7 @@ import com.yd05.mprj.notice.command.NoticeInsert;
 import com.yd05.mprj.notice.command.NoticeInsertForm;
 import com.yd05.mprj.notice.command.NoticeList;
 import com.yd05.mprj.notice.command.NoticeUpdate;
+import com.yd05.mprj.notice.command.NoticeUpdateConfirm;
 import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
@@ -92,10 +93,12 @@ public class FrontController extends HttpServlet {
 		map.put("/noticeInsertForm.do", new NoticeInsertForm());
 		map.put("/noticeInsert.do", new NoticeInsert());
 		map.put("/noticeView.do", new NoticeView());
-	    map.put("ajaxNoticeSearch.do", new AjaxNoticeSearch());
+	    map.put("/ajaxNoticeSearch.do", new AjaxNoticeSearch());
 	    map.put("/ajaxSortNotice.do", new AjaxSortNotice());
 	    map.put("/noticeUpdate.do", new NoticeUpdate());
 	    map.put("/noticeDelete.do", new NoticeDelete());
+	    map.put("/noticeUpdateConfirm.do", new NoticeUpdateConfirm());
+	    
 
 		// yes
 	}

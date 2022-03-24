@@ -14,7 +14,8 @@ public class NoticeDelete implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		String nId = request.getParameter("nId");
+		String nId = request.getParameter("nid");
+		System.out.println(nId);
 
 		NoticeVO vo = new NoticeVO();
 		vo.setNId(Integer.parseInt(nId));
@@ -28,7 +29,7 @@ public class NoticeDelete implements Command {
 		List<NoticeVO> list = service.noticeSelectList();
 
 		request.setAttribute("list", list);
-		return "notice/noticeDelete.tiles";
+		return "notice/noticeList.tiles";
 	}
 
 }

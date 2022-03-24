@@ -26,6 +26,7 @@ public class LoginCheck implements Command {
 		String viewPage;
 		if(vo != null) {			
 			session.setAttribute("id", vo.getuId());
+			session.setAttribute("author", vo.getuAuthor());
 			viewPage = "main/main.tiles";			
 		} else {
 			request.setAttribute("message", "아이디 없음");
