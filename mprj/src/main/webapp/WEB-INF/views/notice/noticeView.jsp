@@ -1,17 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<script>
+function goUp(){
+	
+console.log($("#nid").val());
+ 
+ $frm =  $("#id");
+ $frm.attr("action","noticeUpdate.do");
+ $frm.attr("target","_self");
+ $frm.submit(); 
+ 
+ }
+</script> 
 <div class="container">
 	<div class="row">
-	<form id="id" name="id" action="noticeUpdate.do" method="post">
-		<input type="hidden" id="id" name="id" value="${notice.NId }">
+	<form id="id" name="id" method="post">
+		<input type="hidden" id="nid" name="nid" value="${notice.NId }">
 		
 
 		
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글 보기</th>
+						<th colspan="2" style="background-color: #eeeeee; text-align: center;">공지사항</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,8 +42,12 @@
 					</tr>
 				</tbody>
 			</table>
-			<button type="button" onclick="location.href='noticeList.do'"  class="btn btn-primary">목록보기</button>
-			<button type="button" onclick="location.href='noticeUpdate.do'" class="btn btn-primary">수정하기</button>
+			<a href="noticeList.do" class="btn btn-primary">목록보기</a>
+			<c:if test="${author eq 'admin'}">				
+				<!-- <a href="noticeUpdate.do" class="btn btn-primary">수정</a>
+				<a href="noticeDelete.do" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')"  class="btn btn-primary">삭제</a>  -->
+				<button type="button" class="btn btn-primary" onclick="goUp()">수정</button>
+			</c:if>
 	</form>
 	</div>
 	</div>

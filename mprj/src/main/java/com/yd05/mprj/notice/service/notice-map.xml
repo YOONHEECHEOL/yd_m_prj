@@ -34,12 +34,12 @@
 	VALUES(#{nId}, #{nTitle}, #{nContent}, #{nDate}, 0)
 	</insert>
 	
-	<update id="noticeUpdate">
-	
+	<update id="noticeUpdate" parameterType="com.yd05.mprj.notice.service.NoticeVO">
+	UPDATE NOTICE SET N_TITLE=#{nTitle}, N_CONTENT=#{nContent} WHERE N_ID = #{nId}
 	</update>
 	
-	<delete id="noticeDelete">
-	
+	<delete id="noticeDelete" parameterType="com.yd05.mprj.notice.service.NoticeVO">
+	DELETE FROM NOTICE WHERE N_ID = #{nId}
 	</delete>
 	
 	<select id="noticeSelectSearchList" resultMap="noticeMap">

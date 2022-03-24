@@ -11,21 +11,13 @@
 <body>
 	<div align="center">
 		<div>
-			<h1>게시글 목록</h1>
+			<h2>게시글 목록</h2>
 		</div>
 		<div>
+	<br />
+</div>
+		<div>
 			<form id="frm" method="post">
-				<div>
-					<select id="searchKey" name="searchKey">
-						<option value="전체">전체</option>
-						<option value="제목">제목</option>
-						<option value="내용">내용</option>
-					</select> 
-					<span>
-					<input type="text" id="searchVal">&nbsp; 
-					<input type="button" onclick="searchList()" value="검색"> 
-					</span>
-				</div>
 				<div>
 					<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 						<thead>
@@ -62,7 +54,24 @@
 				<div>
 					<button type="button" class="btn btn-primary pull-right" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
 				</div>
+				<div>
+	<br />
+</div>
+<div>
+	<br />
+</div>
 				<input type="hidden" id="nId" name="nId">
+				<div>
+					<select id="searchKey" name="searchKey">
+						<option value="전체">전체</option>
+						<option value="제목">제목</option>
+						<option value="내용">내용</option>
+					</select> 
+					<span>
+					<input type="text" id="searchVal">&nbsp; 
+					<input type="button" onclick="searchList()" value="검색"> 
+					</span>
+				</div>
 			</form>
 		</div>
 	</div>
