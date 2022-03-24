@@ -7,6 +7,6 @@
 	</select>
 	
 	<insert id="insertDel" parameterType="com.yd05.mprj.delicious.service.DeliciousVO">
-		INSERT INTO DELICIOUS VALUES(#{contentid}, #{addr1}, #{firstimage}, #{tel}, #{title}, #{overview})
+		INSERT INTO DELICIOUS VALUES(#{contentid}, #{addr1}, #{firstimage}, #{tel}, #{title})
 	</insert>
 </mapper>
