@@ -27,5 +27,6 @@
     <mapper resource="com/yd05/mprj/member/service/member-map.xml"/>
     <mapper resource="com/yd05/mprj/notice/service/notice-map.xml"/>
     <mapper resource="com/yd05/mprj/user/service/user-map.xml"/>
+    <mapper resource="com/yd05/mprj/delicious/service/delicious-map.xml"/>
   </mappers>
 </configuration>

@@ -9,11 +9,14 @@ public class DeliciousServiceImpl implements DeliciousService {
 	private DeliciousMapper map = sqlSession.getMapper(DeliciousMapper.class);
 	
 	@Override
+	public DeliciousVO selectDel(DeliciousVO vo) {
+		// 단건
+		return map.selectDel(vo);
+	}
+	
+	@Override
 	public int insertDel(DeliciousVO vo) {
-		// TODO Auto-generated method stub
+		// 등록
 		return map.insertDel(vo);
 	}
-
-	
-
 }

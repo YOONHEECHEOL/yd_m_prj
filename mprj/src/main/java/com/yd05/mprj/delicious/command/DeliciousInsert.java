@@ -15,6 +15,7 @@ public class DeliciousInsert implements Command {
 		// 맛집 개별 화면 -> insert작업
 		DeliciousService dao = new DeliciousServiceImpl();
 		DeliciousVO vo = new DeliciousVO();
+		// String contentTypeIdVal = request.getParameter("contentTypeId");
 		vo.setContentid(request.getParameter("contentid"));
 		vo.setAddr1(request.getParameter("addr1"));
 		vo.setFirstimage(request.getParameter("firstimage"));
@@ -23,9 +24,10 @@ public class DeliciousInsert implements Command {
 		vo.setOverview(request.getParameter("overview"));
 		int n = dao.insertDel(vo);
 		if(n != 0) {
-			return "delicious/deliciousSelect.do";
+			return "deliciousSelect.do";
 		} else {
 			return "home.do";
+			// 실패 다시 확인
 		}
 		
 	}

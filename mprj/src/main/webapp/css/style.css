@@ -74,6 +74,9 @@ ul li {
 .colImg img {
 	width: 100%;
 }
+.colImg img, h6, input {
+	pointer-events: none;
+}
 
 .cate--detail {
 	display: inline-block;
