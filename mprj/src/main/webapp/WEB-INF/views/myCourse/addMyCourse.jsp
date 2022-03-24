@@ -224,7 +224,7 @@
 					let output = document.querySelector('#output');
 					for (let item of jsonObj.response.body.items.item) {
 						let tr = document.createElement('tr');
-						tr.setAttribute('class', 'col-3 colImg');
+						tr.setAttribute('class', 'sm-img');
 
 						let td1 = document.createElement('td');
 						td1.innerText = item.title;
@@ -234,15 +234,29 @@
 							let img = document.createElement('img');
 							img.setAttribute('src', item.firstimage);
 							td2.append(img);
+						} else {
+							let img = document.createElement('img');
+							img.setAttribute('src', 'images/noImage.jpg');
+							td2.append(img);
 						}
 
 						let td3 = document.createElement('td');
 						td3.innerText = item.addr1;
 
-						tr.append(td2, td1, td3);
+						let td4 = document.createElement('td');
+						let button = document.createElement('button');
+						button.innerText = '추가';
+						button.setAttribute('class', 'btn btn-primary');
+						button.onclick = moveToCourse();
+						td4.append(button);
+
+						tr.append(td2, td1, td3, td4);
 
 						output.append(tr);
 					}
 				})
+		}
+		function moveToCourse() {
+			console.log(event.target);
 		}
 	</script>
