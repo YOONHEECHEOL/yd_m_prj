@@ -9,7 +9,30 @@
 	<div>
 		<h1>Delicious Select</h1>
 	</div><br/>
-	<div id="output"></div>
+	<div id="output">
+	<table>
+		<tr>
+			<th>이미지</th>
+			<td>${deli.firstimage }</td>
+		</tr>
+		<tr>
+			<th>상호명</th>
+			<td>${deli.title }</td>
+		</tr>
+		<tr>
+			<th>주소</th>
+			<td>${deli.addr1 }</td>
+		</tr>
+		<tr>
+			<th>전화번호</th>
+			<td>${deli.tel }</td>
+		</tr>
+		<tr>
+			<th>상세</th>
+			<td>${deli.overview }</td>
+		</tr>
+	</table>
+	</div>
 </div>
 
 <script type="text/javascript">

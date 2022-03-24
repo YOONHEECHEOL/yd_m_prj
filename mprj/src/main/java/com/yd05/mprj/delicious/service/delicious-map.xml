@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yd05.mprj.delicious.service.DeliciousMapper">
+
+	<select id="selectDel" parameterType="com.yd05.mprj.delicious.service.DeliciousVO">
+		SELECT * FROM DELICIOUS WHERE CONTENTID = #{contentid} 
+	</select>
 	
 	<insert id="insertDel" parameterType="com.yd05.mprj.delicious.service.DeliciousVO">
-		INSERT INTO DELICIOUS VALUES({#contentid}, #{addr1}, #{firstimage}, #{tel}, #{title}, #{overview})
+		INSERT INTO DELICIOUS VALUES(#{contentid}, #{addr1}, #{firstimage}, #{tel}, #{title}, #{overview})
 	</insert>
 </mapper>
