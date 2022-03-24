@@ -21,7 +21,6 @@ public class DeliciousInsert implements Command {
 		vo.setFirstimage(request.getParameter("firstimage"));
 		vo.setTel(request.getParameter("tel"));
 		vo.setTitle(request.getParameter("title"));
-		vo.setOverview(request.getParameter("overview"));
 		int n = dao.insertDel(vo);
 		if(n != 0) {
 			return "deliciousSelect.do";
