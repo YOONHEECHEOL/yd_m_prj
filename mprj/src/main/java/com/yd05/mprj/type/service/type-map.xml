@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.type.service.TypeMapper">
+	<resultMap type="com.yd05.mprj.type.service.TypeVO" id="typeMap">
+		<result property="contentTypeId" column="CONTENT_TYPE_ID"/>
+		<result property="contentTypeName" column="CONTENT_TYPE_NAME"/>
+		<result property="cat1" column="CAT1"/>
+		<result property="cat2" column="CAT2"/>
+		<result property="cat3" column="CAT3"/>
+		<result property="cat1Name" column="CAT1_NAME"/>
+		<result property="cat2Name" column="CAT2_NAME"/>
+		<result property="cat3Name" column="CAT3_NAME"/>
+	</resultMap>
+	
+	<select id="selectContentTypeId" resultMap="typeMap">
+		SELECT DISTINCT CONTENT_TYPE_ID, CONTENT_TYPE_NAME
+		FROM SERVICE_TYPE
+	</select>
+	
+	<select id="selectCat1" parameterType="com.yd05.mprj.type.service.TypeVO" resultMap="typeMap">
+		SELECT DISTINCT CAT1, CAT1_NAME
+		FROM SERVICE_TYPE
+		WHERE CONTENT_TYPE_ID = #{contentTypeId}
+	</select>
+	
+	<select id="selectCat2" parameterType="com.yd05.mprj.type.service.TypeVO" resultMap="typeMap">
+		SELECT DISTINCT CAT2, CAT2_NAME
+		FROM SERVICE_TYPE
+		WHERE CONTENT_TYPE_ID = #{contentTypeId} AND CAT1 = #{cat1}
+	</select>
+	
+	<select id="selectCat3" parameterType="com.yd05.mprj.type.service.TypeVO" resultMap="typeMap">
+		SELECT DISTINCT CAT3, CAT3_NAME
+		FROM SERVICE_TYPE
+		WHERE CONTENT_TYPE_ID = #{contentTypeId} AND CAT1 = #{cat1} AND CAT2 = #{cat2}
+	</select>
+</mapper>

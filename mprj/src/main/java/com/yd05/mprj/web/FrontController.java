@@ -29,6 +29,7 @@ import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
+import com.yd05.mprj.type.command.AjaxContentTypeList;
 import com.yd05.mprj.user.command.AjaxloginCheck;
 import com.yd05.mprj.user.command.Login;
 import com.yd05.mprj.user.command.LoginCheck;
@@ -67,7 +68,8 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout()); // 로그아웃
 		map.put("/mypage.do", new Mypage()); // 마이페이지
 		map.put("/ajaxloginCheck.do", new AjaxloginCheck()); // 아이디 중복체크
-		map.put("/addMyCourse.do", new AddMyCourse()); // 
+		map.put("/addMyCourse.do", new AddMyCourse()); // 나의 관광코스 추가페이지
+		map.put("/ajaxContentTypeList.do", new AjaxContentTypeList()); // contentTypeId, cat1 ,cat2, cat3 반환
 		
 		
 		
