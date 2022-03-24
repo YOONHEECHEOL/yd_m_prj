@@ -68,7 +68,7 @@ public class FrontController extends HttpServlet {
 		map.put("/mypage.do", new Mypage()); // 마이페이지
 		map.put("/ajaxloginCheck.do", new AjaxloginCheck()); // 아이디 중복체크
 		map.put("/addMyCourse.do", new AddMyCourse()); // 나의 관광코스 추가페이지
-		map.put("/ajaxContentTypeList.do", new AjaxContentTypeList()); // 나의 관광코스 추가페이지
+		map.put("/ajaxContentTypeList.do", new AjaxContentTypeList()); // contentTypeId, cat1 ,cat2, cat3 반환
 		
 		
 		

@@ -10,8 +10,10 @@
 							<select name="contentType" id="contentTypeSel" class="form-select">
 								<option value="">contentType 선택</option>
 								<option value="12">관광지</option>
-								<option value="32">숙박</option>
-								<option value="39">음식점</option>
+								<!-- 
+									<option value="32">숙박</option>
+									<option value="39">음식점</option>
+								-->
 							</select>
 						</div>
 						<div class="col-auto">
@@ -29,9 +31,11 @@
 					</div>
 				</div>
 				<div class="col-12">
-					<div id="output" class="row">
-						<!-- 이곳에 출력 -->
-					</div>
+					<table class="table">
+						<tbody id="output">
+							<!-- 이곳에 출력 -->
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -74,27 +78,27 @@
 				contentTypeSel.addEventListener('change', () => {
 						let eventVal = event.target.value;
 
-						fetch('ajaxContentTypeList.do', {
-							method: 'get'
+						fetch('ajaxContentTypeList.do?req=cat1&contentTypeId=' + eventVal, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
 						})
 						.then(res => res.text())
 						.then(res => {
-							let jsonObj = xmlToJson(res);
+							let resultVal = JSON.parse(res);
 
 							// 초기화 initialize
 							childRm(cat1);
 
 							// add empty option 
-							// let option = document.createElement('option');
-							// option.innerText = '선택';
-							// cat1.append(option);
 							addEmptyOption(cat1);
 
-							for (let i of jsonObj.response.body.items.item) {
+							let cat1Loc = document.querySelector('#cat1');
+							// print
+							for(let i of resultVal) {
 								let option = document.createElement('option');
-								option.setAttribute('value', i.code);
-								option.innerText = i.name;
-								cat1.append(option);
+								option.innerText = i.cat1Name;
+								option.value = i.cat1;
+								cat1Loc.append(option);
 							}
 						})
 					})
@@ -102,15 +106,16 @@
 
 			const f2 = () => {
 				cat1.addEventListener('change', (res) => {
-						let eventVal = document.querySelector('#contentTypeSel').value;
+						let contentTypeVal = document.querySelector('#contentTypeSel').value;
 						let cat1Val = event.target.value;				
 
-						fetch('', {
-							method: 'get'
+						fetch('ajaxContentTypeList.do?req=cat2&contentTypeId=' + contentTypeVal + '&cat1=' + cat1Val, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
 						})
 						.then(res => res.text())
 						.then(res => {
-							let jsonObj = xmlToJson(res);
+							let resultVal = JSON.parse(res);
 
 							// 초기화 initialize
 							childRm(cat2);
@@ -118,11 +123,13 @@
 							// add empty option
 							addEmptyOption(cat2);
 
-							for (let i of jsonObj.response.body.items.item) {
+							let cat2Loc = document.querySelector('#cat2');
+							// print
+							for(let i of resultVal) {
 								let option = document.createElement('option');
-								option.setAttribute('value', i.code);
-								option.innerText = i.name;
-								cat2.append(option);
+								option.innerText = i.cat2Name;
+								option.value = i.cat2;
+								cat2Loc.append(option);
 							}
 						})
 					})
@@ -131,15 +138,16 @@
 			const f3 = () => {
 				cat2.addEventListener('change', (res) => {
 						let contentTypeVal = document.querySelector('#contentTypeSel').value;
-						let cat1Val = document.querySelector('#cat1');		
+						let cat1Val = document.querySelector('#cat1').value;		
 						let cat2Val = event.target.value;
 
-						fetch('', {
-							method: 'get'
+						fetch('ajaxContentTypeList.do?req=cat3&contentTypeId=' + contentTypeVal + '&cat1=' + cat1Val + '&cat2=' + cat2Val, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
 						})
 						.then(res => res.text())
 						.then(res => {
-							let jsonObj = xmlToJson(res);
+							let resultVal = JSON.parse(res);
 
 							// 초기화 initialize
 							childRm(cat3);
@@ -147,11 +155,13 @@
 							// add empty option
 							addEmptyOption(cat3);
 
-							for (let i of jsonObj.response.body.items.item) {
+							let cat3Loc = document.querySelector('#cat3');
+							// print
+							for(let i of resultVal) {
 								let option = document.createElement('option');
-								option.setAttribute('value', i.code);
-								option.innerText = i.name;
-								cat3.append(option);
+								option.innerText = i.cat3Name;
+								option.value = i.cat3;
+								cat3Loc.append(option);
 							}
 						})
 					})
@@ -189,7 +199,7 @@
 					let jsonObj = xmlToJson(res);
 
 					// 값 위치
-					console.log(jsonObj.response.body.items.item[0].title)
+					// console.log(jsonObj.response.body.items.item[0].title)
 
 					// addr1: "강원도 고성군 죽왕면 심층수길 124-19"
 					// addr2: "(죽왕면)"
@@ -213,17 +223,25 @@
 
 					let output = document.querySelector('#output');
 					for (let item of jsonObj.response.body.items.item) {
-						let div = document.createElement('div');
-						div.setAttribute('class', 'col-3 colImg');
+						let tr = document.createElement('tr');
+						tr.setAttribute('class', 'col-3 colImg');
 
-						let h6 = document.createElement('h6');
-						h6.innerText = item.title;
-						let img = document.createElement('img');
-						img.setAttribute('src', item.firstimage);
+						let td1 = document.createElement('td');
+						td1.innerText = item.title;
 
-						div.append(img, h6);
+						let td2 = document.createElement('td');						
+						if(item.firstimage != undefined) {
+							let img = document.createElement('img');
+							img.setAttribute('src', item.firstimage);
+							td2.append(img);
+						}
 
-						output.append(div);
+						let td3 = document.createElement('td');
+						td3.innerText = item.addr1;
+
+						tr.append(td2, td1, td3);
+
+						output.append(tr);
 					}
 				})
 		}
