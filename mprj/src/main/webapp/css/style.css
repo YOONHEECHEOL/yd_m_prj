@@ -84,6 +84,9 @@ ul li {
 .sm-img img {
 	width: 200px;	
 }
+.reqTab img {
+	width: 80px !important;
+}
 
 .cate--detail {
 	display: inline-block;

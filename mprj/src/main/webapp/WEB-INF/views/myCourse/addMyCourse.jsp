@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<h1>addMyCourse</h1>
 
-	<div class="row text-center justify-content-center align-items-center">
+	<div class="row text-center justify-content-center">
 		<div class="col-8">
 			<div class="row">
 				<div class="col-12">
@@ -40,9 +40,11 @@
 			</div>
 		</div>
 		<div class="col-4">
-			<div id="inputCourse">
-				<!-- 이곳에 입력됨 -->
-			</div>
+			<table class="reqTab table">
+				<tbody id="inputCourse">
+					<!-- 이곳에 추가한 관광지 입력됨 -->
+				</tbody>
+			</table>
 		</div>
 	</div>
 
@@ -247,7 +249,7 @@
 						let button = document.createElement('button');
 						button.innerText = '추가';
 						button.setAttribute('class', 'btn btn-primary');
-						button.onclick = moveToCourse();
+						button.setAttribute('onclick', 'moveToCourse()');
 						td4.append(button);
 
 						tr.append(td2, td1, td3, td4);
@@ -257,6 +259,14 @@
 				})
 		}
 		function moveToCourse() {
-			console.log(event.target);
+			// tr 선택
+			let target = event.target;
+			console.log(target.parentNode.parentNode);
+
+			inputCourse.append(target.parentNode.parentNode);
+
+			target.innerText = '삭제';
+			target.setAttribute('class', 'btn btn-danger');
+			
 		}
 	</script>
