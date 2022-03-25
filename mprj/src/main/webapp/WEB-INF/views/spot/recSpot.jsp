@@ -74,9 +74,10 @@ xhtp.onload = function(){
 		
 		var td2 = document.createElement('td');
 		td2.innerText = i.querySelector('addr1').textContent; 
-		
+		console.log('td2:'+td2);
 		var td3 = document.createElement('td');
-		td3.innerHTML = `<img src=i.querySelector('firstimage')>`;
+		td3.innerHTML='<img src='+'"'+i.querySelectorAll('firstimage2').childNodes()+'"'+'>';
+		console.log(data.body.childNodes);
 		
 		tr.append(td1, td2, td3);
 		
