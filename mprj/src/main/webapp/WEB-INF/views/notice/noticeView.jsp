@@ -47,6 +47,7 @@ console.log($("#nid").val());
 				<!-- <a href="noticeUpdate.do" class="btn btn-primary">수정</a>
 				<a href="noticeDelete.do" type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')"  class="btn btn-primary">삭제</a>  -->
 				<button type="button" class="btn btn-primary" onclick="goUp()">수정</button>
+				<button type="submit" onclick="return confirm('정말로 삭제하시겠습니까?')" formaction="noticeDelete.do?id=${notice.NId }" class="btn btn-primary">삭제</button>
 			</c:if>
 	</form>
 	</div>

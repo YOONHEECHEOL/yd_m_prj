@@ -28,7 +28,7 @@ public class NoticeDelete implements Command {
 		service = new NoticeServiceImpl();
 		List<NoticeVO> list = service.noticeSelectList();
 
-		request.setAttribute("list", list);
+		request.setAttribute("notices", list);
 		return "notice/noticeList.tiles";
 	}
 

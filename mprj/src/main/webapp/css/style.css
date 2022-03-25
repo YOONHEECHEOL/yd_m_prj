@@ -74,8 +74,8 @@ ul li {
 .colImg img {
 	width: 100%;
 }
-.colImg img, h6, input {
-	pointer-events: none;
+.colImg img, .colImg h6, .colImg input {
+   pointer-events: none;
 }
 
 .cate--detail {
