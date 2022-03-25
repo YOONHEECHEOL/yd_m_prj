@@ -2,8 +2,11 @@ package com.yd05.mprj.delicious.service;
 
 public interface DeliciousService {
 	// 단건조회
-	DeliciousVO selectDel(DeliciousVO vo);
+	DeliciousVO selectDeli(DeliciousVO vo);
 	
 	// db등록
-	int insertDel (DeliciousVO vo);
+	int insertDeli(DeliciousVO vo);
+	
+	// contentid 중복체크
+	boolean isConidCheck(String str);
 }

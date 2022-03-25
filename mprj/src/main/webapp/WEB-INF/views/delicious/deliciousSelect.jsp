@@ -13,7 +13,7 @@
 	<table>
 		<tr>
 			<th>이미지</th>
-			<td>${deli.firstimage }</td>
+			<td><img src="${deli.firstimage }"></td>
 		</tr>
 		<tr>
 			<th>상호명</th>
@@ -27,10 +27,10 @@
 			<th>전화번호</th>
 			<td>${deli.tel }</td>
 		</tr>
-		<tr>
-			<th>상세</th>
-			<td>${deli.overview }</td>
-		</tr>
+<!-- 		<tr> -->
+<!-- 			<th>상세</th> -->
+<%-- 			<td>${deli.overview }</td> --%>
+<!-- 		</tr> -->
 	</table>
 	</div>
 </div>
