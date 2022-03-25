@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<h1>addMyCourse</h1>
-
 	<div class="row text-center justify-content-center">
 		<div class="col-7">
 			<div class="row">
@@ -52,39 +52,51 @@
 		</div>
 		<div class="col-5">
 			<div class="card">
-				<form action="insertCourse.do" id="courseFrm">
-					<h2>관광코스 리스트</h2>
-					<!-- 관광코스 정보 입력 -->
-					<div class="row">
-						<div class="col-12">
-							<div class="input-group mb-3">
-								<div class="input-group-prepend">
-									<span class="input-group-text" id="basic-addon1">관광코스 이름</span>
+				<div class="card-body">
+					<form action="insertCourse.do" id="courseFrm">
+						<!-- 유저 id 값 -->
+						<input type="hidden" value="${id}" name="uId">
+						<input type="hidden" value="" name="contentIdList" id="contentIdList">
+						<h2>관광코스 리스트</h2>
+						<!-- 관광코스 정보 입력 -->
+						<div class="row">
+							<div class="col-12">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">관광코스 이름</span>
+									</div>
+									<!-- 관광코스 명 : mcTitle -->
+									<input type="text" class="form-control" placeholder="관광코스의 이름을 적어주세요" aria-describedby="basic-addon1" name="mcTitle" id="mcTitle" required>
 								</div>
-								<!-- 관광코스 명 : cTitle -->
-								<input type="text" class="form-control" placeholder="관광코스의 이름을 적어주세요" aria-describedby="basic-addon1" name="cTitle" id="cTitle">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">관광코스 요약</span>
+									</div>
+									<!-- 관광코스 요약 : mcDescription -->
+									<input type="text" class="form-control" placeholder="관광코스의 내용을 한줄로 적어주세요" aria-describedby="basic-addon1" name="mcDescription" id="mcDescription" required>
+								</div>
 							</div>
 						</div>
-					</div>
-					<table class="reqTab table table-hover">
-						<thead>
-							<tr>
-								<th scope="col" colspan="2">관광지</th>
-								<th scope="col">주소</th>
-								<th scope="col">&nbsp;</th>
-							</tr>
-						</thead>
-						<tbody id="inputCourse">
-							<!-- 이곳에 추가한 관광지 입력됨 -->
-						</tbody>
-					</table>
-					<!-- 버튼 -->
-					<div class="row">
-						<div class="col-12">
-							<button type="button" class="btn btn-primary">관광코스 만들기</button>
+						<table class="reqTab table table-hover">
+							<thead>
+								<tr>
+									<th scope="col" colspan="2">관광지</th>
+									<th scope="col">주소</th>
+									<th scope="col">&nbsp;</th>
+								</tr>
+							</thead>
+							<tbody id="inputCourse">
+								<!-- 이곳에 추가한 관광지 입력됨 -->
+							</tbody>
+						</table>
+						<!-- 버튼 -->
+						<div class="row">
+							<div class="col-12">
+								<button onclick="submitCourseFrm()" type="button" class="btn btn-primary">관광코스 만들기</button>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -215,6 +227,8 @@
 			f3()
 		})
 
+		let contentIdListObj = document.querySelector('#contentIdList');
+
 		function submitFrm() {
 			// output 초기화
 			// while(output.firstChild) {
@@ -265,6 +279,8 @@
 					// zipcode: "24747"
 
 					let output = document.querySelector('#output');
+
+					
 					for (let item of jsonObj.response.body.items.item) {
 						let tr = document.createElement('tr');
 						tr.setAttribute('class', 'sm-img');
@@ -287,11 +303,18 @@
 						td3.innerText = item.addr1;
 
 						let td4 = document.createElement('td');
-						let button = document.createElement('button');
-						button.innerText = '추가';
-						button.setAttribute('class', 'btn btn-primary');
-						button.setAttribute('onclick', 'moveToCourse()');
-						td4.append(button);
+						let inputBtn = document.createElement('input');
+						inputBtn.value = '추가';
+						inputBtn.setAttribute('class', 'btn btn-primary');
+						inputBtn.setAttribute('onclick', 'moveToCourse()');
+						
+						// contentIdVal
+						let input = document.createElement('input');
+						input.setAttribute('type', 'hidden');
+						input.setAttribute('name', 'contentid'+item.contentid);
+						input.value = item.contentid;
+
+						td4.append(inputBtn, input);
 
 						tr.append(td2, td1, td3, td4);
 
@@ -302,12 +325,42 @@
 		function moveToCourse() {
 			// tr 선택
 			let target = event.target;
-			console.log(target.parentNode.parentNode);
-
+			
+			contentIdListObj.value += 'cId' + target.parentNode.parentNode.childNodes[3].childNodes[1].value + ' ';
+			
 			inputCourse.append(target.parentNode.parentNode);
 
-			target.innerText = '삭제';
+			target.value = '삭제';
 			target.setAttribute('class', 'btn btn-danger');
-			
+			target.setAttribute('onclick', 'moveToList()');
+						
+		}
+		function moveToList() {
+			let target = event.target;
+			let tVal = 'cId' + target.parentNode.parentNode.childNodes[3].childNodes[1].value + ' ';
+			console.log(tVal);
+
+			let ctVal = contentIdListObj.value;
+			console.log('ctVal :' + ctVal);
+			let ctAfterVal = ctVal.replace(tVal, '');
+			console.log('ctAfterVal :' + ctAfterVal);
+			contentIdListObj.value = ctAfterVal;
+			console.log(contentIdListObj.value)
+
+			output.prepend(target.parentNode.parentNode);
+
+			target.value = '추가';
+			target.setAttribute('class', 'btn btn-primary');
+			target.setAttribute('onclick', 'moveToCourse()');
+		}
+		function submitCourseFrm() {
+			if(mcTitle.value != '') {
+				if(mcDescription.value != '') {
+					courseFrm.submit();
+				}
+			} else {
+				event.preventDefault();
+				alert('값을 입력하세요!');
+			}
 		}
 	</script>

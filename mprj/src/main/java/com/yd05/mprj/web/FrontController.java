@@ -17,6 +17,7 @@ import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.delicious.command.DeliciousInsert;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
+import com.yd05.mprj.myCourse.command.InsertCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.notice.command.AjaxNoticeSearch;
 import com.yd05.mprj.notice.command.AjaxSortNotice;
@@ -70,13 +71,13 @@ public class FrontController extends HttpServlet {
 		map.put("/logout.do", new Logout()); // 로그아웃
 		map.put("/mypage.do", new Mypage()); // 마이페이지
 		map.put("/ajaxloginCheck.do", new AjaxloginCheck()); // 아이디 중복체크
-		map.put("/addMyCourse.do", new AddMyCourse()); // 나의 관광코스 추가페이지
+		// contentTypeId 값 불러오기
 		map.put("/ajaxContentTypeList.do", new AjaxContentTypeList()); // contentTypeId, cat1 ,cat2, cat3 반환
-		
-		
-		
+		// myCourse
+		map.put("/addMyCourse.do", new AddMyCourse()); // 나의 관광코스 추가페이지
 		map.put("/myCourseList.do", new MyCourseList());
 		map.put("/spotList.do", new SpotList());
+		map.put("/insertCourse.do", new InsertCourse());		
 		
 		
 		// ======================woong=======================
