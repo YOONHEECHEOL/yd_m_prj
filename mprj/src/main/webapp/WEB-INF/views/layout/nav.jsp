@@ -27,7 +27,10 @@
         </li>       
         <li class="nav-item">
           <a class="nav-link" href="recSpot.do">오늘의 추천 관광지(woong)</a>
-        </li>       
+        </li>     
+        <li class="nav-item">
+          <a href="weatherSpot.do" class="nav-link">관광지 날씨 보기</a>
+        </li>
       </ul>
       
       <form class="d-flex">
