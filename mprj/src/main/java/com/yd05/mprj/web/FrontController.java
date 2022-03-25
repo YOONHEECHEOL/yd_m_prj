@@ -28,6 +28,7 @@ import com.yd05.mprj.notice.command.NoticeUpdate;
 import com.yd05.mprj.notice.command.NoticeUpdateConfirm;
 import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.CateSpotList;
+import com.yd05.mprj.spot.command.NextRecSpot;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
 import com.yd05.mprj.type.command.AjaxContentTypeList;
@@ -81,7 +82,8 @@ public class FrontController extends HttpServlet {
 		// ======================woong=======================
 		// 이곳에 작성
 		map.put("/cateSpotList.do", new CateSpotList());
-		map.put("/recSpot.do", new RecSpot());
+		map.put("/recSpot.do", new RecSpot());// 오늘의 추천 숙박 리스트 출력+지역 디테일 뷰페이지를 보여주는 버튼부
+		map.put("/nextRecSpot.do", new NextRecSpot()); // 추천숙박소(지역버튼을 클릭시 보여주는 뷰페이지)
 		
 		// ======================been=======================
 		// 이곳에 작성
