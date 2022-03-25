@@ -7,6 +7,6 @@
 	</select>
 	
 	<insert id="insertDel" parameterType="com.yd05.mprj.delicious.service.DeliciousVO">
-		INSERT INTO DELICIOUS VALUES(#{contentid}, #{addr1}, #{firstimage}, #{tel}, #{title})
+		INSERT INTO DELICIOUS SELECT #{contentid} #{addr1} #{first FROM DUAL A WHERE NOT EXISTS (SELECT 1 FROM DELICIOUS WHERE CONTENTID = #{contentid})
 	</insert>
 </mapper>
