@@ -2,7 +2,7 @@
 	<h1>addMyCourse</h1>
 
 	<div class="row text-center justify-content-center">
-		<div class="col-8">
+		<div class="col-7">
 			<div class="row">
 				<div class="col-12">
 					<div class="row">
@@ -30,21 +30,57 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-12">
-					<table class="table">
+				<div class="col-12">				
+					<div class="row">
+						
+					</div>
+					<!-- 관광코스에 추가할 관광지 -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">관광지</th>
+								<th scope="col">주소</th>
+								<th scope="col">&nbsp;</th>
+							</tr>
+						</thead>
 						<tbody id="output">
 							<!-- 이곳에 출력 -->
 						</tbody>
 					</table>
+					<!-- 버튼 -->
+					<div class="row">
+						<button type="button" class="btn btn-primary">관광코스 만들기</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-4">
-			<table class="reqTab table">
-				<tbody id="inputCourse">
-					<!-- 이곳에 추가한 관광지 입력됨 -->
-				</tbody>
-			</table>
+		<div class="col-5">
+			<div class="card">
+				<h2>관광코스 리스트</h2>
+				<!-- 관광코스 정보 입력 -->
+				<div class="row">
+					<div class="col-12">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">관광코스 이름</span>
+							</div>
+							<input type="text" class="form-control" placeholder="관광코스의 이름을 적어주세요" aria-describedby="basic-addon1">
+						</div>
+					</div>
+				</div>
+				<table class="reqTab table table-hover">
+					<thead>
+						<tr>
+							<th scope="col" colspan="2">관광지</th>
+							<th scope="col">주소</th>
+							<th scope="col">&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody id="inputCourse">
+						<!-- 이곳에 추가한 관광지 입력됨 -->
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 
