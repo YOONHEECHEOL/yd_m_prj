@@ -12,5 +12,4 @@ public class DeliciousVO {
 	private String firstimage;
 	private String tel;
 	private String title;
-	private String overview;
 }

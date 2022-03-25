@@ -75,17 +75,7 @@ ul li {
 	width: 100%;
 }
 .colImg img, .colImg h6, .colImg input {
-	pointer-events: none;
-}
-
-.sm-img {
-	min-height: 150px;
-}
-.sm-img img {
-	width: 200px;	
-}
-.reqTab img {
-	width: 80px !important;
+   pointer-events: none;
 }
 
 .cate--detail {
