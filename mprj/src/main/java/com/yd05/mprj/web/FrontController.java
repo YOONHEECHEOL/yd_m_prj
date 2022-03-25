@@ -39,6 +39,7 @@ import com.yd05.mprj.user.command.Mypage;
 import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.user.command.VisitedList;
+import com.yd05.mprj.weather.command.WeatherSpot;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -102,6 +103,9 @@ public class FrontController extends HttpServlet {
 	    map.put("/noticeUpdate.do", new NoticeUpdate());
 	    map.put("/noticeDelete.do", new NoticeDelete());
 	    map.put("/noticeUpdateConfirm.do", new NoticeUpdateConfirm());
+	    
+	    
+	    map.put("/weatherSpot.do", new WeatherSpot());
 	    
 
 		// yes

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<h1>addMyCourse</h1>
 
-	<div class="row text-center justify-content-center align-items-center">
-		<div class="col-8">
+	<div class="row text-center justify-content-center">
+		<div class="col-7">
 			<div class="row">
 				<div class="col-12">
 					<div class="row">
@@ -30,8 +30,19 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-12">
-					<table class="table">
+				<div class="col-12">				
+					<div class="row">
+						
+					</div>
+					<!-- 관광코스에 추가할 관광지 -->
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">관광지</th>
+								<th scope="col">주소</th>
+								<th scope="col">&nbsp;</th>
+							</tr>
+						</thead>
 						<tbody id="output">
 							<!-- 이곳에 출력 -->
 						</tbody>
@@ -39,9 +50,41 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-4">
-			<div id="inputCourse">
-				<!-- 이곳에 입력됨 -->
+		<div class="col-5">
+			<div class="card">
+				<form action="insertCourse.do" id="courseFrm">
+					<h2>관광코스 리스트</h2>
+					<!-- 관광코스 정보 입력 -->
+					<div class="row">
+						<div class="col-12">
+							<div class="input-group mb-3">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">관광코스 이름</span>
+								</div>
+								<!-- 관광코스 명 : cTitle -->
+								<input type="text" class="form-control" placeholder="관광코스의 이름을 적어주세요" aria-describedby="basic-addon1" name="cTitle" id="cTitle">
+							</div>
+						</div>
+					</div>
+					<table class="reqTab table table-hover">
+						<thead>
+							<tr>
+								<th scope="col" colspan="2">관광지</th>
+								<th scope="col">주소</th>
+								<th scope="col">&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody id="inputCourse">
+							<!-- 이곳에 추가한 관광지 입력됨 -->
+						</tbody>
+					</table>
+					<!-- 버튼 -->
+					<div class="row">
+						<div class="col-12">
+							<button type="button" class="btn btn-primary">관광코스 만들기</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -224,7 +267,7 @@
 					let output = document.querySelector('#output');
 					for (let item of jsonObj.response.body.items.item) {
 						let tr = document.createElement('tr');
-						tr.setAttribute('class', 'col-3 colImg');
+						tr.setAttribute('class', 'sm-img');
 
 						let td1 = document.createElement('td');
 						td1.innerText = item.title;
@@ -234,15 +277,37 @@
 							let img = document.createElement('img');
 							img.setAttribute('src', item.firstimage);
 							td2.append(img);
+						} else {
+							let img = document.createElement('img');
+							img.setAttribute('src', 'images/noImage.jpg');
+							td2.append(img);
 						}
 
 						let td3 = document.createElement('td');
 						td3.innerText = item.addr1;
 
-						tr.append(td2, td1, td3);
+						let td4 = document.createElement('td');
+						let button = document.createElement('button');
+						button.innerText = '추가';
+						button.setAttribute('class', 'btn btn-primary');
+						button.setAttribute('onclick', 'moveToCourse()');
+						td4.append(button);
+
+						tr.append(td2, td1, td3, td4);
 
 						output.append(tr);
 					}
 				})
+		}
+		function moveToCourse() {
+			// tr 선택
+			let target = event.target;
+			console.log(target.parentNode.parentNode);
+
+			inputCourse.append(target.parentNode.parentNode);
+
+			target.innerText = '삭제';
+			target.setAttribute('class', 'btn btn-danger');
+			
 		}
 	</script>
