@@ -9,14 +9,20 @@ public class DeliciousServiceImpl implements DeliciousService {
 	private DeliciousMapper map = sqlSession.getMapper(DeliciousMapper.class);
 	
 	@Override
-	public DeliciousVO selectDel(DeliciousVO vo) {
+	public DeliciousVO selectDeli(DeliciousVO vo) {
 		// 단건
-		return map.selectDel(vo);
+		return map.selectDeli(vo);
 	}
 	
 	@Override
-	public int insertDel(DeliciousVO vo) {
+	public int insertDeli(DeliciousVO vo) {
 		// 등록
-		return map.insertDel(vo);
+		return map.insertDeli(vo);
+	}
+
+	@Override
+	public boolean isConidCheck(String str) {
+		// 중복체크
+		return map.isConidCheck(str);
 	}
 }
