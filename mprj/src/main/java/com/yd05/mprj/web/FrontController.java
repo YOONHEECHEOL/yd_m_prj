@@ -14,7 +14,6 @@ import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
-import com.yd05.mprj.delicious.command.DeliciousInsert;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
@@ -88,7 +87,6 @@ public class FrontController extends HttpServlet {
 		// 이곳에 작성
 		map.put("/visitedList.do", new VisitedList());
 		map.put("/deliciousList.do", new DeliciousList()); //맛집 검색
-		map.put("/deliciousInsert.do", new DeliciousInsert()); //맛집 개별건 db insert
 		map.put("/deliciousSelect.do", new DeliciousSelect()); //개별건 화면 
 		
 		

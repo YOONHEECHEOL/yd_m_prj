@@ -9,7 +9,7 @@ public class DeliciousList implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// 맛집 목록
+		// 맛집 목록 호출
 		
 		return "delicious/deliciousList.tiles";
 	}
