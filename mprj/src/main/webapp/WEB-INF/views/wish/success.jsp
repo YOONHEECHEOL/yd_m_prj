@@ -9,5 +9,4 @@ if(result){
 } else {
 	location.href = "cateSpotList.do" // 관광지 목록으로 돌아가야함.
 }
-
 </script>

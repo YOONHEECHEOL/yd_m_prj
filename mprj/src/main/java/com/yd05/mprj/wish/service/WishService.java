@@ -20,4 +20,7 @@ public interface WishService {
 	
 	// 검색
 	List<WishVO> searchWishList(String key); // 검색할 항목 -> key -> ajax
+	
+	// contentId 중복체크
+	boolean isCIdCheck(String str);
 }

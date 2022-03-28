@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
-import com.yd05.mprj.delicious.command.DeliciousInsert;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.member.command.MemberList;
@@ -96,17 +95,16 @@ public class FrontController extends HttpServlet {
 		map.put("/recSpot.do", new RecSpot());// 오늘의 추천 숙박 리스트 출력+지역 디테일 뷰페이지를 보여주는 버튼부
 		map.put("/nextRecSpot.do", new NextRecSpot()); // 추천숙박소(지역버튼을 클릭시 보여주는 뷰페이지)
 		map.put("/choiceSpotView.do", new ChoiceSpotView()); // 숙박소 클릭시 상세한 뷰페이지로 이동
+		
 		// ======================been=======================
 		// 이곳에 작성
 		// 맛집
 		map.put("/deliciousList.do", new DeliciousList()); //맛집 검색
 		map.put("/deliciousSelect.do", new DeliciousSelect()); //개별건 화면 
-		
 		// wish
 		map.put("/wishInsert.do", new WishInsert()); //db insert
 		map.put("/wishList.do", new WishList()); // wish목록
-		
-		//visited
+		// visited
 		map.put("/visitedList.do", new VisitedList());
 		
 		// ======================domin=======================

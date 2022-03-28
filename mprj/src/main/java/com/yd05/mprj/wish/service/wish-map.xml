@@ -11,11 +11,11 @@
 		SELECT * FROM WISH WHERE U_ID = #{uId} ORDER BY CONTENT_TYPE_ID
 	</select>
 	
-	<select id="selectWish">
+	<select id="selectWish" parameterType="com.yd05.mprj.wish.service.WishVO" resultMap="WishMap">
 		SELECT * FROM WISH WHERE CONTENT_ID = #{contentId}
 	</select>
 	
-	<insert id="insertWish">
+	<insert id="insertWish" parameterType="com.yd05.mprj.wish.service.WishVO">
 		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId})
 	</insert>
 	
@@ -23,11 +23,15 @@
 	
 	</update>
 	
-	<delete id="deleteWish">
+	<delete id="deleteWish" parameterType="com.yd05.mprj.wish.service.WishVO">
 		DELETE WISH WHERE CONTENT_ID = #{contentId}
 	</delete>
 	
 	<select id="searchWishList">
 		
+	</select>
+	
+	<select id="isCIdCheck" parameterType="String" resultType="boolean">
+		SELECT CASE WHEN COUNT(CONTENT_ID) = 1 THEN 0 ELSE 1 END AS CID FROM WISH WHERE CONTENT_ID = #{str}
 	</select>
 </mapper>
