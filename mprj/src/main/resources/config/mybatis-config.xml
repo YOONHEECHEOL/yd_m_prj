@@ -30,5 +30,6 @@
     <mapper resource="com/yd05/mprj/type/service/type-map.xml"/>
     <mapper resource="com/yd05/mprj/delicious/service/delicious-map.xml"/>
     <mapper resource="com/yd05/mprj/myCourse/service/myCourse-map.xml"/>
+    <mapper resource="com/yd05/mprj/wish/service/wish-map.xml"/>
   </mappers>
 </configuration>
