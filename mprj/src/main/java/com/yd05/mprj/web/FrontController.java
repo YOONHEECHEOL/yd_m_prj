@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
+import com.yd05.mprj.delicious.command.DeliciousInsert;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.member.command.MemberList;
@@ -43,6 +44,7 @@ import com.yd05.mprj.user.command.Mypage;
 import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.user.command.VisitedList;
+import com.yd05.mprj.weather.command.WeatherData;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishInsert;
 
@@ -119,6 +121,7 @@ public class FrontController extends HttpServlet {
 	    
 	    
 	    map.put("/weatherSpot.do", new WeatherSpot());
+	    map.put("/weatherData.do", new WeatherData());
 	    
 
 		// yes

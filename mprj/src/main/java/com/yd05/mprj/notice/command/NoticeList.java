@@ -12,6 +12,7 @@ public class NoticeList implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		NoticeService noticeDao = new NoticeServiceImpl();
+
 		request.setAttribute("notices", noticeDao.noticeSelectList());
 		return "notice/noticeList.tiles";
 	}
