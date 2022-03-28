@@ -21,20 +21,28 @@ public class WishInsert implements Command {
 		vo.setContentTypeId(request.getParameter("contentTypeId"));
 		vo.setContentId(request.getParameter("contentId"));
 		
-		// contentid 중복확인 필요
-		
-		
-		int n = dao.insertWish(vo);
-		
-		if(n !=0 ) {
-			// 성공
-			request.setAttribute("message", "WISH 목록을 확인하시겠습니까?");
-			return "wish/success.tiles";
+		// contentId 중복확인 필요
+		String str = request.getParameter("contentId");
+		boolean b = dao.isCIdCheck(str);
+		System.out.println(b);
+		if (!b) {
+			// insert 가능(false)
+			int n = dao.insertWish(vo);
+			if(n !=0 ) {
+				// 성공
+				request.setAttribute("message", "WISH 목록을 확인하시겠습니까?");
+				return "wish/success.tiles";
+			} else {
+				// 실패
+				request.setAttribute("message", "다시 시도해 주세요.");
+				return "wish/fail.tiles";
+			}
 		} else {
-			// 실패
-			request.setAttribute("message", "다시 시도해 주세요.");
-			return "wish/fail.tiles";
+			// insert 불가 (true)
+			// ?
+			return null;
 		}
+		
 	}
 
 }

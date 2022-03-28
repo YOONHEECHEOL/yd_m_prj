@@ -2,12 +2,5 @@
     pageEncoding="UTF-8"%>
 
 <script>
-confirm('${message}'){
-	if(){
-		location.href = "#";
-		return true;
-	} else {
-		return false;
-	}
-}
+alert("${message}");
 </script>

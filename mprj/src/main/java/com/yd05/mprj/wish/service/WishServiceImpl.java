@@ -46,4 +46,10 @@ public class WishServiceImpl implements WishService {
 		return map.searchWishList(key);
 	}
 
+	@Override
+	public boolean isCIdCheck(String str) {
+		// contentId 중복체크
+		return map.isCIdCheck(str);
+	}
+
 }
