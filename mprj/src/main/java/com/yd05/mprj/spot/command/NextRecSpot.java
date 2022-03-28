@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 
-public class CateSpotList implements Command {
+public class NextRecSpot implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "spot/cateSpotList.tiles";
+		
+		return "spot/nextRecSpot.tiles";
 	}
 
 }
