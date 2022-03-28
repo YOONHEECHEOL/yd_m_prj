@@ -45,6 +45,7 @@ import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.user.command.VisitedList;
 import com.yd05.mprj.weather.command.WeatherData;
 import com.yd05.mprj.weather.command.WeatherSpot;
+import com.yd05.mprj.wish.command.WishDelete;
 import com.yd05.mprj.wish.command.WishInsert;
 import com.yd05.mprj.wish.command.WishList;
 
@@ -104,6 +105,7 @@ public class FrontController extends HttpServlet {
 		// wish
 		map.put("/wishInsert.do", new WishInsert()); //db insert
 		map.put("/wishList.do", new WishList()); // wish목록
+		map.put("/wishDelete.do", new WishDelete()); // wish 삭제
 		// visited
 		map.put("/visitedList.do", new VisitedList());
 		

@@ -25,7 +25,7 @@
 			<select name="cat1" id="cat1"></select>
 			<select name="cat2" id="cat2"></select>
 			<select name="cat3" id="cat3"></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<button onclick="submitFrm()">확인하기</button>
+			<button class="btn btn-primary mt20" onclick="submitFrm()">확인하기</button>
 
 			<!-- 메뉴 다시 선택시 결과 값 그대로임... 수정 -->
 		</div>	
@@ -45,6 +45,7 @@
 		<input type="text" placeholder="numOfRows=12">
 		<input type="text" placeholder="pageNo=1">
 	</div>
+	<br/><br/>
 </div>
 
 <script>

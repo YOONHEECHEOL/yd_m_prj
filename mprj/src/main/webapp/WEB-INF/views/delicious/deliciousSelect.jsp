@@ -2,13 +2,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<form id="wishFrm" name="wishFrm">
-	<!-- <input type="hidden" id="contentTypeId" name="contentTypeId"> -->
-	
+<style>
+img{
+	margin:30px;
+}
+</style>
+
+<form id="wishFrm" name="wishFrm">	
 	<div id="output">
 		<div id="title"></div>
-		<div id="subOutput">
-			<p id="image"></p>
+		<div id="subOutput" style="display:inblock">
 			<div id="detailOutput">
 				<ul id="detailOutput"></ul>
 			</div>
@@ -20,13 +23,13 @@
 		<br/>
 
 		<div>
-			<button type="button" onclick="location.href='deliciousList.do'">목록</button>
+			<button type="button" class="btn btn-primary mt20" onclick="location.href='deliciousList.do'">목록</button>
 			<c:if test="${not empty id}">
-				<button type="submit" formaction="wishInsert.do" formmethod="post">가보고싶어요!</button>
-				<button type="button">가봤어요!</button>
+				<button type="submit" class="btn btn-primary mt20" formaction="wishInsert.do" formmethod="post">가보고싶어요!</button>
+				<button type="submit" class="btn btn-primary mt20">가봤어요!</button>
 			</c:if>
 		</div>
-
+		<br/>
 	</div>
 </form>
 
@@ -58,11 +61,18 @@
 				
 				// 대표이미지
 				let subOutput = document.querySelector('#subOutput');
-				let image = document.querySelector('#image');
 				let img = document.createElement('img');
-				img.setAttribute('src', commInfo.firstimage);
-				image.append(img);
-				subOutput.append(image);
+					// 있을경우
+				if(commInfo.firstimage != null){
+					img.setAttribute('src', commInfo.firstimage);
+					img.setAttribute('display', 'inline');
+					subOutput.append(img);
+					//없을경우
+				} else{
+					img.setAttribute('src', 'images/noImage.jpg');
+					img.setAttribute('display', 'inline');
+					subOutput.append(img);
+				}
 				
 				// 정보
 				let ul = document.querySelector('#detailOutput');
@@ -70,9 +80,11 @@
 				li1.innerText = '주소 ' + commInfo.addr1;
 				ul.append(li1);
 				
-				let li2 = document.createElement('li');
-				li2.innerText = '전화번호 ' + commInfo.tel;
-				ul.append(li2);
+				if(commInfo.tel != null){
+					let li2 = document.createElement('li');
+					li2.innerText = '전화번호 ' + commInfo.tel;
+					ul.append(li2);
+				}
 				
 				// 소개
 				let overviewDiv = document.querySelector('#overviewOutput');
@@ -149,18 +161,22 @@
 			url : imageUrl,
 			dataType : 'json',
 			success : function(imageRes) {
-				//console.log(imageRes);
+				console.log(imageRes);
 				//console.log(imageRes.response.body.items.item[0].originimgurl); // Array
 			
 				let imgInfo = imageRes.response.body.items.item;
 	
 				// 추가이미지
-				let imgDiv = document.querySelector('#imgs');
-				for (let i = 0; i<imgInfo.length; i++){
-					let img = document.createElement('img');
-					img.setAttribute('src', imgInfo[i].originimgurl);
-					//console.log(imgInfo[i].originimgurl);
-					imgDiv.append(img);
+					// 사진 없을 경우 처리 구현 필요
+					if(imgInfo != null){
+						let imgDiv = document.querySelector('#imgs');
+						for (let i = 0; i<imgInfo.length; i++){
+							let img = document.createElement('img');
+							img.setAttribute('src', imgInfo[i].originimgurl);
+							//console.log(imgInfo[i].originimgurl);
+							imgDiv.append(img);
+					}
+					
 				}
 			}
 		})
