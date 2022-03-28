@@ -5,8 +5,6 @@
 		<id property="uId" column="u_id" />
 		<result property="contentTypeId" column="content_type_id" />
 		<result property="contentId" column="content_id"/>
-		<result property="areaCode" column="area_code"/>
-		<result property="sigunguCode" column="sigungu_code"/>
 	</resultMap>
 	
 	<select id="selectWishList" resultMap="WishMap">
@@ -18,7 +16,7 @@
 	</select>
 	
 	<insert id="insertWish">
-		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{cat1}, #{cat2}, #{cat3}, #{areaCode}, #{sigunguCode})
+		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId})
 	</insert>
 	
 	<update id="updateWish">
@@ -30,15 +28,6 @@
 	</delete>
 	
 	<select id="searchWishList">
-		SELECT * FROM WISH
-		WHERE
-		<if test='key == "1"'>1 = 1</if>
-		<if test='key == "2"'>CONTENT_TYPE_ID LIKE '%'||#{val}||'%'</if>
-		<if test='key == "3"'>CAT1 LIKE '%'||#{val}||'%'</if>
-		<if test='key == "4"'>CAT2 LIKE '%'||#{val}||'%'</if>
-		<if test='key == "5"'>CAT3 LIKE '%'||#{val}||'%'</if>
-		<if test='key == "6"'>AREA_CODE LIKE '%'||#{val}||'%'</if>
-		<if test='key == "7"'>SIGUNGU_CODE LIKE '%'||#{val}||'%'</if>
-		ORDER BY CONTENT_ID
+		
 	</select>
 </mapper>

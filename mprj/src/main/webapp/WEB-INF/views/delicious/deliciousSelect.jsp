@@ -95,41 +95,6 @@
 				input2.setAttribute('name', 'contentId');
 				input2.setAttribute('value', commInfo.contentid);
 				input1.after(input2);
-				
-				// cat1
-				let input3 = document.createElement('input');
-				input3.setAttribute('type', 'hidden');
-				input3.setAttribute('name', 'cat1');
-				input3.setAttribute('value', commInfo.cat1);
-				input2.after(input3);
-				
-				// cat2
-				let input4 = document.createElement('input');
-				input4.setAttribute('type', 'hidden');
-				input4.setAttribute('name', 'cat2');
-				input4.setAttribute('value', commInfo.cat2);
-				input3.after(input4);
-				
-				// cat3
-				let input5 = document.createElement('input');
-				input5.setAttribute('type', 'hidden');
-				input5.setAttribute('name', 'cat3');
-				input5.setAttribute('value', commInfo.cat3);
-				input4.after(input5);
-				
-				// areaCode
-				let input6 = document.createElement('input');
-				input6.setAttribute('type', 'hidden');
-				input6.setAttribute('name', 'areaCode');
-				input6.setAttribute('value', commInfo.areacode);
-				input5.after(input6);
-				
-				// sigunguCode
-				let input7 = document.createElement('input');
-				input7.setAttribute('type', 'hidden');
-				input7.setAttribute('name', 'sigunguCode');
-				input7.setAttribute('value', commInfo.sigungucode);
-				input6.after(input7);
 	
 			}
 		})
