@@ -9,6 +9,7 @@
 <body>
 <form action="choiceSpotView.do" method="POST" name="myForm" id="myForm">
 	<input type="hidden" id="choiceSpot" name="choiceSpot" value="">
+	<input type="hidden" id="areaCode" name="areaCode" value="">
 </form>
 <div>
 <input type="button" onclick="location.href='home.do'" value="홈가기" />
@@ -35,6 +36,7 @@
 output.addEventListener('click',()=>{
 	console.log(event.target.textContent);
 	choiceSpot.value=event.target.textContent;
+	areaCode.value = ${areaCode };
 	myForm.submit();
 });
 
