@@ -10,7 +10,7 @@ public class CateSpotList implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		return "spot/spotList.tiles";
+		return "spot/cateSpotList.tiles";
 	}
 
 }
