@@ -84,6 +84,16 @@ ul li {
 #inputCourse img {
 	width: 80px;
 }
+/* course */
+.np {
+	pointer-events: none;
+}
+.course--item {
+	cursor: pointer;
+}
+.course__date {
+	color: #999;
+}
 
 .cate--detail {
 	display: inline-block;
@@ -112,6 +122,9 @@ ul li {
 	height: 38px;
 }
 
+.card-img-top {
+	max-height: 300px !important;
+}
 
 /* footer */
 .footer {

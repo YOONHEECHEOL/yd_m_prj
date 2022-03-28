@@ -18,6 +18,7 @@ import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.InsertCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
+import com.yd05.mprj.myCourse.command.ViewCourse;
 import com.yd05.mprj.notice.command.AjaxNoticeSearch;
 import com.yd05.mprj.notice.command.AjaxSortNotice;
 import com.yd05.mprj.notice.command.NoticeDelete;
@@ -30,6 +31,7 @@ import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
+import com.yd05.mprj.spot.command.viewSpot;
 import com.yd05.mprj.type.command.AjaxContentTypeList;
 import com.yd05.mprj.user.command.AjaxloginCheck;
 import com.yd05.mprj.user.command.Login;
@@ -77,6 +79,9 @@ public class FrontController extends HttpServlet {
 		map.put("/myCourseList.do", new MyCourseList());
 		map.put("/spotList.do", new SpotList());
 		map.put("/insertCourse.do", new InsertCourse());		
+		map.put("/viewCourse.do", new ViewCourse());		
+		// spot
+		map.put("/viewSpot.do", new viewSpot());		
 		
 		
 		// ======================woong=======================

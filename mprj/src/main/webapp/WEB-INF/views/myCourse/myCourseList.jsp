@@ -11,19 +11,31 @@
 	</div>
 </div>
 
-<div class="row mt20 gy-3">
+<div class="row mt20 gy-3" id="courseList">
 	<c:forEach items="${courseList }" var="c">
-		<div class="col-3">
+		<div class="col-3">			
 			<div class="card">
+				<c:if test="${not empty c.sumImg}">
+					<img src="${c.sumImg}" alt="" class="card-img-top np">
+				</c:if>
+				<c:if test="${empty c.sumImg}">
+					<img src="images/noImage.jpg" alt="" class="card-img-top np">
+				</c:if>
 				<div class="card-body">
-					${c.mcId}<br>
-					${c.uId}<br>
-					${c.tsId}<br>
-					${c.mcDate}<br>
-					${c.mcTitle}<br>
-					${c.mcDescription}<br>
+					<h5 class="card-title np">${c.mcTitle}</h5>
+					<p class="card-text np">
+						${c.mcDescription}<br>
+						<span class="course__date">${c.mcDate}</span>
+					</p>					
 				</div>
-			</div>
+				<div class="card-body">
+					<button class="btn btn-primary" id="toViewBtn">자세히보기</button>
+					<button class="btn btn-danger">삭제</button>
+				</div>
+				<form action="viewCourse.do" id="toView" method="get" class="np">
+					<input type="hidden" value="${c.tsId}" name="tsId" id="tsId">
+				</form>
+			</div>			
 		</div>
 	</c:forEach>
 	
@@ -31,3 +43,13 @@
 
 <div id="input"></div>
 <!-- push test -->
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		courseList.addEventListener('click', () => {
+			let nT = event.target.parentNode.nextElementSibling;
+			console.log(nT);
+			nT.submit();
+		})
+	})
+</script>

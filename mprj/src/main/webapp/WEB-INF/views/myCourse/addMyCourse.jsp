@@ -53,7 +53,7 @@
 		<div class="col-5">
 			<div class="card">
 				<div class="card-body">
-					<form action="insertCourse.do" id="courseFrm">
+					<form action="insertCourse.do" id="courseFrm" method="post">
 						<!-- 유저 id 값 -->
 						<input type="hidden" value="${id}" name="uId">
 						<input type="hidden" value="" name="contentIdList" id="contentIdList">
