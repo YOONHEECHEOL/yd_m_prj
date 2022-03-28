@@ -40,6 +40,7 @@ import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.user.command.VisitedList;
 import com.yd05.mprj.weather.command.WeatherSpot;
+import com.yd05.mprj.wish.command.WishInsert;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -86,10 +87,15 @@ public class FrontController extends HttpServlet {
 		
 		// ======================been=======================
 		// 이곳에 작성
-		map.put("/visitedList.do", new VisitedList());
+		// 맛집
 		map.put("/deliciousList.do", new DeliciousList()); //맛집 검색
 		map.put("/deliciousSelect.do", new DeliciousSelect()); //개별건 화면 
 		
+		// wish
+		map.put("/wishInsert.do", new WishInsert()); //db insert
+		
+		//visited
+		map.put("/visitedList.do", new VisitedList());
 		
 		// ======================domin=======================
 		// 이곳에 작성

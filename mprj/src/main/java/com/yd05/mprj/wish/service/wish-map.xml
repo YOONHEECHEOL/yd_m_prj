@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.wish.service.WishMapper">
+	<resultMap type="com.yd05.mprj.wish.service.WishVO" id="WishMap">
+		<id property="uId" column="u_id" />
+		<result property="contentTypeId" column="content_type_id" />
+		<result property="contentId" column="content_id"/>
+		<result property="areaCode" column="area_code"/>
+		<result property="sigunguCode" column="sigungu_code"/>
+	</resultMap>
+	
+	<select id="selectWishList" resultMap="WishMap">
+		SELECT * FROM WISH WHERE U_ID = #{uId} ORDER BY CONTENT_TYPE_ID
+	</select>
+	
+	<select id="selectWish">
+		SELECT * FROM WISH WHERE CONTENT_ID = #{contentId}
+	</select>
+	
+	<insert id="insertWish">
+		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{cat1}, #{cat2}, #{cat3}, #{areaCode}, #{sigunguCode})
+	</insert>
+	
+	<update id="updateWish">
+	
+	</update>
+	
+	<delete id="deleteWish">
+		DELETE WISH WHERE CONTENT_ID = #{contentId}
+	</delete>
+	
+	<select id="searchWishList">
+		SELECT * FROM WISH
+		WHERE
+		<if test='key == "1"'>1 = 1</if>
+		<if test='key == "2"'>CONTENT_TYPE_ID LIKE '%'||#{val}||'%'</if>
+		<if test='key == "3"'>CAT1 LIKE '%'||#{val}||'%'</if>
+		<if test='key == "4"'>CAT2 LIKE '%'||#{val}||'%'</if>
+		<if test='key == "5"'>CAT3 LIKE '%'||#{val}||'%'</if>
+		<if test='key == "6"'>AREA_CODE LIKE '%'||#{val}||'%'</if>
+		<if test='key == "7"'>SIGUNGU_CODE LIKE '%'||#{val}||'%'</if>
+		ORDER BY CONTENT_ID
+	</select>
+</mapper>
