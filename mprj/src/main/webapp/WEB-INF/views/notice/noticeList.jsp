@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +53,9 @@
 				</div>
 				<br>
 				<div>
+				<c:if test="${author eq 'admin'}">	
 					<button type="button" class="btn btn-primary pull-right" onclick="location.href='noticeInsertForm.do'">글쓰기</button>
+				</c:if>	
 				</div>
 				<div>
 	<br />
@@ -60,7 +63,6 @@
 <div>
 	<br />
 </div>
-				<input type="hidden" id="nId" name="nId">
 				<div>
 					<select id="searchKey" name="searchKey">
 						<option value="전체">전체</option>
@@ -68,10 +70,11 @@
 						<option value="내용">내용</option>
 					</select> 
 					<span>
-					<input type="text" id="searchVal">&nbsp; 
+					<input type="text" id="searchVal" name="searchVal">&nbsp; 
 					<input type="button" onclick="searchList()" value="검색"> 
 					</span>
 				</div>
+				<input type="hidden" id="nId" name="nId">
 			</form>
 		</div>
 	</div>
@@ -102,16 +105,17 @@
 		var tb = $("#noticeBody");
 	$("#noticeBody").empty();
 	
-	$.each(data,function(index, item){
+	$.each(data,function(index , item){
+		console.log('item val:'+item);
 		var html = $("<tr />").attr({
 			   'onmouseover' :'this.style.background="#fcecae";',
 			   'onmouseleave' : 'this.style.background="#FFFFFF";',
-			   'onclick' : 'nContent('+ item.nId +')'
+			   'onclick' : 'nContent('+ item.nid +')'
 		}).append(
-				$("<td align='center'/>").text(item.nId),
-				$("<td />").text(item.nTitle),
-				$("<td align='center'/>").text(item.nDate),
-				$("<td align='center'/>").text(item.nHit)
+				$("<td align='center'/>").text(item.nid),
+				$("<td />").text(item.ntitle),
+				$("<td align='center'/>").text(item.ndate),
+				$("<td align='center'/>").text(item.nhit)
 				);
 		tb.append(html);
 	});

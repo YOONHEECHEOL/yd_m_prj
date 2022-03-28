@@ -19,12 +19,13 @@ public class AjaxNoticeSearch implements Command {
 		NoticeService noticeDao = new NoticeServiceImpl();
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
-		System.out.println(key);
-		System.out.println(val);
+		System.out.println("key :"+key);
+		System.out.println("val:"+val);
 		List<NoticeVO> list = noticeDao.noticeSelectSearchList(key, val);
 		String data = null;
 		try {
 		    data = new ObjectMapper().writeValueAsString(list); //json 객체로 변환 한다.
+		    System.out.println(data);
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
