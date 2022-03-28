@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <div class="row text-center justify-content-center align-items-center hDisplay">
 	<div class="col-4 card">
 		<div class="card-body">
+			<c:if test="${not empty message }"><span>${message}</span></c:if>
 			<h3>로그인</h3>
 			<form action="loginCheck.do" id="frm" method="get">
 				<div class="form-group">

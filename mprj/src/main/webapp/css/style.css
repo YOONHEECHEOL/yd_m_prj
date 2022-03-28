@@ -78,6 +78,13 @@ ul li {
    pointer-events: none;
 }
 
+#output img {
+	width: 180px;
+}
+#inputCourse img {
+	width: 80px;
+}
+
 .cate--detail {
 	display: inline-block;
 }

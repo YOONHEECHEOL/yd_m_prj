@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.myCourse.service.MyCourseMapper">
+	<resultMap type="com.yd05.mprj.myCourse.service.MyCourseVO" id="courseMap">
+		<id property="mcId" column="mc_id"/>
+		<result property="uId" column="u_id"/>
+		<result property="tsId" column="ts_id"/>
+		<result property="mcDate" column="mc_regdate"/>
+		<result property="mcTitle" column="mc_title"/>
+		<result property="mcDescription" column="mc_description"/>
+	</resultMap>
+	
+	<!-- 전체조회 -->
+	<select id="selectAllCourse" resultMap="courseMap">
+		select * from my_course
+		where u_id = #{uId}
+	</select>
+	<!-- 단건조회 -->
+	<select id="selectCourse" resultMap="courseMap" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
+		select * from my_course
+		where mc_id = #{mcId} and u_id = #{uId}
+	</select>
+	<!-- 수정 -->
+	<update id="updateCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
+		update my_course
+		set ts_id = #{tsId}, mc_title = #{mcTitle}, mc_description = #{mcDescription}
+		where mc_id = #{mcId};
+	</update>
+	<!-- 삭제 -->
+	<delete id="deleteCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
+		delete from my_course
+		where mc_id = #{mcId}
+	</delete>
+	<!-- 등록 -->
+	<insert id="insertCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
+		insert into my_course
+		values(MC_SEQ.nextval, #{uId}, #{tsId}, SYSDATE, #{mcTitle}, #{mcDescription}, #{sumImg})
+	</insert>
+</mapper>
