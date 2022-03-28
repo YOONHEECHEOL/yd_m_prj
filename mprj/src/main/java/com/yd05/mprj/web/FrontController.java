@@ -47,6 +47,7 @@ import com.yd05.mprj.user.command.VisitedList;
 import com.yd05.mprj.weather.command.WeatherData;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishInsert;
+import com.yd05.mprj.wish.command.WishList;
 
 // @WebServlet("*.do")
 public class FrontController extends HttpServlet {
@@ -103,6 +104,7 @@ public class FrontController extends HttpServlet {
 		
 		// wish
 		map.put("/wishInsert.do", new WishInsert()); //db insert
+		map.put("/wishList.do", new WishList()); // wish목록
 		
 		//visited
 		map.put("/visitedList.do", new VisitedList());
