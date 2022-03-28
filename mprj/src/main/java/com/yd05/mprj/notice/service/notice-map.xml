@@ -43,8 +43,8 @@
 	</delete>
 	
 	<select id="noticeSelectSearchList" resultMap="noticeMap">
-         select * from notice
-         where 
+         SELECT * FROM NOTICE
+         WHERE
                      <!-- 항상 true -->
          <if test="key == '전체'">1 = 1</if>
          <if test="key == '제목'">N_TITLE LIKE '%' || #{val } || '%'</if>

@@ -20,22 +20,20 @@ public class WishInsert implements Command {
 		vo.setUId((String)session.getAttribute("id"));
 		vo.setContentTypeId(request.getParameter("contentTypeId"));
 		vo.setContentId(request.getParameter("contentId"));
-		vo.setCat1(request.getParameter("cat1"));
-		vo.setCat2(request.getParameter("cat2"));
-		vo.setCat3(request.getParameter("cat3"));
-		vo.setAreaCode(request.getParameter("areaCode"));
-		vo.setSigunguCode(request.getParameter("sigunguCode"));
+		
+		// contentid 중복확인 필요
+		
 		
 		int n = dao.insertWish(vo);
 		
 		if(n !=0 ) {
 			// 성공
-			request.setAttribute("message", "확인하시겠습니까?");
-			return "wish/wishSuccess.tiles";
+			request.setAttribute("message", "WISH 목록을 확인하시겠습니까?");
+			return "wish/success.tiles";
 		} else {
 			// 실패
 			request.setAttribute("message", "다시 시도해 주세요.");
-			return "wish/wishFail.tiles";
+			return "wish/fail.tiles";
 		}
 	}
 
