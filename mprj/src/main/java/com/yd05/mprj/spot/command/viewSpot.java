@@ -10,6 +10,7 @@ public class viewSpot implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// 관광지 뷰 페이지로 이동
+		request.setAttribute("contentId", request.getParameter("contentId"));
 		
 		return "spot/viewSpot.tiles";
 	}

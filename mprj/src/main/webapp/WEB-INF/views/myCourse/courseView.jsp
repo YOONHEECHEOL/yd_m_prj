@@ -7,7 +7,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b83f8deda041161d89092eddc90e91aa"></script>
 	<script>
 		let resultJsonVal = ${ contentList };
 		console.log(resultJsonVal);
