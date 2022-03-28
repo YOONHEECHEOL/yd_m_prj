@@ -10,7 +10,7 @@
 		</div>
 	</div>
 	
-	<div class="col-3 colImg"></div>
+	<div id="imgs" style="display: inline"></div>
 	
 	<div>
 		<button type="button" onclick="location.href='deliciousList.do'">목록</button>
@@ -20,7 +20,7 @@
 
 </div>
 
-<script type="text/javascript">
+<script>
 	//let contentTypeId = ${DeliCtid}
 	//let contentId = ${DeliCid}
 	
@@ -57,6 +57,7 @@
 			for(let i = 1; i<=2; i++){
 				let li = document.createElement('li');
 				li.innerText = '주소 ' + commInfo.addr1;
+				ul.append(li); // 실패!
 				li.innerText = '전화번호 ' + commInfo.tel;
 				ul.append(li); // 실패!
 			}
@@ -98,16 +99,16 @@
 		url : imageUrl,
 		dataType : 'json',
 		success : function(imageRes) {
-			console.log(imageRes);
-			console.log(imageRes.response.body.items.item); // Array
+			//console.log(imageRes);
+			//console.log(imageRes.response.body.items.item[0].originimgurl); // Array
 		
 			let imgInfo = imageRes.response.body.items.item;
 
-			let imgDiv = document.querySelector('.col-3 colImg');
+			let imgDiv = document.querySelector('#imgs');
 			for (let i = 0; i<imgInfo.length; i++){
 				let img = document.createElement('img');
 				img.setAttribute('src', imgInfo[i].originimgurl);
-				console.log(imgInfo.originimgurl);
+				//console.log(imgInfo[i].originimgurl);
 				imgDiv.append(img);
 			}
 		}

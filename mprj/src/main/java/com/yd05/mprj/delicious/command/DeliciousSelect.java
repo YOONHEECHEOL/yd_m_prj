@@ -13,8 +13,8 @@ public class DeliciousSelect implements Command {
 		request.setAttribute("DeliCtid", request.getParameter("contentTypeSel"));
 		request.setAttribute("DeliCid", request.getParameter("contentId"));
 		
-		System.out.println("1"+request.getParameter("contentTypeSel")+".");
-		System.out.println("2"+request.getParameter("contentId")+".");
+		System.out.println("1======"+request.getParameter("contentTypeSel")+"===");
+		System.out.println("2======"+request.getParameter("contentId")+"===");
 		
 		return "delicious/deliciousSelect.tiles";
 	}

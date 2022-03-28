@@ -9,7 +9,7 @@
 	
 	<form id="DeliFrm" name="DeliFrm" action="deliciousSelect.do" method="post">
 		<!-- <input type="hidden" id="contentTypeId" name="contentTypeId"> -->
-		<input type="hidden" id="contentId" name="contentId">
+		<input type="hidden" id="contentid" name="contentid">
 		<div>
 			<span>ContentTypeId ( 관광지 | 숙박 | 음식점 )</span>
 			<select name="contentTypeSel" id="contentTypeSel">
@@ -140,7 +140,6 @@
             
            let input = document.createElement('input');
            input.setAttribute('type', 'hidden');
-           input.setAttribute('id', 'contentId');
            input.setAttribute('value', item.contentid);
             
            div.append(img, h6, input);
