@@ -7,57 +7,80 @@
 <title>상 세 보 기</title>
 </head>
 <body>
-<div id="map" style="width:100%;height:350px;"></div>
+<form action="choiceSpotView.do" method="POST" name="myForm" id="myForm">
+	<input type="hidden" id="choiceSpot" name="choiceSpot" value="">
+</form>
+<div>
+<input type="button" onclick="location.href='home.do'" value="홈가기" />
+<input type="button" onclick="location.href='recSpot.do'" value="뒤로가기" />
+</div>
+<table class="table table-striped">
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96d8362c4127f1303ff812329542ad1d"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
-    mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+<thead>
  
-// 마커를 표시할 위치와 title 객체 배열입니다 
-var positions = [
-    {
-        title: '카카오', 
-        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-    },
-    {
-        title: '생태연못', 
-        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-    },
-    {
-        title: '텃밭', 
-        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-    },
-    {
-        title: '근린공원',
-        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-    }
-];
+<tr>
+<th>상호명</th>
+<th>주 소</th>
+<th>전화번호</th>
+<th>썸네일</th>
+</tr>
+</thead>
 
-// 마커 이미지의 이미지 주소입니다
-var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
-    
-for (var i = 0; i < positions.length; i ++) {
-    
-    // 마커 이미지의 이미지 크기 입니다
-    var imageSize = new kakao.maps.Size(24, 35); 
-    
-    // 마커 이미지를 생성합니다    
-    var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
-    
-    // 마커를 생성합니다
-    var marker = new kakao.maps.Marker({
-        map: map, // 마커를 표시할 지도
-        position: positions[i].latlng, // 마커를 표시할 위치
-        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
-        image : markerImage // 마커 이미지 
-    });
+<tbody id="output"></tbody>
+
+</table>
+<span>${areaCode }</span>
+
+<script>
+output.addEventListener('click',()=>{
+	console.log(event.target.textContent);
+	choiceSpot.value=event.target.textContent;
+	myForm.submit();
+});
+
+
+var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?serviceKey=vExVsx1FJkY9Uma%2BjJadUHgr%2BPmrFWpSYvG64oal%2FQDNkwHqVRw%2B68%2Bl3hmjmyB7SNjoN%2BtUI9j%2FljKQObjoFg%3D%3D&numOfRows=12&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&areaCode="+ ${areaCode };
+console.log(url)
+var xhtp = new XMLHttpRequest();
+xhtp.open('GET' , url);
+xhtp.send();
+xhtp.onload = function(){
+var xml = xhtp.responseXML;
+var data = xml.getElementsByTagName('item');
+	console.log(data);
+
+var table = document.createElement('table');
+	for(let i of data) {
+		if(i.querySelector('firstimage2')){
+	var tr = document.createElement('tr');
+	//$('tbody>tr').attr({ // onclick 이벤트로 새로운 뷰를 보여준다
+		//'onclick':'location.href="choiceSpotView.do"'
+	//});
+	var td1 = document.createElement('td');
+		td1.innerText =  i.querySelector('title').textContent;
+		
+	var td2 = document.createElement('td');
+		td2.innerText =  i.querySelector('addr1').textContent;
+		
+	var td3 = document.createElement('td');
+		td3.innerText =  i.querySelector('tel').textContent;
+		
+		
+		var td4 = document.createElement('td');
+		td4.innerHTML='<img src="'+i.querySelector('firstimage2').textContent+'" width="100px";height="70px;">';
+		
+	
+		
+		
+		tr.append(td1, td2 ,td3, td4);
+		output.append(tr);
+		}
+	}
 }
+
+
+
+
 </script>
 </body>
 </html>

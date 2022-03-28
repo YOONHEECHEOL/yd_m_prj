@@ -5,14 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 
-public class NextRecSpot implements Command {
+public class ChoiceSpotView implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-				
-		request.setAttribute("areaCode", request.getParameter("areaCode"));
+		// 선택한 숙박소의 정보를 넘겨받는다
+		// 넘겨줄 정보를 만들어준다
+		request.setAttribute("choiceSpot", request.getParameter("choiceSpot"));
 		
-		return "spot/nextRecSpot.tiles";
+		return "spot/choiceSpotView.tiles";
 	}
 
 }

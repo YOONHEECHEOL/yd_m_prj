@@ -11,9 +11,20 @@
 <body>
 
 <h1 align="center">오늘의 숙박</h1>
-<form action="nextRecSpot.do" onsubmit="return nextRecCode();" method="POST"></form>
-<div id="nextArea"></div>
-
+<form name="myForm" action="nextRecSpot.do" method="POST" id="myForm">
+	<input type="hidden" value="" id="areaCode" name="areaCode">
+</form>
+<div id="nextArea">
+	<button type="button" value="1">서울</button>
+	<button type="button" value="2">인천</button>
+	<button type="button" value="3">대전</button>
+	<button type="button" value="4">대구</button>
+	<button type="button" value="5">광주</button>
+	<button type="button" value="6">부산</button>
+	<button type="button" value="7">울산</button>
+	<button type="button" value="39">제주</button>
+	
+</div>
 
 <table class="table table-striped">
 
@@ -35,7 +46,14 @@
 <!-- 상단부 시 도별 구분 버튼부 구현 필요 -->
 
 <script>
-
+// yoon
+nextArea.addEventListener('click', () => {
+	console.log(event.target.value)
+	let aV = event.target.value;
+	areaCode.value = aV;
+	
+	myForm.submit();
+})
 
 
 //xmlToJson Function | xml 파일을 json 파일로 변환 ==> 안되는듯 그래서 XML로 계속 진행중
@@ -69,15 +87,16 @@ xhtp.onload = function(){
 	console.log(data);
 	//console.log(data[0].querySelector('title').textContent);
 	//console.log(data[0].querySelector('addr1').textContent);
-	var areaName=['서울','부산','대구','인천','광주','대전','울산','제주도'];
+	
 	// div [#nextArea]
-	for(let i=0;i<areaName.length;i++){
+	//var areaName=['서울','부산','대구','인천','광주','대전','울산','제주도'];
+/* 	for(let i=0;i<areaName.length;i++){
 		// 각 시도 이름마다 detail view page 이동할 수 있는버튼을 구현중
 		var span = document.createElement('span');
-		span.innerHTML = '<button type="submit" class="nextAreaConde" value="'+areaName[i]+'">'+areaName[i]+'</button>'+'&nbsp;';
+		span.innerHTML = '<button type="submit" class="nextAreaCode" value="'+areaName[i]+'">'+areaName[i]+'</button>'+'&nbsp;';
 		nextArea.append(span);
 		
-	}
+	} */
 	
 	
 	
@@ -119,13 +138,8 @@ xhtp.onload = function(){
 		output.append(tr);
 		}
 	}
-	
-	
-	
 	}
-	function nextRecCode(){
-		return this.value;
-	}
+
 </script>
 
 </body>
