@@ -9,8 +9,9 @@ public class viewSpot implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return null;
+		// 관광지 뷰 페이지로 이동
+		
+		return "spot/viewSpot.tiles";
 	}
 
 }

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
-import com.yd05.mprj.delicious.command.DeliciousInsert;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.member.command.MemberList;
