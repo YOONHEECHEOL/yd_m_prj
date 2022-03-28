@@ -13,14 +13,20 @@ public class MyCourseList implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		MyCourseVO vo = new MyCourseVO();
-		String userId = (String) request.getSession().getAttribute("id");
-		vo.setuId(userId);
 		
-		MyCourseService listDao = new MyCourseServiceImpl();		
-		request.setAttribute("courseList", listDao.selectAllCourse(vo));
-		
-		return "myCourse/myCourseList.tiles";
+				
+		if(request.getSession().getAttribute("id") != null) {
+			MyCourseVO vo = new MyCourseVO();
+			String userId = (String) request.getSession().getAttribute("id");
+			vo.setuId(userId);
+			
+			MyCourseService listDao = new MyCourseServiceImpl();		
+			request.setAttribute("courseList", listDao.selectAllCourse(vo));
+			return "myCourse/myCourseList.tiles";
+		} else {
+			request.setAttribute("message", "로그인을 먼저 해주세요!");
+			return "user/login.tiles";
+		}
 	}
 
 }

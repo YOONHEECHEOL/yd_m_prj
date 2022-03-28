@@ -3,7 +3,7 @@
     
 <footer class="text-center footer">
 	<p>
-	Yedam 5조 중간프로젝트<br>
+	Yedam 4조 중간프로젝트<br>
 	Copyright 2022
 	</p>		
 </footer>

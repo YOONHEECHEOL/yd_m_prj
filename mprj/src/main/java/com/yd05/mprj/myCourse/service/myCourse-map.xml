@@ -34,6 +34,6 @@
 	<!-- 등록 -->
 	<insert id="insertCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
 		insert into my_course
-		values(MC_SEQ.nextval, #{uId}, #{tsId}, SYSDATE, #{mcTitle}, #{mcDescription})
+		values(MC_SEQ.nextval, #{uId}, #{tsId}, SYSDATE, #{mcTitle}, #{mcDescription}, #{sumImg})
 	</insert>
 </mapper>

@@ -57,6 +57,7 @@
 						<!-- 유저 id 값 -->
 						<input type="hidden" value="${id}" name="uId">
 						<input type="hidden" value="" name="contentIdList" id="contentIdList">
+						<input type="hidden" value="" name="sumImg" id="sumImg">
 						<h2>관광코스 리스트</h2>
 						<!-- 관광코스 정보 입력 -->
 						<div class="row">
@@ -330,6 +331,10 @@
 			
 			inputCourse.append(target.parentNode.parentNode);
 
+			// sumImg 값 저장
+			let sV = target.parentNode.parentNode.querySelector('img').getAttribute('src');
+			sumImg.value = sV;
+
 			target.value = '삭제';
 			target.setAttribute('class', 'btn btn-danger');
 			target.setAttribute('onclick', 'moveToList()');
@@ -341,13 +346,17 @@
 			console.log(tVal);
 
 			let ctVal = contentIdListObj.value;
-			console.log('ctVal :' + ctVal);
 			let ctAfterVal = ctVal.replace(tVal, '');
-			console.log('ctAfterVal :' + ctAfterVal);
 			contentIdListObj.value = ctAfterVal;
-			console.log(contentIdListObj.value)
 
 			output.prepend(target.parentNode.parentNode);
+
+			// sumImg 값 빼기
+			let sImgVal = sumImg.value;
+			let tsV = target.parentNode.parentNode.querySelector('img').getAttribute('src');
+			let sV = sImgVal.replace(tsV, '');
+			sImgVal.replace(sV, '');
+			sumImg.value = sV;
 
 			target.value = '추가';
 			target.setAttribute('class', 'btn btn-primary');

@@ -14,6 +14,7 @@ public class MyCourseVO {
 	
 	private String mcTitle;
 	private String mcDescription;
+	private String sumImg;
 	
 	public long getMcId() {
 		return mcId;
@@ -51,4 +52,11 @@ public class MyCourseVO {
 	public void setMcDescription(String mcDescription) {
 		this.mcDescription = mcDescription;
 	}
+	public String getSumImg() {
+		return sumImg;
+	}
+	public void setSumImg(String sumImg) {
+		this.sumImg = sumImg;
+	}
+	
 }

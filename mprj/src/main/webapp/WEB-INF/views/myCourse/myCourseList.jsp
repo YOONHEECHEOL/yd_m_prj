@@ -11,14 +11,20 @@
 	</div>
 </div>
 
-<div>
+<div class="row mt20 gy-3">
 	<c:forEach items="${courseList }" var="c">
-		${c.mcId}<br>
-		${c.uId}<br>
-		${c.tsId}<br>
-		${c.mcDate}<br>
-		${c.mcTitle}<br>
-		${c.mcDescription}<br>
+		<div class="col-3">
+			<div class="card">
+				<div class="card-body">
+					${c.mcId}<br>
+					${c.uId}<br>
+					${c.tsId}<br>
+					${c.mcDate}<br>
+					${c.mcTitle}<br>
+					${c.mcDescription}<br>
+				</div>
+			</div>
+		</div>
 	</c:forEach>
 	
 </div>

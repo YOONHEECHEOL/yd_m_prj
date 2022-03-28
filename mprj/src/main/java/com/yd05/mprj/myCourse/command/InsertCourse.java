@@ -26,6 +26,7 @@ public class InsertCourse implements Command {
 		vo.setTsId(request.getParameter("contentIdList"));
 		vo.setMcTitle(request.getParameter("mcTitle"));
 		vo.setMcDescription(request.getParameter("mcDescription"));
+		vo.setSumImg(request.getParameter("sumImg"));
 		
 		dao.insertCourse(vo);	
 		
