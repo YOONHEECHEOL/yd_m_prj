@@ -10,7 +10,11 @@ public class viewSpot implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		String contentId = request.getParameter("contentId");
+		
+		
+		return "spot/viewSpot.tiles";
 	}
 
 }
