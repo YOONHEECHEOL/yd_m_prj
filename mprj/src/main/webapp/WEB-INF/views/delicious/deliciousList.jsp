@@ -8,8 +8,8 @@
 	<br />
 	
 	<form id="DeliFrm" name="DeliFrm" action="deliciousSelect.do" method="post">
-		<!-- <input type="hidden" id="contentTypeId" name="contentTypeId"> -->
-		<input type="hidden" id="contentid" name="contentid">
+		<input type="hidden" id="contentTypeId" name="contentTypeId">
+		<input type="hidden" id="contentId" name="contentId">
 		<div>
 			<span>ContentTypeId ( 관광지 | 숙박 | 음식점 )</span>
 			<select name="contentTypeSel" id="contentTypeSel">
@@ -158,8 +158,8 @@
      		
      		console.log(contentTypeIdVal + ' ' + contentIdVal);
      		
-     		DeliFrm.contentTypeId = contentTypeIdVal;
-     		DeliFrm.contentId = contentIdVal;
+     		contentTypeId.value = contentTypeIdVal;
+     		contentId.value = contentIdVal;
      		
      		DeliFrm.submit();
      	})
