@@ -38,7 +38,7 @@ public class WishInsert implements Command {
 				request.setAttribute("message", "WISH 목록을 확인하시겠습니까?");
 				return "wish/insertSuccess.tiles";
 			} else {
-				// 실패
+				// 서버 실패
 				request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
 				return "wish/insertMessage.tiles";
 			}
