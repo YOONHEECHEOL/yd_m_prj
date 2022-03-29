@@ -19,11 +19,7 @@ public class ViewCourse implements Command {
 		
 		Gson gson = new Gson();
 		
-		String uId = request.getParameter("uId");
-		String mcTitle = request.getParameter("mcTitle");
 		String contentIdList = request.getParameter("tsId");
-		String mcDate = request.getParameter("mcDate");
-		String mcDesc = request.getParameter("mcDescription");
 		
 		// split
 		String[] contentList = contentIdList.split(" ");
@@ -35,10 +31,11 @@ public class ViewCourse implements Command {
 		}		
 		
 		// Val 담음
-		request.setAttribute("mcTitle", mcTitle);
-		request.setAttribute("uId", uId);
-		request.setAttribute("mcDate", mcDate);
-		request.setAttribute("mcDesc", mcDesc);
+		request.setAttribute("mcTitle", request.getParameter("mcTitle"));
+		request.setAttribute("mcId", request.getParameter("mcId"));
+		request.setAttribute("uId", request.getParameter("uId"));
+		request.setAttribute("mcDate", request.getParameter("mcDate"));
+		request.setAttribute("mcDesc", request.getParameter("mcDescription"));
 		request.setAttribute("contentList", gson.toJson(clist));
 		
 		return "myCourse/courseView.tiles";
