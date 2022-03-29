@@ -20,10 +20,6 @@
 		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1})
 	</insert>
 	
-	<update id="updateWish">
-	
-	</update>
-	
 	<delete id="deleteWish" parameterType="com.yd05.mprj.wish.service.WishVO">
 		DELETE WISH WHERE CONTENT_ID = #{contentId}
 	</delete>
