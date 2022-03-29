@@ -89,23 +89,11 @@ xhtp.onload = function(){
 	//console.log(data[0].querySelector('addr1').textContent);
 	
 	// div [#nextArea]
-	//var areaName=['서울','부산','대구','인천','광주','대전','울산','제주도'];
-/* 	for(let i=0;i<areaName.length;i++){
-		// 각 시도 이름마다 detail view page 이동할 수 있는버튼을 구현중
-		var span = document.createElement('span');
-		span.innerHTML = '<button type="submit" class="nextAreaCode" value="'+areaName[i]+'">'+areaName[i]+'</button>'+'&nbsp;';
-		nextArea.append(span);
-		
-	} */
-	
+
 	
 	
 	// tbody [#output]
-	/*
-	var contents = ['상호명' , '주소'];
-	var list = ['item>title' , 'item>addr1']; 
-	var div = document.createElement('div');
-	*/
+	
 	var table = document.createElement('table');
 	var tr = document.createElement('tr');
 	// tag를 작성하여 상호명과 주소를 출력
@@ -122,7 +110,7 @@ xhtp.onload = function(){
 		// 주소
 		var td2 = document.createElement('td');
 		td2.innerText = i.querySelector('addr1').textContent; 
-		console.log('td2:'+i.querySelector('addr1').textContent);
+		//console.log('td2:'+i.querySelector('addr1').textContent);
 		// 썸네일 이미지
 		var td3 = document.createElement('td');
 		td3.innerHTML='<img src="'+i.querySelector('firstimage2').textContent+'" width="100px";height="70px;">';
@@ -131,13 +119,14 @@ xhtp.onload = function(){
 		
 		
 		
-		
-		
 		tr.append(td1, td2, td3);
 		
 		output.append(tr);
+		
+		
 		}
-	}
+	
+			}
 	}
 
 </script>
