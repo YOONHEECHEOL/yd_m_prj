@@ -10,7 +10,7 @@ public class DeliciousSelect implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		// 개별건
-		request.setAttribute("DeliCtid", request.getParameter("contentTypeSel"));
+		request.setAttribute("DeliCtid", request.getParameter("contentTypeId"));
 		request.setAttribute("DeliCid", request.getParameter("contentId"));
 		
 		//System.out.println("1======"+request.getParameter("contentTypeSel")+"===");
