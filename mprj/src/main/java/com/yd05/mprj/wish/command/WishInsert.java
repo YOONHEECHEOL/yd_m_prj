@@ -26,7 +26,8 @@ public class WishInsert implements Command {
 		
 		// contentId 중복확인 필요
 		String str = request.getParameter("contentId");
-		boolean b = dao.isCIdCheck(str); //true
+		String str2 = (String) request.getSession().getAttribute("id");
+		boolean b = dao.isCIdCheck(str, str2); //true
 		System.out.println(b);
 		if (b) {
 			// insert 가능(true)

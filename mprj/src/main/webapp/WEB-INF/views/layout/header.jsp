@@ -13,8 +13,8 @@
 				<a class="mr20" href="signUp.do"><i class="material-icons md-36">assignment_ind</i></a>
 			</c:if>
 			<c:if test="${not empty id}">
-				<a href="logout.do"><i class="material-icons md-36">logout</i></a>
-				<a href="mypage.do"><i class="material-icons md-36">assignment_ind</i></a>
+				<a class="mr20" href="logout.do"><i class="material-icons md-36">logout</i></a>
+				<a class="mr20" href="mypage.do"><i class="material-icons md-36">assignment_ind</i></a>
 			</c:if>			
 		</div>
 	</div>

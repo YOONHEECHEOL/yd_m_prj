@@ -33,6 +33,6 @@
 	</select>
 	
 	<select id="isCIdCheck" parameterType="String" resultType="boolean">
-		SELECT CASE WHEN COUNT(CONTENT_ID) = 1 THEN 0 ELSE 1 END AS CID FROM WISH WHERE CONTENT_ID = #{str}
+		SELECT CASE WHEN COUNT(CONTENT_ID) = 1 THEN 0 ELSE 1 END AS CID FROM WISH WHERE CONTENT_ID = #{str} and u_id = #{str2}
 	</select>
 </mapper>
