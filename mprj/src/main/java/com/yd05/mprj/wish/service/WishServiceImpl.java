@@ -11,9 +11,9 @@ public class WishServiceImpl implements WishService {
 	private WishMapper map = sqlSession.getMapper(WishMapper.class);	
 
 	@Override
-	public List<WishVO> selectWishList() {
+	public List<WishVO> selectWishList(WishVO vo) {
 		// 전체조회
-		return map.selectWishList();
+		return map.selectWishList(vo);
 	}
 
 	@Override

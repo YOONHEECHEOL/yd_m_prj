@@ -18,7 +18,7 @@ public class WishList implements Command {
 		HttpSession session = request.getSession();
 		
 		vo.setUId((String)session.getAttribute("id"));
-		request.setAttribute("wishList", dao.selectWishList());
+		request.setAttribute("wishList", dao.selectWishList(vo));
 		
 		return "wish/wishList.tiles";
 	}

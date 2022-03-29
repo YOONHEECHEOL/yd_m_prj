@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface WishMapper {
 	// 전체조회
-	List<WishVO> selectWishList();
+	List<WishVO> selectWishList(WishVO vo);
 
 	// 단건조회
 	WishVO selectWish(WishVO vo);

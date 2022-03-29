@@ -7,7 +7,7 @@
 		<result property="contentId" column="content_id"/>
 	</resultMap>
 	
-	<select id="selectWishList" resultMap="WishMap">
+	<select id="selectWishList" parameterType="com.yd05.mprj.wish.service.WishVO" resultMap="WishMap">
 		SELECT * FROM WISH WHERE U_ID = #{uId} ORDER BY CONTENT_TYPE_ID
 	</select>
 	
