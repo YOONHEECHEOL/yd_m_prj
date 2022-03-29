@@ -10,6 +10,14 @@ public class MyCourseServiceImpl implements MyCourseService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
 	private MyCourseMapper map = sqlSession.getMapper(MyCourseMapper.class);
 	
+	
+	
+	@Override
+	public List<MyCourseVO> allCourse() {
+		// TODO Auto-generated method stub
+		return map.allCourse();
+	}
+
 	@Override
 	public List<MyCourseVO> selectAllCourse(MyCourseVO vo) {
 		// 전체선택

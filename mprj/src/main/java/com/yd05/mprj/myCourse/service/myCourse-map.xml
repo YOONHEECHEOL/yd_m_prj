@@ -11,6 +11,11 @@
 	</resultMap>
 	
 	<!-- 전체조회 -->
+	<select id="allCourse" resultMap="courseMap">
+		select * from my_course
+	</select>
+	
+	<!-- 유저 전체조회 -->
 	<select id="selectAllCourse" resultMap="courseMap">
 		select * from my_course
 		where u_id = #{uId}

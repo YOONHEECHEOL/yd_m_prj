@@ -41,9 +41,14 @@ ul li {
 
 .header {
 	height: 100px;
+	background-color: #292c3a;
 }
 .header__cont {
 	height: 100px;
+	color: #fff;
+}
+.header__cont * {
+	color: #fff;
 }
 
 /* nav */
@@ -53,9 +58,15 @@ ul li {
 }
 .logo {
 	font-family: 'Anton', sans-serif;
-	color: #222;
+	color: #fff;
 }
-
+.bodyCon div {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.carousel-inner {
+	max-height: 600px;
+}
 /* menu */
 .menu__list > li a {
 	display: block;
@@ -100,7 +111,7 @@ ul li {
 }
 .course__arrow {
 	position: absolute;
-	bottom: -80px;
+	bottom: -76px;
 	left: 0;
 	display: block;
 	width: 60px;
@@ -156,6 +167,7 @@ ul li {
 
 /* footer */
 .footer {
+	margin: 40px 0 0 0;
 	padding: 20px 0;
 	color: #565c7a;
 	background-color: #292c3a;

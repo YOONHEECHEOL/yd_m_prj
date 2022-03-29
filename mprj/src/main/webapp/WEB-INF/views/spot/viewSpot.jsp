@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<h1>viewSpot</h1>
 	<div class="row justify-content-center">
-		<div id="view" class="col-8">
-			<!-- view -->
+		<div class="col-4">
+			<div class="card" id="view">
+				<!-- view -->
+			</div>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+		<div class="col-2 mt40">
+			<button onclick="wishBtn()" class="btn btn-primary">좋아요!</button>
 		</div>
 	</div>
 
@@ -34,9 +41,13 @@
 
 					let img = document.createElement('img');
 					img.setAttribute('src', item.firstimage);
-					img.setAttribute('style', 'width:100%;');
+					img.setAttribute('class', 'card-img-top');
+
+					let cardBody = document.createElement('div');
+					cardBody.setAttribute('class', 'card-body');
 
 					let h4 = document.createElement('h4');
+					h4.setAttribute('class', 'mt20');
 					h4.innerText = item.title;
 
 					let span = document.createElement('span');
@@ -49,7 +60,7 @@
 					if (item.homepage != '') {
 						let div = document.createElement('div');
 						div.innerHTML = item.homepage;
-						view.prepend(div);
+						cardBody.prepend(div);
 					}
 
 					let mx = item.mapx.replace(item.mapx.slice(-4), '');
@@ -84,8 +95,20 @@
 
 
 					// 최종 출력
-					view.prepend(img, h4, p, span);
-
+					cardBody.append(h4, p, span);
+					view.prepend(img, cardBody);
 				})
 		})
+
+		function wishBtn() {
+			let utt = ${ contentId };
+			fetch('ajaxSpotAddWish.do?contentId=' + utt, {
+				method: 'post',
+				headers: {'Content-type': 'application/x-www-form-urlencoded' }
+			})
+			.then(res => res.json())
+			.then(res => {
+				console.log(res);
+			})
+		}
 	</script>
