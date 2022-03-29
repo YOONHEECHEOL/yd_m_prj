@@ -36,7 +36,10 @@ th {
 							<td>
 								<input type="hidden" id="contentTypeId" name="contentTypeId" value="${w.contentTypeId }">
 								<input type="hidden" id="contentId" name="contentId" value="${w.contentId }">
-								<button type="submit" class="btn btn-primary mt20">다녀옴</button>
+								<input type="hidden" id="firstImage" name="firstImage" value="${w.firstImage }">
+								<input type="hidden" id="title" name="title" value="${w.title }">
+								<input type="hidden" id="addr1" name="addr1" value="${w.addr1 }">
+								<button type="submit" class="btn btn-primary mt20" formaction="visitInsert.do" formmethod="post">다녀옴</button>
 								<button type="submit" class="btn btn-primary mt20" formaction="wishDelete.do" formmethod="post">삭제</button></td>
 						</tr>
 					</c:forEach>

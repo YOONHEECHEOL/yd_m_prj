@@ -26,7 +26,7 @@ img{
 			<button type="button" class="btn btn-primary mt20" onclick="location.href='deliciousList.do'">목록</button>
 			<c:if test="${not empty id}">
 				<button type="submit" class="btn btn-primary mt20" formaction="wishInsert.do" formmethod="post">가보고싶어요!</button>
-				<button type="submit" class="btn btn-primary mt20">가봤어요!</button>
+				<button type="submit" class="btn btn-primary mt20" formaction="visitInsert.do" formmethod="post">가봤어요!</button>
 			</c:if>
 		</div>
 		<br/>
@@ -197,7 +197,6 @@ img{
 								//console.log(imgInfo[i].originimgurl);
 								imgDiv.append(img);
 						}
-						
 					}
 				}
 			})

@@ -2,5 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <script>
-alert("${message}");
+alert("${message}")
+location = 'visitList.do';
+
 </script>

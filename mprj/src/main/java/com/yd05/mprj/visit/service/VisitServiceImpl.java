@@ -1,4 +1,4 @@
-package com.yd05.mprj.wish.service;
+package com.yd05.mprj.visit.service;
 
 import java.util.List;
 
@@ -6,26 +6,26 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.yd05.mprj.comm.DataSource;
 
-public class WishServiceImpl implements WishService {
+public class VisitServiceImpl implements VisitService {
 	private SqlSession sqlSession = DataSource.getInstance().openSession(true);
-	private WishMapper map = sqlSession.getMapper(WishMapper.class);	
-
+	private VisitMapper map = sqlSession.getMapper(VisitMapper.class);
+	
 	@Override
-	public List<WishVO> selectWishList(WishVO vo) {
+	public List<VisitVO> selectVisit(VisitVO vo) {
 		// 전체조회
-		return map.selectWishList(vo);
+		return map.selectVisit(vo);
 	}
 
 	@Override
-	public int insertWish(WishVO vo) {
-		// db 저장
-		return map.insertWish(vo);
+	public int insertVisit(VisitVO vo) {
+		// 등록
+		return map.insertVisit(vo);
 	}
 
 	@Override
-	public int deleteWish(WishVO vo) {
+	public int deleteVisit(VisitVO vo) {
 		// 삭제
-		return map.deleteWish(vo);
+		return map.deleteVisit(vo);
 	}
 
 	@Override

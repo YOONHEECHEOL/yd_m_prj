@@ -44,7 +44,9 @@ import com.yd05.mprj.user.command.Logout;
 import com.yd05.mprj.user.command.Mypage;
 import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.SignUpCheck;
-import com.yd05.mprj.user.command.VisitedList;
+import com.yd05.mprj.visit.command.VisitDelete;
+import com.yd05.mprj.visit.command.VisitInsert;
+import com.yd05.mprj.visit.command.VisitList;
 import com.yd05.mprj.weather.command.WeatherData;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishDelete;
@@ -111,7 +113,9 @@ public class FrontController extends HttpServlet {
 		map.put("/wishList.do", new WishList()); // wish목록
 		map.put("/wishDelete.do", new WishDelete()); // wish 삭제
 		// visited
-		map.put("/visitedList.do", new VisitedList());
+		map.put("/visitInsert.do", new VisitInsert()); //db insert
+		map.put("/visitList.do", new VisitList()); // visit 목록
+		map.put("/visitDelete.do", new VisitDelete()); // visit 삭제
 		
 		// ======================domin=======================
 		// 이곳에 작성

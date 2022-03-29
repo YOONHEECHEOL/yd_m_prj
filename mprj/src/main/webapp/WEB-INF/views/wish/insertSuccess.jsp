@@ -7,6 +7,6 @@ let result = confirm("${message}");
 if(result){
 	location.href = "wishList.do";
 } else {
-	location.href = "cateSpotList.do" // 관광지 목록으로 돌아가야함.
+	location.href = "deliciousList.do" // 관광지 목록으로 돌아가야함.
 }
 </script>
