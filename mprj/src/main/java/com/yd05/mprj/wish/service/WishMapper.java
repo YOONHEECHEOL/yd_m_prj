@@ -14,9 +14,6 @@ public interface WishMapper {
 	// 등록
 	int insertWish(WishVO vo);
 
-	// 수정
-	int updateWish(WishVO vo);
-
 	// 삭제
 	int deleteWish(WishVO vo);
 

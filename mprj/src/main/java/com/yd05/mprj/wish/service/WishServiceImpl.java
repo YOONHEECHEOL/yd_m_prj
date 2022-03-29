@@ -29,12 +29,6 @@ public class WishServiceImpl implements WishService {
 	}
 
 	@Override
-	public int updateWish(WishVO vo) {
-		// 수정
-		return map.updateWish(vo);
-	}
-
-	@Override
 	public int deleteWish(WishVO vo) {
 		// 삭제
 		return map.deleteWish(vo);

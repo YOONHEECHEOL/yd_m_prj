@@ -56,12 +56,10 @@ th {
 <script type="text/javascript">
 	// 클릭시 view page 이동
 	tab.addEventListener('click', () => {
-		let contentTypeIdVal = event;
-		//let contentIdVal = ;
+		let contentTypeIdVal = event.path[1].childNodes[7].childNodes[1].getAttribute('value');
+		let contentIdVal = event.path[1].childNodes[7].childNodes[3].getAttribute('value');
 		
-		
-		console.log(contentTypeIdVal);
-		//console.log(contentTypeIdVal + ' ' + contentIdVal);
+		console.log(contentTypeIdVal + ' ' + contentIdVal);
 		
 		wishFrm.submit();
 	})
