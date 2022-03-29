@@ -5,6 +5,7 @@
 		<id property="uId" column="u_id" />
 		<result property="contentTypeId" column="content_type_id" />
 		<result property="contentId" column="content_id"/>
+		<result property="firstImage" column="first_image" />
 	</resultMap>
 	
 	<select id="selectWishList" parameterType="com.yd05.mprj.wish.service.WishVO" resultMap="WishMap">
@@ -16,7 +17,7 @@
 	</select>
 	
 	<insert id="insertWish" parameterType="com.yd05.mprj.wish.service.WishVO">
-		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId})
+		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1})
 	</insert>
 	
 	<update id="updateWish">

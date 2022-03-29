@@ -10,5 +10,8 @@ public class WishVO {
 	private String uId;
 	private String contentTypeId;
 	private String contentId;
+	private String firstImage;
+	private String title;
+	private String addr1;
 	
 }
