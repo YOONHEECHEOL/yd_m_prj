@@ -9,7 +9,7 @@
 	</resultMap>
 	
 	<select id="selectWishList" parameterType="com.yd05.mprj.wish.service.WishVO" resultMap="WishMap">
-		SELECT * FROM WISH WHERE U_ID = #{uId} ORDER BY CONTENT_TYPE_ID
+		SELECT * FROM WISH WHERE U_ID = #{uId} ORDER BY TITLE
 	</select>
 	
 	<select id="selectWish" parameterType="com.yd05.mprj.wish.service.WishVO" resultMap="WishMap">

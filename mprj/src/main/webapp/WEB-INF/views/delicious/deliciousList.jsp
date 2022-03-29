@@ -157,6 +157,8 @@
      		let contentTypeIdVal = contentTypeSel.value;
      		let contentIdVal = event.target.childNodes[2].getAttribute('value');
      		
+     		console.log(event.target);
+     		
      		console.log(contentTypeIdVal + ' ' + contentIdVal);
      		
      		contentTypeId.value = contentTypeIdVal;
