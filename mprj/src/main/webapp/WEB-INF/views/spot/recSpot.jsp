@@ -14,7 +14,7 @@
 <form name="myForm" action="nextRecSpot.do" method="POST" id="myForm">
 	<input type="hidden" value="" id="areaCode" name="areaCode">
 </form>
-<div id="nextArea">
+<div id="nextArea" align="center">
 	<button type="button" value="1">서울</button>
 	<button type="button" value="2">인천</button>
 	<button type="button" value="3">대전</button>
