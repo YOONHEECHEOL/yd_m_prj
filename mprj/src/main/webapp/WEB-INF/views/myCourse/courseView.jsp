@@ -1,14 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<input type="hidden" value="${mcId}" id="mcId">
 <h1 class="text-center">${mcTitle}</h1>
-<div>작성자 : ${uId}</div>
-<div>작성일 : ${mcDate}</div>
-<div>${mcDesc}</div>
+<div class="text-center">작성자 : ${uId}</div>
+<div class="text-center">작성일 : ${mcDate}</div>
+<div class="text-center">${mcDesc}</div>
 
-	<div class="row justify-content-center">
-		<div id="view" class="col-8">
-			<!-- view -->
-		</div>
+<div class="row justify-content-center">
+	<div id="view" class="col-8">
+		<!-- view -->
 	</div>
+</div>
+
+<div id="mcComments">
+	<!-- 댓글 -->
+</div>
 
 	<script>
 		let resultJsonVal = ${ contentList };
