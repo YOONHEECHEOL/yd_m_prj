@@ -32,7 +32,7 @@
 <body>
 	<tiles:insertAttribute name="header" />
 	<tiles:insertAttribute name="nav" />
-	<div class="container-fluid">	
+	<div class="container-fluid dp-box">	
 		<div class="row hDisplay bodyCon">
 			<div class="col-12">
 			<tiles:insertAttribute name="menu" />

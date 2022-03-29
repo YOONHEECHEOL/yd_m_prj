@@ -3,6 +3,8 @@
 body {
 	font-family: 'Noto Sans KR', sans-serif !important;
 	font-size: 16px !important;
+	max-width: 1920px;
+	margin: 0 auto;
 }
 a {
 	color: #222;
@@ -60,7 +62,7 @@ ul li {
 	font-family: 'Anton', sans-serif;
 	color: #fff;
 }
-.bodyCon div {
+.bodyCon > div {
 	padding: 0 !important;
 	margin: 0 !important;
 }
@@ -77,6 +79,12 @@ ul li {
 	border-bottom: 1px solid #222;
 	padding: 0 0 8px 0;
 	margin: 20px 0 8px 0;
+}
+.dp-box {
+	max-width: 1920px;
+	overflow: hidden;
+	padding: 0 !important;
+	margin: 0 0 80px !important;
 }
 
 /* products */

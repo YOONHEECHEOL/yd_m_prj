@@ -23,15 +23,14 @@ th {
 				<tbody id="tab">
 					<c:forEach items="${wishList }" var="w">
 						<tr>
-							<td id="img"><c:choose>
-									<c:when test="${not empty w.firstImage }">
-										<img src="${w.firstImage }">
-									</c:when>
-									<c:when test="${w.firstImage eq 'undefined' }">
-										<!-- 사진안뜸 수정 필요 -->
-										<img src="images/noImage.jpg">
-									</c:when>
-								</c:choose></td>
+							<td id="img">
+								<c:if test="${w.firstImage ne 'undefined' }">
+									<img src="${w.firstImage }">
+								</c:if>
+								<c:if test="${w.firstImage eq 'undefined' }">
+									<img src="images/noImage.jpg">
+								</c:if>
+							</td>
 							<td id="title">${w.title }</td>
 							<td id="addr">${w.addr1 }</td>
 							<td>

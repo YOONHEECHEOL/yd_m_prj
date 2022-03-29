@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="row mt20 gy-3" id="courseList">
+<div class="row mt20 g-3" id="courseList">
 	<c:forEach items="${courseList }" var="c">
 		<div class="col-3">			
 			<div class="card">
