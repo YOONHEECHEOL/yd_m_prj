@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h1>myCourse</h1>
 
 <div class="row text-center justify-content-center align-items-center">
 	<div class="col-4">
@@ -33,7 +32,17 @@
 					<button class="btn btn-danger">삭제</button>
 				</div>
 				<form action="viewCourse.do" id="toView" method="get" class="np">
-					<input type="hidden" value="${c.tsId}" name="tsId" id="tsId">
+					<c:if	test="${not empty c.mcDate}">
+						<input type="hidden" value="${c.mcDate}" name="mcDate">
+					</c:if>
+					<input type="hidden" value="${c.uId}" name="uId">
+					<input type="hidden" value="${c.tsId}" name="tsId">
+					<c:if test="${not empty c.mcTitle}">
+						<input type="hidden" value="${c.mcTitle}" name="mcTitle">
+					</c:if>
+					<c:if test="${not empty c.mcDescription }">
+						<input type="hidden" value="${c.mcDescription }" name="mcDescription">
+					</c:if>
 				</form>
 			</div>			
 		</div>

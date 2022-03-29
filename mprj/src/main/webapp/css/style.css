@@ -100,7 +100,7 @@ ul li {
 }
 .course__arrow {
 	position: absolute;
-	bottom: -80px;
+	bottom: -76px;
 	left: 0;
 	display: block;
 	width: 60px;
@@ -156,6 +156,7 @@ ul li {
 
 /* footer */
 .footer {
+	margin: 40px 0 0 0;
 	padding: 20px 0;
 	color: #565c7a;
 	background-color: #292c3a;

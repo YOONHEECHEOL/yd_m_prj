@@ -16,6 +16,7 @@ import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
+import com.yd05.mprj.myCourse.command.CourseList;
 import com.yd05.mprj.myCourse.command.InsertCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.myCourse.command.ViewCourse;
@@ -28,6 +29,7 @@ import com.yd05.mprj.notice.command.NoticeList;
 import com.yd05.mprj.notice.command.NoticeUpdate;
 import com.yd05.mprj.notice.command.NoticeUpdateConfirm;
 import com.yd05.mprj.notice.command.NoticeView;
+import com.yd05.mprj.spot.command.AjaxSpotAddWish;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.ChoiceSpotView;
 import com.yd05.mprj.spot.command.NextRecSpot;
@@ -83,11 +85,13 @@ public class FrontController extends HttpServlet {
 		// myCourse
 		map.put("/addMyCourse.do", new AddMyCourse()); // 나의 관광코스 추가페이지
 		map.put("/myCourseList.do", new MyCourseList());
+		map.put("/courseList.do", new CourseList());
 		map.put("/spotList.do", new SpotList());
 		map.put("/insertCourse.do", new InsertCourse());		
 		map.put("/viewCourse.do", new ViewCourse());		
 		// spot
 		map.put("/viewSpot.do", new viewSpot());		
+		map.put("/ajaxSpotAddWish.do", new AjaxSpotAddWish());		
 		
 		
 		// ======================woong=======================

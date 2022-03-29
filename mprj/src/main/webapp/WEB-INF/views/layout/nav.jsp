@@ -17,6 +17,9 @@
           <a class="nav-link" href="myCourseList.do">나만의 관광코스(yoon)</a>
         </li>       
         <li class="nav-item">
+          <a class="nav-link" href="courseList.do">관광코스(yoon)</a>
+        </li>       
+        <li class="nav-item">
           <a class="nav-link" href="visitedList.do">도장찍기(been)</a>
         </li>       
         <li class="nav-item">
