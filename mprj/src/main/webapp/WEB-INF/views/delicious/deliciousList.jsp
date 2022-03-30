@@ -10,6 +10,9 @@
 	<form id="DeliFrm" name="DeliFrm">
 		<input type="hidden" id="contentTypeId" name="contentTypeId" value="39"> 
 		<input type="hidden" id="contentId" name="contentId">
+		<input type="hidden" id="mapx" name="mapx">
+		<input type="hidden" id="mapy" name="mapy">
+		
 		<div>
 			<select name="cat3" id="cat3">
 				<option value="">선택</option>
@@ -95,11 +98,19 @@
 						let h6 = document.createElement('h6');
 						h6.innerText = item.title;
 							
-						let input = document.createElement('input');
-						input.setAttribute('type', 'hidden');
-						input.setAttribute('value', item.contentid);
+						let input1 = document.createElement('input');
+						input1.setAttribute('type', 'hidden');
+						input1.setAttribute('value', item.contentid);
+						
+						let input2 = document.createElement('input');
+						input2.setAttribute('type', 'hidden');
+						input2.setAttribute('value', item.mapx);
+						
+						let input3 = document.createElement('input');
+						input3.setAttribute('type', 'hidden');
+						input3.setAttribute('value', item.mapy);
 							
-						div.append(img, h6, input);
+						div.append(img, h6, input1, input2, input3);
 
 						output.append(div);
 					}
@@ -130,11 +141,22 @@
 					let h6 = document.createElement('h6');
 					h6.innerText = item.title;
 						
-					let input = document.createElement('input');
-					input.setAttribute('type', 'hidden');
-					input.setAttribute('value', item.contentid);
+					let input1 = document.createElement('input');
+					input1.setAttribute('type', 'hidden');
+					input1.setAttribute('name', 'contentId');
+					input1.setAttribute('value', item.contentid);
+					
+					let input2 = document.createElement('input');
+					input2.setAttribute('type', 'hidden');
+					input2.setAttribute('name', 'mapx');
+					input2.setAttribute('value', item.mapx);
+					
+					let input3 = document.createElement('input');
+					input3.setAttribute('type', 'hidden');
+					input3.setAttribute('name', 'mapy');
+					input3.setAttribute('value', item.mapy);
 						
-					div.append(img, h6, input);
+					div.append(img, h6, input1, input2, input3);
 
 					output.append(div);
 				}
@@ -145,10 +167,14 @@
 	// yoon
 	output.addEventListener('click', () => {
 		let contentIdVal = event.target.childNodes[2].getAttribute('value');
+		let mapxVal = event.target.childNodes[3].getAttribute('value');
+		let mapyVal = event.target.childNodes[4].getAttribute('value');
 		
-		console.log(event.target);
+		//console.log(event.target);
 		
 		contentId.value = contentIdVal;
+		mapx.value = mapxVal;
+		mapy.value = mapxVal;
 		
 		DeliFrm.action="deliciousSelect.do";
 		DeliFrm.method="post";

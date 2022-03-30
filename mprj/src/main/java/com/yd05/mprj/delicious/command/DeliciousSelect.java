@@ -12,9 +12,11 @@ public class DeliciousSelect implements Command {
 		// 개별건
 		request.setAttribute("DeliCtid", request.getParameter("contentTypeId"));
 		request.setAttribute("DeliCid", request.getParameter("contentId"));
+		request.setAttribute("DeliMapx", request.getParameter("mapx"));
+		request.setAttribute("DeliMapy", request.getParameter("mapy"));
 		
-		//System.out.println("1======"+request.getParameter("contentTypeId")+"===");
-		//System.out.println("2======"+request.getParameter("contentId")+"===");
+//		System.out.println(request.getParameter("mapx"));
+//		System.out.println(request.getParameter("mapy"));
 		
 		return "delicious/deliciousSelect.tiles";
 	}

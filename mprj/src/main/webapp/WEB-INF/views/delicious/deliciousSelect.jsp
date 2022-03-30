@@ -8,7 +8,7 @@ img{
 }
 </style>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb&libraries=services"></script>
 
 <form id="frm" name="frm">	
 	<div id="output">
@@ -227,10 +227,13 @@ img{
 	f3();
 	
 	// 지도
-	let container = document.querySelector('#map');
-	let options ={
-			center: new kakao.maps.LatLng(33.450701, 126.570667),
-			level: 3
+	let mapx = ${DeliMapx}
+	let mapy = ${DeliMapy}
+	
+	let mapDiv = document.querySelector('#map');
+	let options = {
+			center: new kakao.maps.LatLng(mapx, mapy),
+			level: 6
 	}
-	let map = new kakao.maps.Map(container, options);
+	let map = new kakao.maps.Map(mapDiv, options);
 </script>
