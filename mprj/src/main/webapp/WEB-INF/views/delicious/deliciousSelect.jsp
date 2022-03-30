@@ -8,6 +8,8 @@ img{
 }
 </style>
 
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb"></script>
+
 <form id="frm" name="frm">	
 	<div id="output">
 		<div id="title"></div>
@@ -25,13 +27,15 @@ img{
 		<br/>
 	</div>
 </form>
-		<div>			
-			<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
-			<c:if test="${not empty id}">
-				<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
-				<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
-			</c:if>
-		</div>
+	<div id="map" style="width:500px;height:400px;">
+	</div>
+	<div>			
+		<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
+		<c:if test="${not empty id}">
+			<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
+			<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
+		</c:if>
+	</div>
 
 <script>
 	function wishBtnCheck() {
@@ -220,5 +224,13 @@ img{
 				}
 			})
 	}
-	f3();	
+	f3();
+	
+	// 지도
+	let container = document.querySelector('#map');
+	let options ={
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+	}
+	let map = new kakao.maps.Map(container, options);
 </script>
