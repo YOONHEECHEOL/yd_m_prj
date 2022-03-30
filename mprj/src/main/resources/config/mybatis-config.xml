@@ -31,5 +31,6 @@
     <mapper resource="com/yd05/mprj/myCourse/service/myCourse-map.xml"/>
     <mapper resource="com/yd05/mprj/wish/service/wish-map.xml"/>
     <mapper resource="com/yd05/mprj/visit/service/visit-map.xml"/>
+    <mapper resource="com/yd05/mprj/mcComment/service/mcComment-map.xml"/>
   </mappers>
 </configuration>

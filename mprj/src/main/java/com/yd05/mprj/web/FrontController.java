@@ -15,9 +15,11 @@ import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
 import com.yd05.mprj.indel.command.inDel;
+import com.yd05.mprj.mcComment.command.AjaxAddComment;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.CourseList;
+import com.yd05.mprj.myCourse.command.DeleteCourse;
 import com.yd05.mprj.myCourse.command.InsertCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.myCourse.command.ViewCourse;
@@ -95,7 +97,9 @@ public class FrontController extends HttpServlet {
 		// spot
 		map.put("/viewSpot.do", new viewSpot());		
 		map.put("/ajaxSpotAddWish.do", new AjaxSpotAddWish());		
-		
+		map.put("/deleteCourse.do", new DeleteCourse());
+		// comment
+		map.put("/ajaxAddComment.do", new AjaxAddComment());
 		
 		// ======================woong=======================
 		// 이곳에 작성
