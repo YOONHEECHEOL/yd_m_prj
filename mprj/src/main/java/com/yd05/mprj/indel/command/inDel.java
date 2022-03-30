@@ -16,15 +16,11 @@ public class inDel implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
+		
 		VisitService vDao = new VisitServiceImpl();
 		VisitVO vVo = new VisitVO();
-
-		WishService wDao = new WishServiceImpl();
-		WishVO wVo = new WishVO();
-
-		HttpSession session = request.getSession();
-
-		// visitList에 있는지 없는지 체크 -> contentId 중복확인 필요
+		
 		vVo.setUId((String) session.getAttribute("id"));
 		vVo.setContentTypeId(request.getParameter("contentTypeId"));
 		vVo.setContentId(request.getParameter("contentId"));
@@ -32,6 +28,12 @@ public class inDel implements Command {
 		vVo.setTitle(request.getParameter("title"));
 		vVo.setAddr1(request.getParameter("addr1"));
 
+		WishService wDao = new WishServiceImpl();
+		WishVO wVo = new WishVO();
+		wVo.setContentId(request.getParameter("contentId"));
+
+
+		// visitList에 있는지 없는지 체크 -> contentId 중복확인 필요
 		String str1 = request.getParameter("contentId");
 		String str2 = (String) request.getSession().getAttribute("id");
 		boolean b = vDao.isCIdCheck(str1, str2); // true
@@ -39,7 +41,6 @@ public class inDel implements Command {
 		if (b) {
 			// insert 가능(true)
 			// wishList 삭제
-			wVo.setContentId(request.getParameter("contentId"));
 			int n = wDao.deleteWish(wVo);
 			if (n != 0) {
 				// delete 성공
@@ -61,7 +62,6 @@ public class inDel implements Command {
 		} else {
 			// insert 불가능(false)
 			// wishList 삭제
-			wVo.setContentId(request.getParameter("contentId"));
 			int n = wDao.deleteWish(wVo);
 			if (n != 0) {
 				// delete 성공
