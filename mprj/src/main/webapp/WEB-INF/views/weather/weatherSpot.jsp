@@ -3,6 +3,7 @@
 <form id="myForm" class="myForm" action="weatherDetail.do" method="post">
    <input type="hidden" id="spotAreaId" name="spotAreaId" value="">
    <input type="hidden" id="courseId" name="courseId" value="">
+   <input type="hidden" id="courseId" name="courseId" value="">
 </form>
 <!-- 테이블에 목록을 클릭시 데이터를 추가적으로 뿌려줄수 있도록 구현(안되면 제외) -->
 <!-- tt -->
