@@ -23,6 +23,7 @@
             <button class="btn btn-danger">삭제</button>
           </div>
           <form action="viewCourse.do" id="toView" method="get" class="np">
+            <input type="hidden" value="${c.mcId}" name="mcId">
             <c:if	test="${not empty c.mcDate}">
               <input type="hidden" value="${c.mcDate}" name="mcDate">
             </c:if>

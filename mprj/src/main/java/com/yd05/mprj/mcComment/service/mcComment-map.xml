@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.mcComment.service.McCommentMapper">
+	<resultMap type="com.yd05.mprj.mcComment.service.McCommentVO" id="mcCommentMap">
+		<id property="commId" column="comm_id"/>
+		<result property="uId" column="u_id"/>
+		<result property="mcId" column="mc_id"/>
+		<result property="commComment" column="comm_comment"/>
+		<result property="comRegDate" column="comm_regdate"/>
+	</resultMap>
+	
+	<!-- comment 조회 -->
+	<select id="selectComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO" resultMap="mcCommentMap">
+		select * from mc_comments
+		where mc_id = #{mcId}
+	</select>
+	
+	<!-- 입력 -->
+	<insert id="insertComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO">
+		insert into mc_comments
+		values (MC_SEQ.nextval, #{uId}, #{mcId}, #{commComment}, sysdate)
+	</insert>
+	
+	<!-- 삭제 -->
+	<delete id="deleteComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO">
+			delete from mc_comments
+			where comm_id = #{commId}
+	</delete>
+</mapper>
