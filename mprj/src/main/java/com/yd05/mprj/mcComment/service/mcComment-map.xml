@@ -10,10 +10,16 @@
 	</resultMap>
 	
 	<!-- comment 조회 -->
-	<select id="selectComments" resultMap="mcCommentMap" parameterType="com.yd05.mprj.mcComment.service.McCommentVO">
+	<select id="selectComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO" resultMap="mcCommentMap">
 		select * from mc_comments
-		where u_id = #{uId} and mc_id = #{mcId};
+		where mc_id = #{mcId}
 	</select>
+	
+	<!-- 입력 -->
+	<insert id="insertComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO">
+		insert into mc_comments
+		values (MC_SEQ.nextval, #{uId}, #{mcId}, #{commComment}, sysdate)
+	</insert>
 	
 	<!-- 삭제 -->
 	<delete id="deleteComments" parameterType="com.yd05.mprj.mcComment.service.McCommentVO">

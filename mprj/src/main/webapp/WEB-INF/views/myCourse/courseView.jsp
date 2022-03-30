@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<input type="hidden" value="${loginId}" id="loginId">
 <input type="hidden" value="${mcId}" id="mcId">
-<h1 class="text-center">${mcTitle}</h1>
+<input type="hidden" value="${uId}" id="uId">
+<h1 class="text-center mt36">${mcTitle}</h1>
 <div class="text-center">작성자 : ${uId}</div>
 <div class="text-center">작성일 : ${mcDate}</div>
 <div class="text-center">${mcDesc}</div>
@@ -11,11 +14,68 @@
 	</div>
 </div>
 
-<div id="mcComments">
-	<!-- 댓글 -->
+<div class="row justify-content-center">
+	<div class="col-8">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>내용</th>
+					<th style="text-align: right;">작성일</th>
+				</tr>
+			</thead>
+			<tbody id="mcComments">
+				<!-- 댓글 -->
+				<c:forEach items="${commList }" var="c">
+					<tr>
+						<td>
+							<input type="hidden" value="${c.mcId }">${c.commComment }<span>${c.uId }</span>
+						</td>
+						<td style="text-align: right;">${c.comRegDate }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<div class="row">
+			<div class="col-8">
+				<input type="text" class="form-control" id="commentVal" placeholder="로그인이 필요합니다...">
+			</div>
+			<div class="col-4">
+				<button class="btn btn-primary" onclick="frmCheck()">입력</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 	<script>
+		function frmCheck() {		
+			let lVal = loginId.value;
+			if(lVal != '') {
+				let m = mcId.value;
+				let u = uId.value;
+				let cVal = commentVal.value;
+				console.log(m, u)
+	
+				if(commentVal.value != '') {
+					fetch('ajaxAddComment.do?&uId=' + u + '&cVal=' + cVal + '&mcId=' + m, {
+						method: 'post',
+						headers: {'Content-type': 'application/x-www-form-urlencoded'}
+					})
+					.then(res => res.text())
+					.then(res => {
+						console.log(res)
+						location.reload();
+					})
+				} else {
+					alert('빈 댓글은 입력할 수 없습니다.');
+				}
+			} else {
+				let c = confirm('로그인이 필요합니다!');
+				if(c) {
+					location.href = 'login.do';
+				}
+			}
+		}
+
 		let resultJsonVal = ${ contentList };
 		console.log(resultJsonVal);
 
@@ -32,6 +92,13 @@
 		}
 
 		document.addEventListener('DOMContentLoaded', () => {
+			let lVal = loginId;
+			if(lVal.value != '') {
+				lVal.setAttribute('placeholder', '로그인이 필요합니다...');
+			} else {
+				lVal.setAttribute('placeholder', '댓글을 입력해주세요...');
+			}
+
 			console.log(resultJsonVal.length)
 			for (let i = 0; i < resultJsonVal.length; i++) {
 				console.log(resultJsonVal[i])
@@ -49,13 +116,18 @@
 						console.log(item)
 
 						// 출력
+						
+						let card = document.createElement('div');
+						card.setAttribute('class', 'card mt20 mb100');
+						
 						let out = document.createElement('div');
-						out.setAttribute('class', 'row mt20 mb100');
+						out.setAttribute('class', 'row g-0');
 
 						let divL = document.createElement('div');
-						divL.setAttribute('class', 'col-6');
+						divL.setAttribute('class', 'col-md-4');
 
 						let img = document.createElement('img');
+						img.setAttribute('class', 'img-fluid rounded-start');
 						if (item.firstimage != undefined) {
 							img.setAttribute('src', item.firstimage);
 							img.setAttribute('style', 'width:100%;');
@@ -63,24 +135,32 @@
 							img.setAttribute('src', 'images/noImage.jpg');
 							img.setAttribute('style', 'width:100%;');
 						}
-
 						divL.append(img);
 
 						let divR = document.createElement('div');
-						divR.setAttribute('class', 'col-6 course__row');
+						divR.setAttribute('class', 'col-md-8 course__row');
+
+						let cardBody = document.createElement('div');
+						cardBody.setAttribute('class', 'card-body');
 
 						let h4 = document.createElement('h4');
+						h4.setAttribute('class', 'card-title');
 						h4.innerText = item.title;
 
 						let span = document.createElement('span');
+						span.setAttribute('class', 'card-title');
 						span.innerText = '주소 : ' + item.addr1;
 
 						let p = document.createElement('p');
-						p.setAttribute('class', 'mt20')
+						p.setAttribute('class', 'card-title');
 						p.innerHTML = item.overview;
+						if(p.innerHTML.length >= 200) {
+							p.innerHTML = p.innerHTML.substring(0, 200) + '...';
+						}
 
 						if (item.homepage != '') {
-							let div = document.createElement('div');
+							let div = document.createElement('p');
+							p.setAttribute('class', 'card-title');
 							div.innerHTML = item.homepage;
 						}
 
@@ -103,11 +183,16 @@
 						icon.innerText = 'expand_more';
 						icon.setAttribute('class', 'material-icons course__arrow md-48');
 
-						divR.append(h4, span, p, div, form, icon);
+
+						cardBody.append(h4, span, p, div, form, icon);
+
+						divR.append(cardBody);
 
 						out.append(divL, divR);
 
-						view.append(out)
+						card.append(out);
+
+						view.append(card);
 
 						// title: "경복궁"
 						// addr1: "서울특별시 종로구 사직로 161"

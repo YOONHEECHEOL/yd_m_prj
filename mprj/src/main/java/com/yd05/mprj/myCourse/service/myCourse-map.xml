@@ -29,7 +29,7 @@
 	<update id="updateCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">
 		update my_course
 		set ts_id = #{tsId}, mc_title = #{mcTitle}, mc_description = #{mcDescription}
-		where mc_id = #{mcId};
+		where mc_id = #{mcId}
 	</update>
 	<!-- 삭제 -->
 	<delete id="deleteCourse" parameterType="com.yd05.mprj.myCourse.service.MyCourseVO">

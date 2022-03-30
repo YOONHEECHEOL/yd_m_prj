@@ -23,13 +23,9 @@
 <body>
 	<tiles:insertAttribute name="header" />
 	<tiles:insertAttribute name="nav" />
-	<div class="container-fluid dp-box">	
-		<div class="row hDisplay bodyCon">
-			<div class="col-12">
-			<tiles:insertAttribute name="menu" />
-			<tiles:insertAttribute name="body" />
-			</div>
-		</div>	
+	<div class="container-fluid hDisplay">
+		<tiles:insertAttribute name="menu" />
+		<tiles:insertAttribute name="body" />	
 	</div>
 	<tiles:insertAttribute name="foot" />
 </body>

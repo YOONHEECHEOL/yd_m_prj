@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.yd05.mprj.comm.Command;
+import com.yd05.mprj.mcComment.service.McCommentService;
+import com.yd05.mprj.mcComment.service.McCommentServiceImpl;
+import com.yd05.mprj.mcComment.service.McCommentVO;
 
 public class ViewCourse implements Command {
 
@@ -29,7 +32,7 @@ public class ViewCourse implements Command {
 		for(String str: contentList) {
 			clist.add(str.substring(3));
 		}		
-		
+				
 		// Val 담음
 		request.setAttribute("mcTitle", request.getParameter("mcTitle"));
 		request.setAttribute("mcId", request.getParameter("mcId"));
@@ -37,6 +40,13 @@ public class ViewCourse implements Command {
 		request.setAttribute("mcDate", request.getParameter("mcDate"));
 		request.setAttribute("mcDesc", request.getParameter("mcDescription"));
 		request.setAttribute("contentList", gson.toJson(clist));
+		request.setAttribute("loginId", (String) request.getSession().getAttribute("id"));
+		
+		McCommentService mdao = new McCommentServiceImpl();
+		McCommentVO vo = new McCommentVO();
+		vo.setMcId(request.getParameter("mcId"));
+		List<McCommentVO> commList = mdao.selectComments(vo);
+		request.setAttribute("commList", commList);
 		
 		return "myCourse/courseView.tiles";
 	}
