@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+  <%--   <%
+    String ls_test = 
+    session.setAttribute("Testing", ls_test);    // "Testing"을 키로 문자열을 저장
+   
+    session.setAttribute("MyData", 10);    // "MyData"를 키로 정수를 저장
+	%>
+ --%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,27 +17,10 @@
 </head>
 <body>
 
-
-
-
-
 <!-- 지도 api를 뿌리는 부분 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96d8362c4127f1303ff812329542ad1d"></script>
-<div class="row border-top p-3" style="margin-left: 350px; margin-right:50px;">
-	<div class="col-2">
-	<h5><strong>주소 <span style="color:red;">*</span></strong></h5>
-	</div>
-	<div class="col-auto">
-		<input type="hidden" name="place">
-		<input type="text" size="40" name="address" id="address" class="essential">
-		<input type="hidden" name="lat">
-		<input type="hidden" name="lng">
-	</div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=96d8362c4127f1303ff812329542ad1d&libraries=services"></script>
+<div id="map" style="width:900px;height:400px;">
 </div>
-
-
-
-
 
 
 
@@ -57,31 +49,7 @@
 </tbody>
 </table>
 
-
 <script>
-var geocoder = new kakao.maps.services.Geocoder();
-
-$("#address").click(function(){
-    new daum.Postcode({
-        oncomplete: function(data) {
-            $("#address").val(data.address);
-            $("#address").prop("readonly",true);
-            $("input[name=place]").val(data.sido);
-            console.log($("input[name=place]").val(data.sido));
-            var juso =  $("#address").val();
-        	geocoder.addressSearch(juso, callback);  
-        }
-    }).open();
-});
-
-var callback = function(result, status) {
-	if (status === kakao.maps.services.Status.OK) {
-		$("input[name=lng]").val(result[0].x);
-		$("input[name=lat]").val(result[0].y);
-	}
-};
-
-
 
 
 	var str = '&COURSE_ID='+${courseId};
@@ -92,9 +60,74 @@ var callback = function(result, status) {
 	xhtp.onload = function(){
 		var xml = xhtp.responseXML;
 		var data = xml.getElementsByTagName('item');
+		//var sessionName = document.querySelector('td:nth-child(3)').textContent;
+		var sessionName = document.getElementsByTagName('spotName').textContent;
 		console.log(data);
-		for(i of data){
-			if(i.querySelector('spotAreaId').textContent==="${spotAreaId}"){
+		//window.sessionStorage.setItem('spotName',sessionName);
+		
+		//var spotName = window.sessionStorage.getItem('spotName'); // 윈도우 세션상에서 값을 읽어오기
+			//console.log(document.querySelector("td:nth-child(3)").textContent);
+			for(i=0;i<data.length;i++){
+
+			if(data[i].querySelector('spotName').textContent == sessionName){
+				// 데이터 목록중 코스이름과 내가 선택한 값이 같은것을 선택(세션기준)
+				
+				//var addstr = data[i].querySelector('spotAreaName').textContent +" "+ data[i].querySelector('spotName').textContent.substring(4);
+				
+				
+				
+				console.log('i:'+i);
+				
+				
+				
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				
+				mapOption = {
+				    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				    level: 3 // 지도의 확대 레벨
+				};  
+
+				//지도를 생성합니다    
+				var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+				//주소-좌표 변환 객체를 생성합니다
+				var geocoder = new kakao.maps.services.Geocoder();
+
+				//주소로 좌표를 검색합니다
+				console.log('sessionName.substr(4):'+sessionName.substr(4));
+				geocoder.addressSearch(document.querySelector("td:nth-child(3)").textContent, function(result, status) {
+				
+				// 정상적으로 검색이 완료됐으면 
+				
+				 
+				 if (status === kakao.maps.services.Status.OK) {
+
+				  var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+				    // 결과값으로 받은 위치를 마커로 표시합니다
+				   var marker = new kakao.maps.Marker({
+				        map: map,
+				        position: coords
+				    });
+				 
+				    // 인포윈도우로 장소에 대한 설명을 표시합니다
+				    var infowindow = new kakao.maps.InfoWindow({
+				        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+spotName+'</div>'
+				    });
+				    infowindow.open(map, marker);
+
+				    // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+				    map.setCenter(coords);
+					} 
+				});
+				
+			  }
+			
+			
+			
+			
+			
+			if(data[i].querySelector('spotAreaId').textContent==="${spotAreaId}"){
 				var tr=document.createElement('tr');
 				var td1=document.createElement('td');//지역이름
 				var td2=document.createElement('td');// 코스이름
@@ -105,52 +138,29 @@ var callback = function(result, status) {
 				var td7=document.createElement('td');//체감온도
 				
 				
-				td1.innerText= i.querySelector('spotAreaName').textContent;
-				td2.innerText = i.querySelector('courseName').textContent;
-				td3.innerText = i.querySelector('spotName').textContent;
-				td4.innerText = i.querySelector('thema').textContent;
-				td5.innerText = i.querySelector('fdIndex').textContent;// 식중독
-				td6.innerText = i.querySelector('uvIndex').textContent;// 자외선
-				td7.innerText = i.querySelector('btIndex').textContent;// 체감온도
+				td1.innerText= data[i].querySelector('spotAreaName').textContent;
+				td2.innerText = data[i].querySelector('courseName').textContent;
+				td3.innerText = data[i].querySelector('spotName').textContent;
+				td4.innerText = data[i].querySelector('thema').textContent;
+				td5.innerText = data[i].querySelector('fdIndex').textContent;// 식중독
+				td6.innerText = data[i].querySelector('uvIndex').textContent;// 자외선
+				td7.innerText = data[i].querySelector('btIndex').textContent;// 체감온도
 				
 				tr.append(td1, td2 ,td3 ,td4 ,td5 ,td6 ,td7 );
 				output.append(tr);
 				
 				
 				
-				// 로드맵
-				
-				if(i.querySelector('mapx').textContent && i.querySelector('mapy').textContent){
-				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			    mapOption = { 
-			        center: new kakao.maps.LatLng(mapy, mapx), // 지도의 중심좌표
-			        level: 3 // 지도의 확대 레벨
-			    };
-				
-				var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-				// 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-				var iwContent = '<div style="padding:5px;font-size:xx-small;">'+i.querySelector('title').textContent+'<br><a href="https://map.kakao.com/link/map/'+i.querySelector('title').textContent+','+mapy+','+mapx+'" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/'+i.querySelector('title').textContent+','+mapy+','+mapx+'" style="color:blue" target="_blank">길찾기</a></div>' 
-			    iwPosition = new kakao.maps.LatLng(mapy, mapx), //인포윈도우 표시 위치입니다
-			    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-	
-				// 인포윈도우를 생성하고 지도에 표시합니다
-				var infowindow = new kakao.maps.InfoWindow({
-				   map: map, // 인포윈도우가 표시될 지도
-				    position : iwPosition, 
-				    content : iwContent,
-				    removable : iwRemoveable
-				});
-			    
-				
-				mapContainer.append(map);
-				// 아래 코드는 인포윈도우를 지도에서 제거합니다
-				// infowindow.close();  
-				}
-				
 			}
-		}	
+		
+			}
+		
 		
 	}
+	
+	
+	
+	
 	</script>
 
 

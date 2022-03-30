@@ -9,7 +9,7 @@ public class WeatherSpot2 implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		//response.setHeader('Access-Control-Allow-origin', 'https://localhost.com:8000');
 		return "weather/weatherSpot.tiles";
 	}
 

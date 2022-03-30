@@ -18,6 +18,10 @@ import org.json.simple.parser.JSONParser;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.weather.service.WeatherVO;
 
+
+
+
+
 public class WeatherSpot implements Command {
 
 	String page = "1";
@@ -29,6 +33,17 @@ public class WeatherSpot implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
+		
+		
+		//response.setHeader('Access-Control-Allow-origin', 'https://localhost.com:8000');
+
+
+		
+		
+		
+		
+		
+		
 		// 관광지 날씨보기 페이지로 이동
 		try {
 			String apiUrl = "http://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst";

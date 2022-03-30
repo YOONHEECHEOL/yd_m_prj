@@ -139,10 +139,10 @@ public class FrontController extends HttpServlet {
 	    map.put("/noticeUpdateConfirm.do", new NoticeUpdateConfirm());
 	    
 	    
-	    map.put("/weatherSpot.do", new WeatherSpot());
-	    map.put("/weatherData.do", new WeatherData());
 	    
-	    map.put("/weatherDetail.do", new WeatherDetail()); // 누르면 디테일하게
+	    map.put("/weatherData.do", new WeatherData());
+	    map.put("/weatherSpot.do", new WeatherSpot()); // spot list 출력 >> woong
+	    map.put("/weatherDetail.do", new WeatherDetail()); // 누르면 디테일하게 >> woong
 	    
 
 		// yes

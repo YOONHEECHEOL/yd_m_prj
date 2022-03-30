@@ -35,6 +35,8 @@ output.addEventListener('click', () => {
       let cId = str; // 세션 코스 아이디 저장
       console.log('cId:'+cId);
       courseId.value = cId; 
+     
+      let sN = 
       
       myForm.submit();
    
@@ -52,10 +54,10 @@ output.addEventListener('click', () => {
       var data = xml.getElementsByTagName('item');
       console.log(data);
       
-      for(let i of data){
+      for(let i=0;i<data.length;i++){
          
-         if(i.querySelector('sky').textContent){
-            switch(i.querySelector('sky').textContent){
+         if(data[i].querySelector('sky').textContent){
+            switch(data[i].querySelector('sky').textContent){
             case '1':
                var sky = "맑음";
                break;
@@ -89,11 +91,13 @@ output.addEventListener('click', () => {
                var td3 = document.createElement('td');
                var td4 = document.createElement('td');
                var td5 = document.createElement('td');
+               td2.setAttribute("id",i);
                
-               td1.innerText = i.querySelector('spotAreaId').textContent;
-               td2.innerText = i.querySelector('spotName').textContent;
-               td3.innerText = i.querySelector('courseName').textContent;
-               td4.innerText = i.querySelector('thema').textContent;
+               
+               td1.innerText = data[i].querySelector('spotAreaId').textContent;
+               td2.innerText = data[i].querySelector('spotName').textContent;
+               td3.innerText = data[i].querySelector('courseName').textContent;
+               td4.innerText = data[i].querySelector('thema').textContent;
                td5.innerText = sky;
                
                tr.append(td1, td2, td3, td4, td5);
