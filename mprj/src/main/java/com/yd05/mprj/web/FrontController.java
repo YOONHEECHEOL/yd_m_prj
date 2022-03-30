@@ -51,6 +51,7 @@ import com.yd05.mprj.visit.command.VisitDelete;
 import com.yd05.mprj.visit.command.VisitInsert;
 import com.yd05.mprj.visit.command.VisitList;
 import com.yd05.mprj.weather.command.WeatherData;
+import com.yd05.mprj.weather.command.WeatherDetail;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishDelete;
 import com.yd05.mprj.wish.command.WishInsert;
@@ -140,6 +141,8 @@ public class FrontController extends HttpServlet {
 	    
 	    map.put("/weatherSpot.do", new WeatherSpot());
 	    map.put("/weatherData.do", new WeatherData());
+	    
+	    map.put("/weatherDetail.do", new WeatherDetail()); // 누르면 디테일하게
 	    
 
 		// yes
