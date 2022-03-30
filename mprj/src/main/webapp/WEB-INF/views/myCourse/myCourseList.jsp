@@ -10,7 +10,7 @@
 	</div>
 </div>
 
-<div class="row mt20 gy-3" id="courseList">
+<div class="row mt20 g-3" id="courseList">
 	<c:forEach items="${courseList }" var="c">
 		<div class="col-3">			
 			<div class="card">
@@ -28,8 +28,8 @@
 					</p>					
 				</div>
 				<div class="card-body">
-					<button class="btn btn-primary" id="toViewBtn">자세히보기</button>
-					<button class="btn btn-danger">삭제</button>
+					<button onclick="viewCourse()" class="btn btn-primary" id="toViewBtn">자세히보기</button>
+					<button onclick="deleteCourse(${c.mcId})" class="btn btn-danger" >삭제</button>
 				</div>
 				<form action="viewCourse.do" id="toView" method="get" class="np">
 					<c:if	test="${not empty c.mcDate}">
@@ -46,19 +46,24 @@
 				</form>
 			</div>			
 		</div>
-	</c:forEach>
-	
+	</c:forEach>	
 </div>
-
-<div id="input"></div>
 <!-- push test -->
 
 <script>
-	document.addEventListener('DOMContentLoaded', () => {
-		courseList.addEventListener('click', () => {
-			let nT = event.target.parentNode.nextElementSibling;
-			console.log(nT);
-			nT.submit();
-		})
-	})
+	function viewCourse() {
+		try {
+				let nT = event.target.parentNode.nextElementSibling;
+				console.log(nT);
+				nT.submit();
+			} catch (error) {
+				//
+			}
+	}
+	function deleteCourse(s) {
+		let check = confirm('정말 삭제하시겠습니까?');
+		if(check) {
+			location.href = 'deleteCourse.do?mcId=' + s;
+		}
+	}
 </script>

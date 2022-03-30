@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yd05.mprj.visit.service.VisitMapper">
+	<resultMap type="com.yd05.mprj.visit.service.VisitVO" id="VisitMap">
+		<id property="uId" column="u_id" />
+		<result property="contentTypeId" column="content_type_id" />
+		<result property="contentId" column="content_id"/>
+		<result property="firstImage" column="first_image" />
+	</resultMap>
+	
+	<select id="selectVisit" parameterType="com.yd05.mprj.visit.service.VisitVO" resultMap="VisitMap">
+		SELECT * FROM VISIT WHERE U_ID = #{uId} ORDER BY TITLE
+	</select>
+	
+	<insert id="insertVisit" parameterType="com.yd05.mprj.visit.service.VisitVO">
+		INSERT INTO VISIT VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1})
+	</insert>
+	
+	<delete id="deleteVisit" parameterType="com.yd05.mprj.visit.service.VisitVO">
+		DELETE VISIT WHERE CONTENT_ID = #{contentId}
+	</delete>
+	
+	<select id="isCIdCheck" parameterType="String" resultType="boolean">
+		SELECT CASE WHEN COUNT(CONTENT_ID) = 1 THEN 0 ELSE 1 END AS CID FROM VISIT WHERE CONTENT_ID = #{str1} and u_id = #{str2}
+	</select>
+</mapper>

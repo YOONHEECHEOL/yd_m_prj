@@ -93,6 +93,9 @@ xhtp.onload = function(){
 	
 	
 	// tbody [#output]
+	console.log(url);
+	
+	
 	
 	var table = document.createElement('table');
 	var tr = document.createElement('tr');

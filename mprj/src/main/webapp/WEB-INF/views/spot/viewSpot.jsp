@@ -1,14 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 	<div class="row justify-content-center">
 		<div class="col-4">
-			<div class="card" id="view">
+			<div class="card mt36" id="view">
 				<!-- view -->
 			</div>
-		</div>
-	</div>
-
-	<div class="row justify-content-center">
-		<div class="col-2 mt40">
+			<form action="wishInsert.do" method="get" id="frm">
+				<input type="hidden" value="" name="contentId" id="contentId">
+				<input type="hidden" value="" name="contentTypeId" id="contentTypeId">
+				<input type="hidden" value="" name="firstImage" id="firstImage">
+				<input type="hidden" value="" name="title" id="title">
+				<input type="hidden" value="" name="addr1" id="addr1">
+			</form>
 			<button onclick="wishBtn()" class="btn btn-primary">좋아요!</button>
 		</div>
 	</div>
@@ -29,6 +31,7 @@
 
 		document.addEventListener('DOMContentLoaded', () => {
 			let ut = ${ contentId };
+			contentId.value = ut;
 			let url = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?serviceKey=YEoy%2B93A%2Fp1nbyehg%2F0UcWMYX5ZjT73RId2NuFd3L0M6%2FEMlAYbTyjfB7gJzZvC5t2qVeHOrFCaviPGo%2BWx5rA%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=AppTest&contentId=' + ut + '&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y';
 
 			fetch(url, {
@@ -40,7 +43,13 @@
 					let item = xmlToJson(res).response.body.items.item;
 
 					let img = document.createElement('img');
-					img.setAttribute('src', item.firstimage);
+					if(item.firstimage != undefined) {
+						img.setAttribute('src', item.firstimage);
+						firstImage.value = item.firstimage;
+					} else {
+						img.setAttribute('src', 'images/noImage.jpg');
+						firstImage.value = 'undefined';
+					}
 					img.setAttribute('class', 'card-img-top');
 
 					let cardBody = document.createElement('div');
@@ -48,16 +57,18 @@
 
 					let h4 = document.createElement('h4');
 					h4.setAttribute('class', 'mt20');
+					title.value = item.title;
 					h4.innerText = item.title;
 
 					let span = document.createElement('span');
+					addr1.value = item.addr1;
 					span.innerText = '주소 : ' + item.addr1;
 
 					let p = document.createElement('p');
 					p.setAttribute('class', 'mt20')
 					p.innerText = item.overview;
 
-					if (item.homepage != '') {
+					if (item.homepage != undefined) {
 						let div = document.createElement('div');
 						div.innerHTML = item.homepage;
 						cardBody.prepend(div);
@@ -101,14 +112,6 @@
 		})
 
 		function wishBtn() {
-			let utt = ${ contentId };
-			fetch('ajaxSpotAddWish.do?contentId=' + utt, {
-				method: 'post',
-				headers: {'Content-type': 'application/x-www-form-urlencoded' }
-			})
-			.then(res => res.json())
-			.then(res => {
-				console.log(res);
-			})
+			frm.submit();
 		}
 	</script>

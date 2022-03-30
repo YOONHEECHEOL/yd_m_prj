@@ -7,7 +7,7 @@
 		<div class="card-body">
 			<c:if test="${not empty message }"><span>${message}</span></c:if>
 			<h3>로그인</h3>
-			<form action="loginCheck.do" id="frm" method="get">
+			<form action="loginCheck.do" id="frm" method="post">
 				<div class="form-group">
 					<input placeholder="id ..." class="form-control" type="email" name="uId" id="uId"
 						required><br>

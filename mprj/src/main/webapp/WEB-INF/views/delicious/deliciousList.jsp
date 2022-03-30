@@ -21,13 +21,12 @@
 		</div>
 	
 		<div>
-			<!-- <input type="text" placeholder="cat1=" id="cat1"> -->
 			<select name="cat1" id="cat1"></select>
 			<select name="cat2" id="cat2"></select>
 			<select name="cat3" id="cat3"></select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-primary mt20" onclick="submitFrm()">확인하기</button>
 
-			<!-- 메뉴 다시 선택시 결과 값 그대로임... 수정 -->
+			<!-- 메뉴 다시 선택시 결과 값 오류... 수정 -->
 		</div>	
 		<br />
 		<br />
@@ -151,7 +150,6 @@
 	   });
 	   
    }
-   
       // yoon
      	output.addEventListener('click', () => {
      		let contentTypeIdVal = contentTypeSel.value;

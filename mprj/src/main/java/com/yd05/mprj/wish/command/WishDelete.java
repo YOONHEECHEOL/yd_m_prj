@@ -16,17 +16,15 @@ public class WishDelete implements Command {
 		WishVO vo = new WishVO();
 		
 		vo.setContentId((String)request.getParameter("contentId"));
-		System.out.println(request.getParameter("contentId"));
+		//System.out.println(request.getParameter("contentId"));
 		
 		int n = dao.deleteWish(vo);
 		
 		if(n != 0) {
-			request.setAttribute("message", "삭제가 완료되었습니다.");
-			return "wish/message.tiles";
+			return "wishList.do";
 		} else {
-			request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
-			return "wish/message.tiles";
+			request.setAttribute("inFail", "잠시 후 다시 시도해 주세요.");
+			return "wish/wishMessage.tiles";
 		}
 	}
-
 }

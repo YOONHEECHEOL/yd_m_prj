@@ -14,9 +14,12 @@ import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.command.HomeCommand;
 import com.yd05.mprj.delicious.command.DeliciousList;
 import com.yd05.mprj.delicious.command.DeliciousSelect;
+import com.yd05.mprj.indel.command.inDel;
+import com.yd05.mprj.mcComment.command.AjaxAddComment;
 import com.yd05.mprj.member.command.MemberList;
 import com.yd05.mprj.myCourse.command.AddMyCourse;
 import com.yd05.mprj.myCourse.command.CourseList;
+import com.yd05.mprj.myCourse.command.DeleteCourse;
 import com.yd05.mprj.myCourse.command.InsertCourse;
 import com.yd05.mprj.myCourse.command.MyCourseList;
 import com.yd05.mprj.myCourse.command.ViewCourse;
@@ -44,7 +47,11 @@ import com.yd05.mprj.user.command.Logout;
 import com.yd05.mprj.user.command.Mypage;
 import com.yd05.mprj.user.command.SignUp;
 import com.yd05.mprj.user.command.SignUpCheck;
-import com.yd05.mprj.user.command.VisitedList;
+import com.yd05.mprj.visit.command.VisitDelete;
+import com.yd05.mprj.visit.command.VisitInsert;
+import com.yd05.mprj.visit.command.VisitList;
+import com.yd05.mprj.weather.command.WeatherData;
+import com.yd05.mprj.weather.command.WeatherDetail;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishDelete;
 import com.yd05.mprj.wish.command.WishInsert;
@@ -91,7 +98,9 @@ public class FrontController extends HttpServlet {
 		// spot
 		map.put("/viewSpot.do", new viewSpot());		
 		map.put("/ajaxSpotAddWish.do", new AjaxSpotAddWish());		
-		
+		map.put("/deleteCourse.do", new DeleteCourse());
+		// comment
+		map.put("/ajaxAddComment.do", new AjaxAddComment());
 		
 		// ======================woong=======================
 		// 이곳에 작성
@@ -110,7 +119,12 @@ public class FrontController extends HttpServlet {
 		map.put("/wishList.do", new WishList()); // wish목록
 		map.put("/wishDelete.do", new WishDelete()); // wish 삭제
 		// visited
-		map.put("/visitedList.do", new VisitedList());
+		map.put("/visitInsert.do", new VisitInsert()); //db insert
+		map.put("/visitList.do", new VisitList()); // visit 목록
+		map.put("/visitDelete.do", new VisitDelete()); // visit 삭제
+		// indel
+		map.put("/inDel.do", new inDel()); // wish 삭제 후 visit 등록 
+		
 		
 		// ======================domin=======================
 		// 이곳에 작성
@@ -126,6 +140,9 @@ public class FrontController extends HttpServlet {
 	    
 	    
 	    map.put("/weatherSpot.do", new WeatherSpot());
+	    map.put("/weatherData.do", new WeatherData());
+	    
+	    map.put("/weatherDetail.do", new WeatherDetail()); // 누르면 디테일하게
 	    
 
 		// yes

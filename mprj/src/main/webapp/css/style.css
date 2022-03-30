@@ -3,6 +3,8 @@
 body {
 	font-family: 'Noto Sans KR', sans-serif !important;
 	font-size: 16px !important;
+	max-width: 1920px;
+	margin: 0 auto;
 }
 a {
 	color: #222;
@@ -60,10 +62,6 @@ ul li {
 	font-family: 'Anton', sans-serif;
 	color: #fff;
 }
-.bodyCon div {
-	padding: 0 !important;
-	margin: 0 !important;
-}
 .carousel-inner {
 	max-height: 600px;
 }
@@ -77,6 +75,11 @@ ul li {
 	border-bottom: 1px solid #222;
 	padding: 0 0 8px 0;
 	margin: 20px 0 8px 0;
+}
+.dp-box {
+	max-width: 1920px;
+	overflow: hidden;
+	margin: 0 0 80px !important;
 }
 
 /* products */
@@ -111,8 +114,8 @@ ul li {
 }
 .course__arrow {
 	position: absolute;
-	bottom: -76px;
-	left: 0;
+	bottom: -80px;
+	left: 20%;
 	display: block;
 	width: 60px;
 	padding-top: 8px;
