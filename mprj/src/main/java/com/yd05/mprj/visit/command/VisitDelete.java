@@ -20,11 +20,10 @@ public class VisitDelete implements Command {
 		int n =dao.deleteVisit(vo);
 		
 		if(n != 0) {
-			request.setAttribute("message", "삭제가 완료되었습니다.");
-			return "visit/deleteMessage.tiles";
+			return "visitList.do";
 		} else {
-			request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
-			return "visit/deleteMessage.tiles";
+			request.setAttribute("inFail", "잠시 후 다시 시도해 주세요.");
+			return "visit/visitMessage.tiles";
 		}
 	}
 

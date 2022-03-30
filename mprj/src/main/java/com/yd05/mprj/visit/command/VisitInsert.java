@@ -36,17 +36,16 @@ public class VisitInsert implements Command {
 			int n = dao.insertVisit(vo);
 			if (n != 0) {
 				// 성공
-				request.setAttribute("message", "VISIT 목록을 확인하시겠습니까?");
-				return "visit/insertSuccess.tiles";
+				return "visitList.do";
 			} else {
 				// 실패
-				request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
-				return "visit/insertMessage.tiles";
+				request.setAttribute("inFail", "잠시 후 다시 시도해 주세요.");
+				return "visit/visitMessage.tiles";
 			}
 		} else {
 			// insert 불가능(false)
-			request.setAttribute("message", "이미 VISIT 목록에 있습니다." + "VISIT 목록을 확인하시겠습니까?"); // 줄바꿈확인
-			return "visit/insertSuccess.tiles";
+			request.setAttribute("inSuccess", "이미 VISIT 목록에 있습니다." + "VISIT 목록을 확인하시겠습니까?"); // 줄바꿈확인
+			return "visit/visitMessage.tiles";
 		}
 
 	}

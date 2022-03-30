@@ -35,17 +35,16 @@ public class WishInsert implements Command {
 			int n = dao.insertWish(vo);
 			if(n !=0 ) {
 				// 성공
-				request.setAttribute("message", "WISH 목록을 확인하시겠습니까?");
-				return "wish/insertSuccess.tiles";
+				return "wishList.do";
 			} else {
 				// 서버 실패
-				request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
-				return "wish/insertMessage.tiles";
+				request.setAttribute("inFail", "잠시 후 다시 시도해 주세요.");
+				return "wish/wishMessage.tiles";
 			}
 		} else {
 			// insert 불가능(false)
-			request.setAttribute("message", "이미 WISH 목록에 있습니다." + "WISH 목록을 확인하시겠습니까?"); // 줄바꿈확인
-			return "wish/insertSuccess.tiles";
+			request.setAttribute("inSuccess", "이미 WISH 목록에 있습니다." + "WISH 목록을 확인하시겠습니까?"); // 줄바꿈확인
+			return "wish/wishMessage.tiles";
 		}
 		
 	}

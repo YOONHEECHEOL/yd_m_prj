@@ -21,12 +21,10 @@ public class WishDelete implements Command {
 		int n = dao.deleteWish(vo);
 		
 		if(n != 0) {
-			request.setAttribute("message", "삭제가 완료되었습니다.");
-			return "wish/deleteMessage.tiles";
+			return "wishList.do";
 		} else {
-			request.setAttribute("message", "잠시 후 다시 시도해 주세요.");
-			return "wish/deleteMessage.tiles";
+			request.setAttribute("inFail", "잠시 후 다시 시도해 주세요.");
+			return "wish/wishMessage.tiles";
 		}
 	}
-
 }

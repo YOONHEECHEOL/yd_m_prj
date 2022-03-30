@@ -8,7 +8,7 @@ img{
 }
 </style>
 
-<form id="wishFrm" name="wishFrm">	
+<form id="frm" name="frm">	
 	<div id="output">
 		<div id="title"></div>
 		<div id="subOutput" style="display:inblock">
@@ -22,18 +22,37 @@ img{
 		<div id="imgs"></div>
 		<br/>
 
-		<div>
-			<button type="button" class="btn btn-primary mt20" onclick="location.href='deliciousList.do'">목록</button>
-			<c:if test="${not empty id}">
-				<button type="submit" class="btn btn-primary mt20" formaction="wishInsert.do" formmethod="post">가보고싶어요!</button>
-				<button type="submit" class="btn btn-primary mt20" formaction="visitInsert.do" formmethod="post">가봤어요!</button>
-			</c:if>
-		</div>
 		<br/>
 	</div>
 </form>
+		<div>			
+			<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
+			<c:if test="${not empty id}">
+				<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
+				<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
+			</c:if>
+		</div>
 
 <script>
+	function wishBtnCheck() {
+		let conf = confirm('WISH 목록에 추가하시겠습니까?');
+		if(conf) {
+			// 확인
+			frm.action = 'wishInsert.do';
+			frm.method = 'post';
+			frm.submit();
+		}
+	}
+	
+	function visitBtnCheck(){
+		let conf = confirm('VISIT 목록에 추가하시겠습니까?');
+		if(conf){
+			frm.action = 'visitInsert.do';
+			frm.method = 'post';
+			frm.submit();
+		}
+	}
+
 	let contentTypeId = ${DeliCtid}
 	let contentId = ${DeliCid}
 	
@@ -93,7 +112,7 @@ img{
 					overviewDiv.append(p);
 					
 					// input영역
-					let form = document.querySelector('#wishFrm');
+					let form = document.querySelector('#frm');
 					// contentTypeId
 					let input1 = document.createElement('input');
 					input1.setAttribute('type', 'hidden');
