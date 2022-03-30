@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.yd05.mprj.comm.Command;
-import com.yd05.mprj.notice.service.NoticeService;
-import com.yd05.mprj.notice.service.NoticeVO;
-import com.yd05.mprj.notice.serviceImpl.NoticeServiceImpl;
+import com.yd05.mprj.weather.service.WeatherService;
+import com.yd05.mprj.weather.service.WeatherVO;
+import com.yd05.mprj.weather.serviceImpl.WeatherServiceImpl;
 
 public class AjaxSortWeather implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		NoticeService noticeDao = new NoticeServiceImpl();
+		WeatherService item = new WeatherServiceImpl();
 		String key = request.getParameter("key");
 		
 		System.out.println(key);
 
-		List<NoticeVO> list = noticeDao.noticeSortList(key);
+		List<WeatherVO> list = item.weatherSortList(key);
 		String data = null;
 		try {
 		    data = new ObjectMapper().writeValueAsString(list); //json 객체로 변환 한다.

@@ -16,12 +16,12 @@ public class AjaxWeatherSearch implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		WeatherService WeatherDao = new WeatherServiceImpl();
+		WeatherService item = new WeatherServiceImpl();
 		String key = request.getParameter("key");
 		String val = request.getParameter("val");
 		System.out.println("key :"+key);
 		System.out.println("val:"+val);
-		List<WeatherVO> list = WeatherDao.weatherSelectSearchList(key, val);
+		List<WeatherVO> list = item.weatherSelectSearchList(key, val);
 		String data = null;
 		try {
 		    data = new ObjectMapper().writeValueAsString(list); //json 객체로 변환 한다.

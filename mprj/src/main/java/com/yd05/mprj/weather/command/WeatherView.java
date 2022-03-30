@@ -4,17 +4,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
+import com.yd05.mprj.weather.service.WeatherService;
+import com.yd05.mprj.weather.serviceImpl.WeatherServiceImpl;
 
-public class WeatherDetail implements Command {
+public class WeatherView implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-		request.setAttribute("spotAreaId", request.getParameter("spotAreaId"));
-		request.setAttribute("courseId", request.getParameter("courseId"));
-		
-		return "weather/weatherDetail.tiles";
+		WeatherService item = new WeatherServiceImpl();
+		WeatherVO vo = new WeatherVO();
+		return null;
 	}
 
 }
