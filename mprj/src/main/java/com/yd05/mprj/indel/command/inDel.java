@@ -62,20 +62,11 @@ public class inDel implements Command {
 		} else {
 			// insert 불가능(false)
 			// wishList 삭제
-			int n = wDao.deleteWish(wVo);
-			if (n != 0) {
+			int y = wDao.deleteWish(wVo);
+			if (y != 0) {
 				// delete 성공
-				// insert 작업
-				int x = vDao.insertVisit(vVo);
-				if (x != 0) {
-					// insert 성공
-					request.setAttribute("indelSuccess", "이미 VISIT 목록에 있습니다." + "VISIT 목록을 확인하시겠습니까?");
-					return "inDel/inDelMessage.tiles";
-				} else {
-					// insert 서버 실패
-					request.setAttribute("indelFail", "잠시 후 다시 시도해 주세요.");
-					return "inDel/inDelMessage.tiles";
-				}
+				request.setAttribute("indelSuccess", "이미 VISIT 목록에 있습니다." + "VISIT 목록을 확인하시겠습니까?");
+				return "inDel/inDelMessage.tiles";
 			} else {
 				// delete 실패
 				request.setAttribute("indelFail", "잠시 후 다시 시도해 주세요.");

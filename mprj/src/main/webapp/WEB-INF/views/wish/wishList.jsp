@@ -9,6 +9,9 @@ th {
 </style>
 
 <div>
+	<div>
+		<h1>WISH LIST</h1>
+	</div>
 	<form id="wishFrm" name="wishFrm">
 		<input type="hidden" id="contentTypeId" name="contentTypeId">
 		<input type="hidden" id="contentId" name="contentId">
@@ -29,22 +32,21 @@ th {
 					<c:if test="${empty wishList }">
 						<tr>
 							<td colspan="4">WISH 목록이 존재하지 않습니다. 지금 찜하러 가보세요!</td>
-							
 						</tr>
 					</c:if>
 					<c:if test="${not empty wishList }">
 						<c:forEach items="${wishList }" var="w">
 							<tr>
-								<td id="img">
+								<td>
 									<c:if test="${w.firstImage ne 'undefined' }">
 										<img style="pointer-events:none;" src="${w.firstImage }">
 									</c:if>
 									<c:if test="${w.firstImage eq 'undefined' }">
-										<img src="images/noImage.jpg">
+										<img style="pointer-events:none;" src="images/noImage.jpg">
 									</c:if>
 								</td>
-								<td id="title">${w.title }</td>
-								<td id="addr">${w.addr1 }</td>
+								<td>${w.title }</td>
+								<td>${w.addr1 }</td>
 								<td>
 									<input type="hidden" id="hContentTypeId" name="hContentTypeId" value="${w.contentTypeId }">
 									<input type="hidden" id="hContentId" name="hContentId" value="${w.contentId }">
@@ -66,7 +68,7 @@ th {
 </div>
 <br />
 <div>
-	<button type="button" class="btn btn-primary mt20" onclick="location.href='deliciousList.do'">찜하러가기</button>
+	<a href="deliciousList.do" class="btn btn-primary mt20">찜하러가기</a>
 </div>
 
 <script type="text/javascript">
@@ -74,19 +76,24 @@ th {
 tab.addEventListener('click', () => {
 	let contentTypeIdVal = event.path[1].childNodes[7].childNodes[1].getAttribute('value');
 	let contentIdVal = event.path[1].childNodes[7].childNodes[3].getAttribute('value');
+// 	let contentTypeIdVal = document.querySelector('#hContentTypeId').value;
+// 	let contentIdVal = document.querySelector('#hContentId').value;
 	
 	contentTypeId.value = contentTypeIdVal;
 	contentId.value = contentIdVal;
 	
 	console.log(contentTypeIdVal + ' ' + contentIdVal);
 	
-	wishFrm.action="deliciousSelect.do"
+	wishFrm.action="deliciousSelect.do";
 	wishFrm.method="post";
 	wishFrm.submit();
 })
 
 // 다녀옴 버튼 처리
-function visitBtnFun(){	
+function visitBtnFun(){
+// 	document.querySelector('#tab').addEventListener("click", function(event){
+// 		event.preventDefault();
+// 	});
 	let contentTypeIdVal = document.querySelector('#hContentTypeId').value;
 	let contentIdVal = document.querySelector('#hContentId').value;
 	let firstImageVal = document.querySelector('#hFirstImage').value;

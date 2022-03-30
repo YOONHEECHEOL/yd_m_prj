@@ -9,8 +9,12 @@ th {
 </style>
 
 <div>
-	<form id="visitFrm" name="visitFrm" action="deliciousSelect.do"
-		method="post">
+	<div>
+		<h1>***********VISIT LIST</h1>
+	</div>
+	<form id="visitFrm" name="visitFrm">
+		<input type="hidden" id="contentTypeId" name="contentTypeId">
+		<input type="hidden" id="contentId" name="contentId">
 		<div id="output">
 			<table>
 				<thead>
@@ -24,23 +28,25 @@ th {
 				<tbody id="tab">
 					<c:if test="${empty visitList }">
 						<tr>
-							<td colspan="4">VISIT 목록이 존재하지 않습니다. 지금 찜하러 가보세요!</td>
-
+							<td colspan="4">VISIT 목록이 존재하지 않습니다. 지금 추가하러 가보세요!</td>
 						</tr>
 					</c:if>
 					<c:if test="${not empty visitList }">
 						<c:forEach items="${visitList }" var="v">
 							<tr>
-								<td id="img"><c:if test="${v.firstImage ne 'undefined' }">
-										<img src="${v.firstImage }">
-									</c:if> <c:if test="${v.firstImage eq 'undefined' }">
-										<img src="images/noImage.jpg">
-									</c:if></td>
-								<td id="title">${v.title }</td>
-								<td id="addr">${v.addr1 }</td>
 								<td>
-									<input type="hidden" id="contentTypeId" name="contentTypeId" value="${v.contentTypeId }">
-									<input type="hidden" id="contentId" name="contentId" value="${v.contentId }">
+									<c:if test="${v.firstImage ne 'undefined' }">
+										<img style="pointer-events:none;" src="${v.firstImage }">
+									</c:if>
+									<c:if test="${v.firstImage eq 'undefined' }">
+										<img style="pointer-events:none;" src="images/noImage.jpg">
+									</c:if>
+								</td>
+								<td>${v.title }</td>
+								<td>${v.addr1 }</td>
+								<td>
+									<input type="hidden" id="hContentTypeId" name="hContentTypeId" value="${v.contentTypeId }">
+									<input type="hidden" id="hContentId" name="hContentId" value="${v.contentId }">
 									<button type="submit" class="btn btn-primary mt20" onclick="delBtnCheck()">삭제</button>
 								</td>
 							</tr>
@@ -55,27 +61,38 @@ th {
 </div>
 <br />
 <div>
-	<button type="button" class="btn btn-primary mt20" onclick="location.href='deliciousList.do'">관광지 목록으로 가기</button>
+	<a href="deliciousList.do" class="btn btn-primary mt20">관광지 목록으로 가기</a>
 </div>
 
 <script type="text/javascript">
+
 // 클릭시 view page 이동
 tab.addEventListener('click', () => {
 	let contentTypeIdVal = event.path[1].childNodes[7].childNodes[1].getAttribute('value');
 	let contentIdVal = event.path[1].childNodes[7].childNodes[3].getAttribute('value');
 	
+	contentTypeId.value = contentTypeIdVal;
+	contentId.value = contentIdVal;
+	
 	console.log(contentTypeIdVal + ' ' + contentIdVal);
 	
+	visitFrm.action="deliciousSelect.do";
+	visitFrm.method="post";
 	visitFrm.submit();
 })
 
 // 삭제버튼 처리
 function delBtnCheck(){
+	let contentIdVal = document.querySelector('#hContentId').value;
+	contentId.value = contentIdVal;
+	
+	//console.log(contentIdVal + ' ' + contentId.value);
+	
 	let conf = confirm('삭제하시겠습니까?');
 	if(conf){
-		wishFrm.action="visitDelete.do";
-		wishFrm.method="post";
-		wishFrm.submit();
+		visitFrm.action="visitDelete.do";
+		visitFrm.method="post";
+		//wishFrm.submit();
 	}
 }
 </script>

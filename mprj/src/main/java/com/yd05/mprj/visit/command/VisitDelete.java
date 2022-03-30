@@ -16,6 +16,7 @@ public class VisitDelete implements Command {
 		VisitVO vo = new VisitVO();
 		
 		vo.setContentId(request.getParameter("contentId"));
+		System.out.println(request.getParameter("contentId"+"0000"));
 		
 		int n =dao.deleteVisit(vo);
 		
