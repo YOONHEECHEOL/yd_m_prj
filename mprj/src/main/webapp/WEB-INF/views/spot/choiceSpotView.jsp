@@ -136,19 +136,34 @@
 					// infowindow.close();  
 					}
 		}else if(addr1==str){// 클릭한것이 주소라면
+			if(i.querySelector('benika') && i.querySelector('benika').textContent.equals(1)){
+				var struc = "베니카";
+				
+			}else if(i.querySelector('hanOk') && i.querySelector('hanOk').textContent.equals(1)){
+				var struc = "한옥";
+				
+			}else if(i.querySelector('goodStay') && i.querySelector('goodStay').textContent.equals(1)){
+				var struc = "굿스테이";
+				
+			}else{
+				var struc = "구분<br/>없음";
+				
+			}
+			
+			
 			// 내용부분
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td');
 			var td3 = document.createElement('td');
 			var td4 = document.createElement('td');
-			
+			var td5 = document.createElement('td');
 			td1.innerText = i.querySelector('title').textContent;
 			td2.innerText = i.querySelector('addr1').textContent;
 			td3.innerText = i.querySelector('tel').textContent;
 			td4.innerHTML = '<img src="'+i.querySelector('firstimage2').textContent+'" width="100px";height="70px;">';
-			
-			tr.append(td1, td2, td3, td4);
+			td5 = '<b>'+struc+'</b>';
+			tr.append(td1, td2, td3, td4, td5);
 			output.append(tr);
 			// 로드맵
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -176,18 +191,34 @@
 			// infowindow.close();  
 			
 		}else if(tel==str){// 클릭한것이 전화번호라면
+			
+			if(i.querySelector('benika') && i.querySelector('benika').textContent.equals(1)){
+				var struc = "베니카";
+				
+			}else if(i.querySelector('hanOk') && i.querySelector('hanOk').textContent.equals(1)){
+				var struc = "한옥";
+				
+			}else if(i.querySelector('goodStay') && i.querySelector('goodStay').textContent.equals(1)){
+				var struc = "굿스테이";
+				
+			}else{
+				var struc = "구분<br/>없음";
+				
+			}
+		
 			// 내용부분
 			var tr = document.createElement('tr');
 			var td1 = document.createElement('td');
 			var td2 = document.createElement('td');
 			var td3 = document.createElement('td');
 			var td4 = document.createElement('td');
-			
+			var td5 = document.createElement('td');
 			td1.innerText = i.querySelector('title').textContent;
 			td2.innerText = i.querySelector('addr1').textContent;
 			td3.innerText = i.querySelector('tel').textContent;
-			
-			tr.append(td1, td2, td3, td4);
+			td4.innerHTML = '<img src="'+i.querySelector('firstimage2').textContent+'" width="100px";height="70px;">';
+			td5.innerHTML = '<b>'+struc+'</b>';
+			tr.append(td1, td2, td3, td4, td5);
 			output.append(tr);
 			// 로드맵
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
