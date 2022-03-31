@@ -119,6 +119,7 @@
 		function addEmptyOption(key) {
 			let option = document.createElement('option');
 			option.innerText = '선택';
+			option.value = '';
 			key.append(option);
 		}
 

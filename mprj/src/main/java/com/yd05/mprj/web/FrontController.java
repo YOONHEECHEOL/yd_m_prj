@@ -35,6 +35,7 @@ import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.AjaxSpotAddWish;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.ChoiceSpotView;
+import com.yd05.mprj.spot.command.KeySearch;
 import com.yd05.mprj.spot.command.NextRecSpot;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
@@ -101,6 +102,9 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteCourse.do", new DeleteCourse());
 		// comment
 		map.put("/ajaxAddComment.do", new AjaxAddComment());
+		// keySearch page
+		map.put("/keySearch.do", new KeySearch());
+		
 		
 		// ======================woong=======================
 		// 이곳에 작성

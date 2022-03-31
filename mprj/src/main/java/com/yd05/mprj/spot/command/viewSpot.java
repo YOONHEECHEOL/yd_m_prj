@@ -14,5 +14,4 @@ public class viewSpot implements Command {
 		
 		return "spot/viewSpot.tiles";
 	}
-
 }
