@@ -1,33 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<h1 class="text-center">음식점 조회</h1>
-<form id="DeliFrm" name="DeliFrm">
-	<input type="hidden" id="contentTypeId" name="contentTypeId" value="39"> 
-	<input type="hidden" id="contentId" name="contentId">
-	<input type="hidden" id="mapx" name="mapx">
-	<input type="hidden" id="mapy" name="mapy">
-	<input type="hidden" id="mlevel" name="mlevel">
-	<div>
-		<select name="cat3" id="cat3"  class="form-select">
-			<option value="">선택</option>
-			<option value="A05020100">한식</option>
-			<option value="A05020200">서양식</option>
-			<option value="A05020300">일식</option>
-			<option value="A05020400">중식</option>
-			<option value="A05020500">아시아식</option>
-			<option value="A05020900">바/카페</option>
-		</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-		<input type="text" id="keyword" name="keyword" size="50" placeholder="검색하고 싶은 키워드를 입력하세요.">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<button class="btn btn-primary mt20" onclick="submitFrm()">확인하기</button>
-	</div>
-	<br /> <br />
+  <h2 class="myH text-center">Restaurants List</h2>
+  <h5 class="text-center">음식점 리스트</h5>
+  <p class="text-center mt20">음식점 리스트 입니다. 아래 선택 옵션을 클릭하셔서 확인해주세요.</p>
 
-	<div id="output" class="row">
-		<!-- 이곳에 출력 -->
+  <hr class="border-bottom border-primary">
+
+	<div class="row text-center justify-content-center mt36">
+		<div class="col-7">
+			<form id="DeliFrm" name="DeliFrm">
+				<input type="hidden" id="contentTypeId" name="contentTypeId" value="39"> 
+				<input type="hidden" id="contentId" name="contentId">
+				<input type="hidden" id="mapx" name="mapx">
+				<input type="hidden" id="mapy" name="mapy">
+				<input type="hidden" id="mlevel" name="mlevel">
+				<div class="row text-center justify-content-center gx-1">
+					<div class="col-auto">
+						<select name="cat3" id="cat3"  class="form-select">
+							<option value="">선택</option>
+							<option value="A05020100">한식</option>
+							<option value="A05020200">서양식</option>
+							<option value="A05020300">일식</option>
+							<option value="A05020400">중식</option>
+							<option value="A05020500">아시아식</option>
+							<option value="A05020900">바/카페</option>
+						</select>
+					</div>
+					<div class="col-auto">
+						<input class="form-control" type="text" id="keyword" name="keyword" size="50" placeholder="검색하고 싶은 키워드를 입력하세요.">
+					</div>
+					<div class="col-auto">
+						<button class="btn btn-primary" onclick="submitFrm()">확인하기</button>
+					</div>
+				</div>
+			</form>
+			<!-- 출력 -->
+			<div class="mt36">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th colspan="2">음식점</th>
+							<th>주소</th>
+						</tr>
+					</thead>
+					<tbody id="output">
+						<!-- 이곳에 출력 -->
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div>
-	<br />
-</form>
 
 <!-- <div> -->
 <!-- 	<input type="hidden" value="listYN=Y" id="listYN"> -->
@@ -88,19 +111,26 @@
 					
 					for(let item of DeliResponse.response.body.items.item){					
 						
-						let div = document.createElement('div');
-						div.setAttribute('class', 'col-3 colImg');
-						
+						let tr = document.createElement('tr');
+						tr.setAttribute('class', 'sm-img');
+
+						let td1 = document.createElement('td');
+
 						let img = document.createElement('img');
 						if(item.firstimage != null){
 							img.setAttribute('src', item.firstimage);
 						} else {
 							img.setAttribute('src', 'images/noImage.jpg');
 						}
-						
-						let h6 = document.createElement('h6');
-						h6.innerText = item.title;
-							
+						td1.append(img);
+
+						let td2 = document.createElement('td');
+						td2.innerText = item.title; 						
+
+						let td3 = document.createElement('td');
+
+						td3.innerText = item.addr1;
+
 						let input1 = document.createElement('input');
 						input1.setAttribute('type', 'hidden');
 						input1.setAttribute('value', item.contentid);
@@ -118,10 +148,12 @@
 						input4.setAttribute('type', 'hidden');
 						input4.setAttribute('name', 'mlevel');
 						input4.setAttribute('value', item.mlevel);
-							
-						div.append(img, h6, input1, input2, input3, input4);
 
-						output.append(div);
+						td3.append(input1, input2, input3, input4);
+
+						tr.append(td1, td2, td3);
+
+						output.append(tr);
 					}
 				}
 			});   
@@ -137,42 +169,86 @@
 				   
 				let output = document.querySelector('#output');
 				for(let item of DeliResponse.response.body.items.item){
-					let div = document.createElement('div');
-					div.setAttribute('class', 'col-3 colImg');
+					// let div = document.createElement('div');
+					// div.setAttribute('class', 'col-3 colImg');
 					
-					let img = document.createElement('img');
-					if(item.firstimage != null){
-						img.setAttribute('src', item.firstimage);
-					} else {
-						img.setAttribute('src', 'images/noImage.jpg');
-					}
+					// let img = document.createElement('img');
+					// if(item.firstimage != null){
+					// 	img.setAttribute('src', item.firstimage);
+					// } else {
+					// 	img.setAttribute('src', 'images/noImage.jpg');
+					// }
 					
-					let h6 = document.createElement('h6');
-					h6.innerText = item.title;
+					// let h6 = document.createElement('h6');
+					// h6.innerText = item.title;
 						
-					let input1 = document.createElement('input');
-					input1.setAttribute('type', 'hidden');
-					input1.setAttribute('name', 'contentId');
-					input1.setAttribute('value', item.contentid);
+					// let input1 = document.createElement('input');
+					// input1.setAttribute('type', 'hidden');
+					// input1.setAttribute('name', 'contentId');
+					// input1.setAttribute('value', item.contentid);
 					
-					let input2 = document.createElement('input');
-					input2.setAttribute('type', 'hidden');
-					input2.setAttribute('name', 'mapx');
-					input2.setAttribute('value', item.mapx);
+					// let input2 = document.createElement('input');
+					// input2.setAttribute('type', 'hidden');
+					// input2.setAttribute('name', 'mapx');
+					// input2.setAttribute('value', item.mapx);
 					
-					let input3 = document.createElement('input');
-					input3.setAttribute('type', 'hidden');
-					input3.setAttribute('name', 'mapy');
-					input3.setAttribute('value', item.mapy);
+					// let input3 = document.createElement('input');
+					// input3.setAttribute('type', 'hidden');
+					// input3.setAttribute('name', 'mapy');
+					// input3.setAttribute('value', item.mapy);
 					
-					let input4 = document.createElement('input');
-					input4.setAttribute('type', 'hidden');
-					input4.setAttribute('name', 'mlevel');
-					input4.setAttribute('value', item.mlevel);
+					// let input4 = document.createElement('input');
+					// input4.setAttribute('type', 'hidden');
+					// input4.setAttribute('name', 'mlevel');
+					// input4.setAttribute('value', item.mlevel);
 						
-					div.append(img, h6, input1, input2, input3, input4);
+					// div.append(img, h6, input1, input2, input3, input4);
 
-					output.append(div);
+					// output.append(div);
+
+					let tr = document.createElement('tr');
+						tr.setAttribute('class', 'sm-img');
+
+						let td1 = document.createElement('td');
+
+						let img = document.createElement('img');
+						if(item.firstimage != null){
+							img.setAttribute('src', item.firstimage);
+						} else {
+							img.setAttribute('src', 'images/noImage.jpg');
+						}
+						td1.append(img);
+
+						let td2 = document.createElement('td');
+						td2.innerText = item.title; 						
+
+						let td3 = document.createElement('td');
+
+						td3.innerText = item.addr1;
+
+						let input1 = document.createElement('input');
+						input1.setAttribute('type', 'hidden');
+						input1.setAttribute('value', item.contentid);
+						
+						let input2 = document.createElement('input');
+						input2.setAttribute('type', 'hidden');
+						input2.setAttribute('value', item.mapx);
+						
+						let input3 = document.createElement('input');
+						input3.setAttribute('type', 'hidden');
+						input3.setAttribute('name', 'mapy');
+						input3.setAttribute('value', item.mapy);
+						
+						let input4 = document.createElement('input');
+						input4.setAttribute('type', 'hidden');
+						input4.setAttribute('name', 'mlevel');
+						input4.setAttribute('value', item.mlevel);
+
+						td3.append(input1, input2, input3, input4);
+
+						tr.append(td1, td2, td3);
+
+						output.append(tr);
 				}
 			}
 		});

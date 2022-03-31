@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<h2 class="myH text-center">My Course List</h2>
-<h6 class="text-center">나의 관광코스 리스트</h6>
+<h2 class="myH text-center">Course List</h2>
+<h5 class="text-center">관광코스 리스트</h5>
+<p class="text-center mt20">관광지를 모아 코스를 만들어서 공유해보세요!</p>
 
-<div class="row mt20 gy-3" id="courseList">
+<hr class="border-bottom border-primary">
+
+<div class="row mt36 gy-3" id="courseList">
   <c:forEach items="${clist }" var="c">
       <div class="col-3">			
         <div class="card">
