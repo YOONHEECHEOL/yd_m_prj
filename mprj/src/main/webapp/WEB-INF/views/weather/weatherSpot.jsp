@@ -7,7 +7,7 @@
 <!-- 테이블에 목록을 클릭시 데이터를 추가적으로 뿌려줄수 있도록 구현(안되면 제외) -->
 <!-- tt -->
 
-<table id="weahter" class="table table-hover">
+<table id="weather" class="table table-hover">
 <thead>
 <tr>
 <th>코드번호</th>
