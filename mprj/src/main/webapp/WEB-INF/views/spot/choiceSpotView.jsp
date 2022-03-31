@@ -1,26 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<style type="text/css">
-.outer {
-  text-align: center;
-}
-
-.inner {
-  display: inline-block;
-}
-
-
-</style>
-<meta charset="UTF-8">
-<title>상 세 보 기</title>
-</head>
-<body>
-
-
-
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb"></script>
 
 <!-- 지도가 띄워질 div -->
@@ -28,10 +7,11 @@
 </div>
 <!-- 화면을 전환할 div -->
 <div align="right">
-<button type="button" id="btnWish" name="btnWish" value="위시리스트">가보고싶어요!</button>
-
-<input type="button" onclick="location.href='home.do'" value="홈가기" />
-<input type="button" onclick="location.href='recSpot.do'" value="리스트" />
+	<a href="javascript:history.go(-1);" class="btn btn-primary">목록</a>
+	<c:if test="${not empty id }">
+		<button onclick="wishBtn()" class="btn btn-primary">가보고싶어요!</button>
+		<button onclick="visitBtn()" class="btn btn-primary">가봤어요!</button>
+	</c:if>
 </div>
 
 
@@ -44,6 +24,8 @@
 <input type="hidden" name="firstImage" id="firstimage" value="${firstImage} ">
 <input type="hidden" name="title" id="title" value="${title}">
 <input type="hidden" name="addr1" id="addr1" value="${addr1}">
+<input type="hidden" name="mapx" id="mapx" value="">
+<input type="hidden" name="mapy" id="mapy" value="">
 </form>
 
 <!-- 데이터를 뿌려줄 table -->
@@ -73,17 +55,24 @@
 
 
 <script>
+	function wishBtn() {
+		let conf = confirm('WISH 목록에 추가하시겠습니까?');
+		if(conf) {
+			// 확인
+			myForm.action = 'wishInsert.do';
+			myForm.method = 'post';
+			myForm.submit();
+		}
+	}
 
-btnWish.addEventListener('click',()=>{
-	//console.log(event.target.textContent);
-	myForm.submit();
-	
-	console.log("${contentId }");
-	console.log("${firstImage }");
-	console.log("${title }");
-	console.log("${addr1 }");
-});
-
+	function visitBtn() {
+		let conf = confirm('VISIT 목록에 추가하시겠습니까?');
+		if(conf){
+			myForm.action = 'visitInsert.do';
+			myForm.method = 'post';
+			myForm.submit();
+		}
+	}
 
 
 	var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?serviceKey=vExVsx1FJkY9Uma%2BjJadUHgr%2BPmrFWpSYvG64oal%2FQDNkwHqVRw%2B68%2Bl3hmjmyB7SNjoN%2BtUI9j%2FljKQObjoFg%3D%3D&numOfRows=12&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&areaCode="+${areaCode };
@@ -108,7 +97,11 @@ btnWish.addEventListener('click',()=>{
 		var str = "${choiceSpot.replaceAll(" ", "")}";
 		var mapx = i.querySelector('mapx').textContent;
 		var mapy = i.querySelector('mapy').textContent;
-		
+
+		let xV = document.querySelector('#mapx');
+		let yV = document.querySelector('#mapy');
+		xV.value = mapx;
+		yV.value = mapy;
 		
 		// mapx , mapy
 		if(title==str){// 클릭한것이 상호명이면
@@ -345,9 +338,3 @@ btnWish.addEventListener('click',()=>{
 	
 	
 </script>
-
-
-
-</body>
-</html>
-    

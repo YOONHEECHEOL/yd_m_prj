@@ -17,7 +17,7 @@
 			<a href="javascript:history.go(-1);" class="btn btn-primary">목록</a>
 			<c:if test="${not empty id }">
 				<button onclick="wishBtn()" class="btn btn-primary">가보고싶어요!</button>
-				<button onclick="" class="btn btn-primary">가봤어요!</button>
+				<button onclick="visitBtn()" class="btn btn-primary">가봤어요!</button>
 			</c:if>
 		</div>
 	</div>

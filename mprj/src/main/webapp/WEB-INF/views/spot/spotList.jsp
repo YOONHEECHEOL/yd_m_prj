@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <h1 class="text-center">관광지 조회</h1>
-    <div class="row text-center justify-content-center">
+  <h2 class="myH text-center">Spots List</h2>
+  <h5 class="text-center">관광지 리스트</h5>
+  <p class="text-center mt20">관광지 리스트 입니다. 아래 선택 옵션을 클릭하셔서 확인해주세요.</p>
+
+  <hr class="border-bottom border-primary">
+
+    <div class="row text-center justify-content-center mt36">
       <div class="col-7">
         <div class="row">
           <div class="col-12">

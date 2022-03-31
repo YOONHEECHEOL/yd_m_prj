@@ -14,7 +14,8 @@
 	<input type="hidden" id="title" name="title" value="">
 	<input type="hidden" id="addr1" name="addr1" value="">
 	<input type="hidden" id="firstimage" name="firstImage" value="">
-	
+	<input type="hidden" id="mapx" name="mapx" value="">
+	<input type="hidden" id="mapy" name="mapy" value="">
 </form>
 <div>
 <input type="button" onclick="location.href='home.do'" value="홈가기" />
