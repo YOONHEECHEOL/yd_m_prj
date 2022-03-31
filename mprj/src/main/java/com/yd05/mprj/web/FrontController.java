@@ -35,6 +35,7 @@ import com.yd05.mprj.notice.command.NoticeView;
 import com.yd05.mprj.spot.command.AjaxSpotAddWish;
 import com.yd05.mprj.spot.command.CateSpotList;
 import com.yd05.mprj.spot.command.ChoiceSpotView;
+import com.yd05.mprj.spot.command.KeySearch;
 import com.yd05.mprj.spot.command.NextRecSpot;
 import com.yd05.mprj.spot.command.RecSpot;
 import com.yd05.mprj.spot.command.SpotList;
@@ -50,8 +51,8 @@ import com.yd05.mprj.user.command.SignUpCheck;
 import com.yd05.mprj.visit.command.VisitDelete;
 import com.yd05.mprj.visit.command.VisitInsert;
 import com.yd05.mprj.visit.command.VisitList;
-import com.yd05.mprj.weather.command.WeatherData;
 import com.yd05.mprj.weather.command.WeatherDetail;
+import com.yd05.mprj.weather.command.WeatherSearch;
 import com.yd05.mprj.weather.command.WeatherSpot;
 import com.yd05.mprj.wish.command.WishDelete;
 import com.yd05.mprj.wish.command.WishInsert;
@@ -101,6 +102,9 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteCourse.do", new DeleteCourse());
 		// comment
 		map.put("/ajaxAddComment.do", new AjaxAddComment());
+		// keySearch page
+		map.put("/keySearch.do", new KeySearch());
+		
 		
 		// ======================woong=======================
 		// 이곳에 작성
@@ -140,9 +144,11 @@ public class FrontController extends HttpServlet {
 	    
 	    
 	    map.put("/weatherSpot.do", new WeatherSpot());
-	    map.put("/weatherData.do", new WeatherData());
+	    map.put("/weatherDetail.do", new WeatherDetail());
+	    map.put("/weatherSearch.do", new WeatherSearch());
 	    
-	    map.put("/weatherDetail.do", new WeatherDetail()); // 누르면 디테일하게
+
+	    
 	    
 
 		// yes

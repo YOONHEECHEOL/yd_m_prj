@@ -47,9 +47,6 @@
               </div>
             </div>
             <div class="col-12">
-              <div class="row">
-
-              </div>
               <!-- 관광코스에 추가할 관광지 -->
               <table class="table table-hover">
                 <thead>
@@ -193,6 +190,16 @@
           f1()
           f2()
           f3()
+
+          // 이동 이벤트
+          const f4 = () => {
+            output.addEventListener('click', () => {
+              console.log(event.target.parentNode.childNodes[3].childNodes[0]);
+              location.href = 'viewSpot.do?contentId=' + event.target.parentNode.childNodes[3].childNodes[0].value;
+            })
+          }
+
+          f4()
         })
 
         let contentIdListObj = document.querySelector('#contentIdList');
@@ -256,25 +263,23 @@
                 let td1 = document.createElement('td');
                 td1.innerText = item.title;
 
-                let td2 = document.createElement('td');
+                let td2 = document.createElement('td');                
                 if (item.firstimage != undefined) {
                   let img = document.createElement('img');
+                  img.setAttribute('class', 'np');
                   img.setAttribute('src', item.firstimage);
                   td2.append(img);
                 } else {
                   let img = document.createElement('img');
+                  img.setAttribute('class', 'np');
                   img.setAttribute('src', 'images/noImage.jpg');
                   td2.append(img);
                 }
 
-                let td3 = document.createElement('td');
+                let td3 = document.createElement('td');                
                 td3.innerText = item.addr1;
 
-                let td4 = document.createElement('td');
-                let inputBtn = document.createElement('input');
-                inputBtn.value = '추가';
-                inputBtn.setAttribute('class', 'btn btn-primary');
-                inputBtn.setAttribute('onclick', 'moveToCourse()');
+                let td4 = document.createElement('td');                   
 
                 // contentIdVal
                 let input = document.createElement('input');
@@ -282,61 +287,12 @@
                 input.setAttribute('name', 'contentid' + item.contentid);
                 input.value = item.contentid;
 
-                td4.append(inputBtn, input);
+                td4.append(input);
 
                 tr.append(td2, td1, td3, td4);
 
                 output.append(tr);
               }
             })
-        }
-        function moveToCourse() {
-          // tr 선택
-          let target = event.target;
-
-          contentIdListObj.value += 'cId' + target.parentNode.parentNode.childNodes[3].childNodes[1].value + ' ';
-
-          inputCourse.append(target.parentNode.parentNode);
-
-          // sumImg 값 저장
-          let sV = target.parentNode.parentNode.querySelector('img').getAttribute('src');
-          sumImg.value = sV;
-
-          target.value = '삭제';
-          target.setAttribute('class', 'btn btn-danger');
-          target.setAttribute('onclick', 'moveToList()');
-
-        }
-        function moveToList() {
-          let target = event.target;
-          let tVal = 'cId' + target.parentNode.parentNode.childNodes[3].childNodes[1].value + ' ';
-          console.log(tVal);
-
-          let ctVal = contentIdListObj.value;
-          let ctAfterVal = ctVal.replace(tVal, '');
-          contentIdListObj.value = ctAfterVal;
-
-          output.prepend(target.parentNode.parentNode);
-
-          // sumImg 값 빼기
-          let sImgVal = sumImg.value;
-          let tsV = target.parentNode.parentNode.querySelector('img').getAttribute('src');
-          let sV = sImgVal.replace(tsV, '');
-          sImgVal.replace(sV, '');
-          sumImg.value = sV;
-
-          target.value = '추가';
-          target.setAttribute('class', 'btn btn-primary');
-          target.setAttribute('onclick', 'moveToCourse()');
-        }
-        function submitCourseFrm() {
-          if (mcTitle.value != '') {
-            if (mcDescription.value != '') {
-              courseFrm.submit();
-            }
-          } else {
-            event.preventDefault();
-            alert('값을 입력하세요!');
-          }
-        }
+        }        
       </script>

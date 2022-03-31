@@ -40,12 +40,17 @@ ul li {
 
 .pt36 {padding-top: 36px;}
 
+.wid140 {
+	width: 184px;
+}
+
 .hDisplay {
 	min-height: calc(100vh - 58px);
 }
 
 h2.myH {
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
 	font-size: 36px;
 }
 
@@ -132,6 +137,9 @@ h2.myH {
 }
 .logo > img {
 	transition: .2s ease-in-out;
+}
+.logo-f {
+	width: 120px;
 }
 .carousel-inner {
 	max-height: 600px;
@@ -253,14 +261,18 @@ h2.myH {
 }
 .main__recomm {
 	position: absolute;
-	width: calc(1480px - 24px);
-	height: calc(400px - 24px);
-	padding: 12px;
+	width: calc(1224px - 24px);
+	height: calc(130px - 24px);
+	padding: 24px 32px;
 	overflow: hidden;
 	background-color: #fff;
 	z-index: 9999;
-	bottom: -200px;
+	bottom: 0;
 	left: 50%;
-	transform: translate(-740px, 0);
+	transform: translate(-600px, 0);
 	border-radius: 10px 10px 0 0;
+}
+
+.carousel-caption {
+	bottom: 250px !important;
 }
