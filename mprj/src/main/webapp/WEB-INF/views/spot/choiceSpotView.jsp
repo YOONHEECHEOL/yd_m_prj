@@ -28,21 +28,24 @@
 </div>
 <!-- 화면을 전환할 div -->
 <div align="right">
-<button type="button" id="btnWish" name="btnWish"value="위시리스트">위시리스트</button>&nbsp;&nbsp;
-<input type="button" onclick="location.href='home.do'" value="홈가기" />&nbsp;&nbsp;
-<input type="button" onclick="location.href='recSpot.do'" value="리스트" />&nbsp;&nbsp;
+<button type="button" id="btnWish" name="btnWish" value="위시리스트">가보고싶어요!</button>
+
+<input type="button" onclick="location.href='home.do'" value="홈가기" />
+<input type="button" onclick="location.href='recSpot.do'" value="리스트" />
 </div>
 
 
 
 <!-- 위시로 가져가는 폼 -->	
-<form id="myForm" name="myForm" action="WishInsert.do" method="post">
-<input type="hidden" name="uId" id="uId" value="">
-<input type="hidden" name="contentid" id="contentid" value="${contentid }">
-<input type="hidden" name="firstimage" id="firstimage" value="${firstimage} ">
+<form id="myForm" name="myForm" action="wishInsert.do" method="post">
+<input type="hidden" name="id" id="id" value="${id }">
+<input type="hidden" name="contentTypeId" id="contentTypeid" value="32">
+<input type="hidden" name="contentId" id="contentid" value="${contentId }">
+<input type="hidden" name="firstImage" id="firstimage" value="${firstImage} ">
 <input type="hidden" name="title" id="title" value="${title}">
 <input type="hidden" name="addr1" id="addr1" value="${addr1}">
 </form>
+
 <!-- 데이터를 뿌려줄 table -->
 <table class="table table-striped">
 
@@ -73,10 +76,10 @@
 
 btnWish.addEventListener('click',()=>{
 	//console.log(event.target.textContent);
-	// myForm.submit();
+	myForm.submit();
 	
-	console.log("${contentid }");
-	console.log("${firstimage }");
+	console.log("${contentId }");
+	console.log("${firstImage }");
 	console.log("${title }");
 	console.log("${addr1 }");
 });
@@ -343,9 +346,6 @@ btnWish.addEventListener('click',()=>{
 	
 </script>
 
-
-<!-- <span>${choiceSpot.replaceAll(" ", "")}</span>
-<span>${areaCode}</span> -->
 
 
 </body>
