@@ -9,17 +9,29 @@ public class DeliciousSelect implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// 개별건
-		request.setAttribute("DeliCtid", request.getParameter("contentTypeId"));
-		request.setAttribute("DeliCid", request.getParameter("contentId"));
-		request.setAttribute("DeliMapx", request.getParameter("mapx"));
-		request.setAttribute("DeliMapy", request.getParameter("mapy"));
-		request.setAttribute("DeliMlevel", request.getParameter("mlevel"));
+		String ctId = request.getParameter("contentTypeId");
+		
+		if(ctId == "12") {
+			// 관광지
+			
+			return null;
+		} else if(ctId == "32") {
+			// 숙박
+			return null;
+		} else {
+			// 음식집
+			request.setAttribute("DeliCtid", request.getParameter("contentTypeId"));
+			request.setAttribute("DeliCid", request.getParameter("contentId"));
+			request.setAttribute("DeliMapx", request.getParameter("mapx"));
+			request.setAttribute("DeliMapy", request.getParameter("mapy"));
+			request.setAttribute("DeliMlevel", request.getParameter("mlevel"));
+			
+			return "delicious/deliciousSelect.tiles";
+		}
 		
 //		System.out.println(request.getParameter("mapx"));
 //		System.out.println(request.getParameter("mapy"));
 		
-		return "delicious/deliciousSelect.tiles";
 	}
 
 }

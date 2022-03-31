@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="insertVisit" parameterType="com.yd05.mprj.visit.service.VisitVO">
-		INSERT INTO VISIT VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1})
+		INSERT INTO VISIT VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1}, #{mapx}, #{mapy})
 	</insert>
 	
 	<delete id="deleteVisit" parameterType="com.yd05.mprj.visit.service.VisitVO">
