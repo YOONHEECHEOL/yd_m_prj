@@ -20,6 +20,9 @@
 				<li>
 					<a  href="courseList.do">관광코스</a>
 				</li>       
+				<li>
+					<a  href="spotList.do">관광지 조회</a>
+				</li>       
 				<!-- <li>
 					<a  href="visitedList.do">도장찍기</a>
 				</li>        -->
@@ -28,11 +31,14 @@
 					<a  href="cateSpotList.do">카테고리별 관광지</a>
 				</li>        -->
 				<li>
+					<a  href="deliciousList.do">음식점 조회</a>
+				</li>     
+				<li>
+					<a  href="recSpot.do">숙박 조회</a>
+				</li>     
+				<li>
 					<a  href="noticeList.do">공지사항</a>
 				</li>       
-				<li>
-					<a  href="recSpot.do">오늘의 추천 숙박</a>
-				</li>     
 				<li>
 					<a href="weatherSpot.do" >관광지 날씨 보기</a>
 				</li>
