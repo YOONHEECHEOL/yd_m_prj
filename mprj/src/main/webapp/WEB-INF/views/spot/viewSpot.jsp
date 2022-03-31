@@ -7,17 +7,42 @@
 			</div>
 			<form action="wishInsert.do" method="get" id="frm">
 				<input type="hidden" value="" name="contentId" id="contentId">
-				<input type="hidden" value="" name="contentTypeId" id="contentTypeId">
+				<input type="hidden" value="12" name="contentTypeId" id="contentTypeId">
 				<input type="hidden" value="" name="firstImage" id="firstImage">
 				<input type="hidden" value="" name="title" id="title">
 				<input type="hidden" value="" name="addr1" id="addr1">
+				<input type="hidden" value="" name="mapx" id="mapx">
+				<input type="hidden" value="" name="mapy" id="mapy">
 			</form>
-			<button onclick="wishBtn()" class="btn btn-primary">좋아요!</button>
+			<a href="javascript:history.go(-1);" class="btn btn-primary">목록</a>
+			<c:if test="${not empty id }">
+				<button onclick="wishBtn()" class="btn btn-primary">가보고싶어요!</button>
+				<button onclick="" class="btn btn-primary">가봤어요!</button>
+			</c:if>
 		</div>
 	</div>
 
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b83f8deda041161d89092eddc90e91aa"></script>
 	<script>
+		function wishBtn() {
+			let conf = confirm('WISH 목록에 추가하시겠습니까?');
+			if(conf) {
+				// 확인
+				frm.action = 'wishInsert.do';
+				frm.method = 'post';
+				frm.submit();
+			}
+		}
+
+		function visitBtn() {
+			let conf = confirm('VISIT 목록에 추가하시겠습니까?');
+			if(conf){
+				frm.action = 'visitInsert.do';
+				frm.method = 'post';
+				frm.submit();
+			}
+		}
+
 		// xmlToJson Function | xml 파일을 json 파일로 변환
 		function xmlToJson(res) {
 			const parser = new DOMParser();
@@ -79,6 +104,9 @@
 					let my = item.mapy.replace(item.mapy.slice(-4), '');
 					let mlevel = item.mlevel;
 
+					mapx.value = mx;
+					mapy.value = my;
+					
 					// kakao map
 					let mapDiv = document.createElement('div');
 					mapDiv.setAttribute('id', 'map');
@@ -112,7 +140,5 @@
 				})
 		})
 
-		function wishBtn() {
-			frm.submit();
-		}
+
 	</script>
