@@ -13,6 +13,18 @@ public class ChoiceSpotView implements Command {
 		// 넘겨줄 정보를 만들어준다
 		request.setAttribute("choiceSpot", request.getParameter("choiceSpot"));
 		request.setAttribute("areaCode", request.getParameter("areaCode"));
+		request.setAttribute("contentid", request.getParameter("contentid"));
+		request.setAttribute("title", request.getParameter("title"));
+		request.setAttribute("addr1", request.getParameter("addr1"));
+		request.setAttribute("firstimage", request.getParameter("firstimage"));
+		
+		System.out.println(request.getParameter("choiceSpot"));
+		System.out.println(request.getParameter("areaCode"));
+		System.out.println(request.getParameter("contentid"));
+		System.out.println(request.getParameter("title"));
+		System.out.println(request.getParameter("addr1"));
+		System.out.println(request.getParameter("firstimage"));
+		
 		return "spot/choiceSpotView.tiles";
 	}
 

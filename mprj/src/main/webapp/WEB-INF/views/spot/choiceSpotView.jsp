@@ -28,9 +28,21 @@
 </div>
 <!-- 화면을 전환할 div -->
 <div align="right">
+<button type="button" id="btnWish" name="btnWish"value="위시리스트">위시리스트</button>&nbsp;&nbsp;
 <input type="button" onclick="location.href='home.do'" value="홈가기" />&nbsp;&nbsp;
-<input type="button" onclick="location.href='recSpot.do'" value="리스트" />
+<input type="button" onclick="location.href='recSpot.do'" value="리스트" />&nbsp;&nbsp;
 </div>
+
+
+
+<!-- 위시로 가져가는 폼 -->	
+<form id="myForm" name="myForm" action="WishInsert.do" method="post">
+<input type="hidden" name="uId" id="uId" value="">
+<input type="hidden" name="contentid" id="contentid" value="${contentid }">
+<input type="hidden" name="firstimage" id="firstimage" value="${firstimage} ">
+<input type="hidden" name="title" id="title" value="${title}">
+<input type="hidden" name="addr1" id="addr1" value="${addr1}">
+</form>
 <!-- 데이터를 뿌려줄 table -->
 <table class="table table-striped">
 
@@ -49,8 +61,27 @@
 	</tbody>
 </table>
 
+<span>${contentid }</span>
+<span>"${firstimage }"</span>
+<span>"${title }"</span>
+<span>"${addr1 }"</span>
+
+
+
 
 <script>
+
+btnWish.addEventListener('click',()=>{
+	//console.log(event.target.textContent);
+	// myForm.submit();
+	
+	console.log("${contentid }");
+	console.log("${firstimage }");
+	console.log("${title }");
+	console.log("${addr1 }");
+});
+
+
 
 	var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?serviceKey=vExVsx1FJkY9Uma%2BjJadUHgr%2BPmrFWpSYvG64oal%2FQDNkwHqVRw%2B68%2Bl3hmjmyB7SNjoN%2BtUI9j%2FljKQObjoFg%3D%3D&numOfRows=12&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&areaCode="+${areaCode };
 	console.log(url);

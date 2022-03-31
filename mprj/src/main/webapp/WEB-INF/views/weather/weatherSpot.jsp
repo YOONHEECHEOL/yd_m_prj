@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <form id="myForm" class="myForm" action="weatherDetail.do" method="post">
    <input type="hidden" id="spotAreaId" name="spotAreaId" value="">
-   <input type="hidden" id="courseId" name="courseId" value="">
+   <input type="hidden" id="spotName" name="spotName" value="">
    <input type="hidden" id="courseId" name="courseId" value="">
 </form>
 <!-- 테이블에 목록을 클릭시 데이터를 추가적으로 뿌려줄수 있도록 구현(안되면 제외) -->
@@ -27,22 +27,34 @@
 <script>
 alert("보고싶은 관광지의 코드번호를 눌러주세요.");
 output.addEventListener('click', () => {
-      //console.log(event.target.textContent)
-   
-      let AreaIdVal = event.target.textContent; // 클릭한 코스아이디
-      console.log('AreaIdVal:'+AreaIdVal);
-      spotAreaId.value = AreaIdVal;
-      
-      let cId = str; // 세션 코스 아이디 저장
-      console.log('cId:'+cId);
-      courseId.value = cId; 
-     
-      let sN = 
-      
-      myForm.submit();
-   
-      
-      });
+	   //console.log(event.target.textContent)
+ 	//console.log(event.currentTarget.querySelectorAll('td').outerText);
+ 	console.log(event.currentTarget.querySelectorAll('td'));
+ 	
+ 	var ect = event.currentTarget.querySelectorAll('td');
+ 	for(let i=0;i<ect.length;i++){
+ 		if(ect[i].outerText == event.target.textContent){
+     			spotAreaId.value = event.target.textContent; // 클릭한 코스 아이디
+			   
+			    spotName.value = ect[i+1].outerText.substr(4); // 클릭한 td의 다음 td의 내용을 담아 넣는다
+			   			    
+ 				}
+ 		}
+		let cId = str; // 세션 코스 아이디 저장
+		courseId.value = cId; 
+	 	
+		console.log('spotAId:'+spotAreaId.value);
+	 	console.log('spotName:'+spotName.value);
+		console.log('courseId:'+courseId.value);
+    
+    //console.log(event.target.next('td'));
+ 
+  	//let sN = i.queruSelector('spotName').textContent;
+     	//console.log('sN:'+sN);
+    
+  	myForm.submit();
+ 			
+		});
    
    var ran = 1+(Math.floor(Math.random()*10));
    var str = ran
