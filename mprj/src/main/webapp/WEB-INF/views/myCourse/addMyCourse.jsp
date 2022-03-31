@@ -6,6 +6,11 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="row">
+						<select name="" id="">
+							<option value=""></option>
+						</select>
+					</div>
+					<div class="row">
 						<div class="col-auto">
 							<select name="contentType" id="contentTypeSel" class="form-select">
 								<option value="">contentType 선택</option>

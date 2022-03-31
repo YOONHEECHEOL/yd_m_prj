@@ -26,6 +26,7 @@ ul li {
 .mt8 {margin-top: 8px;}
 .mt20 {margin-top: 20px;}
 .mt36 {margin-top: 36px;}
+.mt80 {margin-top: 80px;}
 .mr8 {margin-right: 8px;}
 .mr20 {margin-right: 20px;}
 .mr36 {margin-right: 36px;}
@@ -37,16 +38,28 @@ ul li {
 .mb36 {margin-bottom: 36px;}
 .mb100 {margin-bottom: 100px;}
 
+.pt36 {padding-top: 36px;}
+
 .hDisplay {
-	min-height: calc(100vh - 204px - 58px);
+	min-height: calc(100vh - 58px);
+}
+
+h2.myH {
+	font-family: 'Fredoka One', cursive;
+	font-size: 36px;
 }
 
 .header {
-	height: 100px;
+	height: 80px;
 	background-color: #292c3a;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10000;
+	box-shadow: 0px 2px 8px hsl(0deg 0% 0% / 38%);
 }
 .header__cont {
-	height: 100px;
+	height: 80px;
 	color: #fff;
 }
 .header__cont * {
@@ -54,13 +67,71 @@ ul li {
 }
 
 /* nav */
+.nav__ul {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.nav__ul a {
+	color: #fff;
+	position: relative;
+}
+.nav__ul a::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 0;
+	height: 0;
+	border-radius: 5px;
+	background-color: #ff8e4d;
+	transition: .2s ease-in-out;
+}
+.nav__ul a::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: -28px;
+	left: 50%;
+	transform: translate(-50%, 0);
+	width: 0;
+	height: 4px;
+	background-color: #397af3;
+	transition: .2s ease-in-out;
+}
+.nav__ul a:hover {
+	color: #fff;
+}
+.nav__ul a:hover::after {
+	width: 100%;
+}
+.nav__ul a:hover::before {
+	width: 10px;
+	height: 10px;
+}
+
 .navbar {
-	border-top: 1px solid #bbb;
-	border-bottom: 1px solid #bbb;
+	position: fixed;
+	width: 100%;
+	top: 80px;
+	left: 0;
+	z-index: 10000;
+	background-color: #394161;
+}
+.navbar * {
+	color: #fff;
+}
+.nav-link {
+	color: #ddd !important;
 }
 .logo {
 	font-family: 'Anton', sans-serif;
 	color: #fff;
+}
+.logo > img {
+	transition: .2s ease-in-out;
 }
 .carousel-inner {
 	max-height: 600px;
@@ -174,4 +245,22 @@ ul li {
 	padding: 20px 0;
 	color: #565c7a;
 	background-color: #292c3a;
+}
+
+/* main */
+.mv {
+	position: relative;
+}
+.main__recomm {
+	position: absolute;
+	width: calc(1480px - 24px);
+	height: calc(400px - 24px);
+	padding: 12px;
+	overflow: hidden;
+	background-color: #fff;
+	z-index: 9999;
+	bottom: -200px;
+	left: 50%;
+	transform: translate(-740px, 0);
+	border-radius: 10px 10px 0 0;
 }

@@ -10,32 +10,36 @@ img{
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb&libraries=services"></script>
 
-<form id="frm" name="frm">	
-	<div id="output">
-		<div id="title"></div>
-		<div id="subOutput" style="display:inblock">
-			<div id="detailOutput">
-				<ul id="detailOutput"></ul>
+<div class="row">
+	<div class="col-12">
+		<form id="frm" name="frm">	
+			<div id="output">
+				<div id="title"></div>
+				<div id="subOutput" style="display:inblock">
+					<div id="detailOutput">
+						<ul id="detailOutput"></ul>
+					</div>
+				</div>
+				<br/>
+				<div id="overviewOutput"></div>
+		
+				<div id="imgs"></div>
+				<br/>
+		
+				<br/>
 			</div>
-		</div>
-		<br/>
-		<div id="overviewOutput"></div>
-
-		<div id="imgs"></div>
-		<br/>
-
-		<br/>
+		</form>
+			<div id="map" style="width:500px;height:400px;">
+			</div>
+			<div>			
+				<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
+				<c:if test="${not empty id}">
+					<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
+					<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
+				</c:if>
+			</div>
 	</div>
-</form>
-	<div id="map" style="width:500px;height:400px;">
-	</div>
-	<div>			
-		<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
-		<c:if test="${not empty id}">
-			<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
-			<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
-		</c:if>
-	</div>
+</div>
 
 <script>
 	function wishBtnCheck() {
@@ -227,12 +231,18 @@ img{
 	f3();
 	
 	// 지도
-	let mapx = ${DeliMapx}
-	let mapy = ${DeliMapy}
+	let mapx = '${DeliMapx}';
+	let mapy = '${DeliMapy}';
+
+	mapx = mapx.replace(mapx.slice(-4), '');
+	mapy = mapy.replace(mapy.slice(-4), '');
+
+	console.log(mapx)
+	console.log(mapy)
 	
 	let mapDiv = document.querySelector('#map');
 	let options = {
-			center: new kakao.maps.LatLng(mapx, mapy),
+			center: new kakao.maps.LatLng(mapy, mapx),
 			level: 6
 	}
 	let map = new kakao.maps.Map(mapDiv, options);

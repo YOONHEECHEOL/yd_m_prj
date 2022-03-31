@@ -36,10 +36,10 @@
 			</tbody>
 		</table>
 		<div class="row">
-			<div class="col-8">
-				<input type="text" class="form-control" id="commentVal" placeholder="로그인이 필요합니다...">
+			<div class="col-11">
+				<input type="text" class="form-control" id="commentVal">
 			</div>
-			<div class="col-4">
+			<div class="col-1 text-right">
 				<button class="btn btn-primary" onclick="frmCheck()">입력</button>
 			</div>
 		</div>
@@ -94,9 +94,9 @@
 		document.addEventListener('DOMContentLoaded', () => {
 			let lVal = loginId;
 			if(lVal.value != '') {
-				lVal.setAttribute('placeholder', '로그인이 필요합니다...');
+				commentVal.setAttribute('placeholder', '댓글을 입력해주세요...');
 			} else {
-				lVal.setAttribute('placeholder', '댓글을 입력해주세요...');
+				commentVal.setAttribute('placeholder', '로그인이 필요합니다...');
 			}
 
 			console.log(resultJsonVal.length)
