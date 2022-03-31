@@ -94,9 +94,6 @@
 					console.log(DeliResponse);
 					//console.log(kwdResponse.response.body.items.item[0]);
 					
-					let output = document.querySelector('#output');
-					childRm(output);
-					
 					for(let item of DeliResponse.response.body.items.item){					
 						
 						let div = document.createElement('div');

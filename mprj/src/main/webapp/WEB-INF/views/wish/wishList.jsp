@@ -21,11 +21,6 @@ th {
 		<input type="hidden" id="title" name="title">
 		<input type="hidden" id="addr1" name="addr1">
 		
-		<div>
-			<label>검색
-				<option />
-			</label>
-		</div>
 		<div id="output">
 			<table>
 				<thead>
