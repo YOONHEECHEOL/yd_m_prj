@@ -12,6 +12,7 @@
 		<input type="hidden" id="contentId" name="contentId">
 		<input type="hidden" id="mapx" name="mapx">
 		<input type="hidden" id="mapy" name="mapy">
+		<input type="hidden" id="mlevel" name="mlevel">
 		
 		<div>
 			<select name="cat3" id="cat3">
@@ -46,12 +47,22 @@
 </div>
 
 <script>
+	// childNode 전부 삭제
+	function childRm(input) {
+		while (input.firstChild) {
+			input.removeChild(input.firstChild)
+		}
+	}
+
 	document.querySelector('#DeliFrm').addEventListener("click", function(event){
 		event.preventDefault();
 	});
       
 	// 확인하기 버튼 -> AJAX로 api호출
 	function submitFrm(){
+		let output1 = document.querySelector('#output');
+		childRm(output1);
+		
 		let cat3 = document.querySelector('#cat3').value;
 		console.log(cat3);
 
@@ -84,7 +95,10 @@
 					//console.log(kwdResponse.response.body.items.item[0]);
 					
 					let output = document.querySelector('#output');
-					for(let item of DeliResponse.response.body.items.item){
+					childRm(output);
+					
+					for(let item of DeliResponse.response.body.items.item){					
+						
 						let div = document.createElement('div');
 						div.setAttribute('class', 'col-3 colImg');
 						
@@ -108,9 +122,15 @@
 						
 						let input3 = document.createElement('input');
 						input3.setAttribute('type', 'hidden');
+						input3.setAttribute('name', 'mapy');
 						input3.setAttribute('value', item.mapy);
+						
+						let input4 = document.createElement('input');
+						input4.setAttribute('type', 'hidden');
+						input4.setAttribute('name', 'mlevel');
+						input4.setAttribute('value', item.mlevel);
 							
-						div.append(img, h6, input1, input2, input3);
+						div.append(img, h6, input1, input2, input3, input4);
 
 						output.append(div);
 					}
@@ -155,8 +175,13 @@
 					input3.setAttribute('type', 'hidden');
 					input3.setAttribute('name', 'mapy');
 					input3.setAttribute('value', item.mapy);
+					
+					let input4 = document.createElement('input');
+					input4.setAttribute('type', 'hidden');
+					input4.setAttribute('name', 'mlevel');
+					input4.setAttribute('value', item.mlevel);
 						
-					div.append(img, h6, input1, input2, input3);
+					div.append(img, h6, input1, input2, input3, input4);
 
 					output.append(div);
 				}
@@ -169,12 +194,14 @@
 		let contentIdVal = event.target.childNodes[2].getAttribute('value');
 		let mapxVal = event.target.childNodes[3].getAttribute('value');
 		let mapyVal = event.target.childNodes[4].getAttribute('value');
+		let mlevelVal = event.target.childNodes[5].getAttribute('value');
 		
 		//console.log(event.target);
 		
 		contentId.value = contentIdVal;
 		mapx.value = mapxVal;
-		mapy.value = mapxVal;
+		mapy.value = mapyVal;
+		mlevel.value = mlevelVal; 
 		
 		DeliFrm.action="deliciousSelect.do";
 		DeliFrm.method="post";

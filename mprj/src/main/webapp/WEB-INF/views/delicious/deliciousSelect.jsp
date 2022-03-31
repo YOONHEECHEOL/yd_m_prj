@@ -233,6 +233,7 @@ img{
 	// 지도
 	let mapx = '${DeliMapx}';
 	let mapy = '${DeliMapy}';
+	let mlevel = ${DeliMlevel};
 
 	mapx = mapx.replace(mapx.slice(-4), '');
 	mapy = mapy.replace(mapy.slice(-4), '');
@@ -243,7 +244,18 @@ img{
 	let mapDiv = document.querySelector('#map');
 	let options = {
 			center: new kakao.maps.LatLng(mapy, mapx),
-			level: 6
+			level: mlevel
 	}
 	let map = new kakao.maps.Map(mapDiv, options);
+	
+	// 마커표시
+	var markerPosition = new kakao.maps.LatLng(mapy, mapx);
+	
+	// 마커생성
+	var marker = new kakao.maps.Marker({
+		position: markerPosition
+	});
+	
+	// 마커를 지도위에
+	marker.setMap(map);
 </script>

@@ -14,6 +14,7 @@ public class DeliciousSelect implements Command {
 		request.setAttribute("DeliCid", request.getParameter("contentId"));
 		request.setAttribute("DeliMapx", request.getParameter("mapx"));
 		request.setAttribute("DeliMapy", request.getParameter("mapy"));
+		request.setAttribute("DeliMlevel", request.getParameter("mlevel"));
 		
 //		System.out.println(request.getParameter("mapx"));
 //		System.out.println(request.getParameter("mapy"));

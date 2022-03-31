@@ -12,12 +12,20 @@ th {
 	<div>
 		<h1>WISH LIST</h1>
 	</div>
+	<br/>
+	
 	<form id="wishFrm" name="wishFrm">
 		<input type="hidden" id="contentTypeId" name="contentTypeId">
 		<input type="hidden" id="contentId" name="contentId">
 		<input type="hidden" id="firstImage" name="firstImage">
 		<input type="hidden" id="title" name="title">
 		<input type="hidden" id="addr1" name="addr1">
+		
+		<div>
+			<label>검색
+				<option />
+			</label>
+		</div>
 		<div id="output">
 			<table>
 				<thead>
