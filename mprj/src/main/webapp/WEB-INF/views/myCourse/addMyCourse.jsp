@@ -1,24 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<h1>addMyCourse</h1>
+	<h1>관광코스 만들기</h1>
 	<div class="row text-center justify-content-center">
 		<div class="col-7">
 			<div class="row">
 				<div class="col-12">
 					<div class="row">
-						<select name="" id="">
-							<option value=""></option>
-						</select>
+						<div class="col-4">
+							<select name="areaValObj" id="areaValObj" class="form-select">
+								<option value="">지역선택</option>
+								<option value="1">서울</option>
+								<option value="2">인천</option>
+								<option value="3">대전</option>
+								<option value="4">대구</option>
+								<option value="5">광주</option>
+								<option value="6">부산</option>
+								<option value="7">울산</option>
+								<option value="39">제주</option>
+							</select>
+						</div>
 					</div>
-					<div class="row">
+					<div class="row mt20">
 						<div class="col-auto">
 							<select name="contentType" id="contentTypeSel" class="form-select">
 								<option value="">contentType 선택</option>
-								<option value="12">관광지</option>
-								<!-- 
-									<option value="32">숙박</option>
-									<option value="39">음식점</option>
-								-->
+								<option value="12">관광지</option>								
+								<!-- <option value="32">숙박</option>
+								<option value="39">음식점</option>								 -->
 							</select>
 						</div>
 						<div class="col-auto">
@@ -250,10 +258,11 @@
 			console.log(cat2)
 			let cat3 = document.querySelector('#cat3').value;
 			console.log(cat3)
+			let areaVal = document.querySelector('#areaValObj').value;
 
 			fetch(
 				'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=YEoy%2B93A%2Fp1nbyehg%2F0UcWMYX5ZjT73RId2NuFd3L0M6%2FEMlAYbTyjfB7gJzZvC5t2qVeHOrFCaviPGo%2BWx5rA%3D%3D&contentTypeId=' +
-				contentTypeSel + '&areaCode=&sigunguCode=&cat1=' + cat1 + '&cat2=' + cat2 + '&cat3=' + cat3 +
+				contentTypeSel + '&areaCode=' + areaVal + '&sigunguCode=&cat1=' + cat1 + '&cat2=' + cat2 + '&cat3=' + cat3 +
 				'&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1', {
 				method: 'get'
 			})
