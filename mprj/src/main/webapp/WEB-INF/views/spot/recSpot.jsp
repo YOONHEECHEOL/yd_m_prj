@@ -1,7 +1,6 @@
 <%@page import="org.apache.velocity.runtime.directive.Foreach"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,6 +105,9 @@ xhtp.onload = function(){
 	for(let i of data) {
 		if(i.querySelector('firstimage2')){
 		console.log(i);
+		
+		
+		
 		var tr = document.createElement('tr');
 		// 상호명
 		var td1 = document.createElement('td');
