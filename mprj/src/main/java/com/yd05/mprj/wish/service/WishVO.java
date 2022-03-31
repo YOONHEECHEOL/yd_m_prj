@@ -13,5 +13,6 @@ public class WishVO {
 	private String firstImage;
 	private String title;
 	private String addr1;
-	
+	private String mapx;
+	private String mapy;
 }

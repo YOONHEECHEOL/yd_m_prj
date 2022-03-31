@@ -13,4 +13,6 @@ public class VisitVO {
 	private String firstImage;
 	private String title;
 	private String addr1;
+	private String mapx;
+	private String mapy;
 }

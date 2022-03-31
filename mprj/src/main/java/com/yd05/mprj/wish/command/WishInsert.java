@@ -23,6 +23,8 @@ public class WishInsert implements Command {
 		vo.setFirstImage(request.getParameter("firstImage"));
 		vo.setTitle(request.getParameter("title"));
 		vo.setAddr1(request.getParameter("addr1"));
+		vo.setMapx(request.getParameter("mapx"));
+		vo.setMapy(request.getParameter("mapy"));
 		
 		// contentId 중복확인 필요
 		String str1 = request.getParameter("contentId");

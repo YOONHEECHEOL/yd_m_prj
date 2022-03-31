@@ -27,7 +27,6 @@
 			<input type="text" id="keyword" name="keyword" size="50" placeholder="검색하고 싶은 키워드를 입력하세요.">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-primary mt20" onclick="submitFrm()">확인하기</button>
 		</div>
-		<!-- 메뉴 다시 선택시 결과 값 오류... 수정 -->
 		<br /> <br />
 
 		<div id="output" class="row">
@@ -84,7 +83,7 @@
 				+'&MobileApp=AppTest&MobileOS=ETC&pageNo=1&numOfRows=10&listYN=Y&arrange=A'
 				+'&contentTypeId=39&cat1=A05&cat2=A0502&cat3=' + cat3 + '&keyword=' + keywordVal;
 			
-			console.log(kwdUrl);
+			//console.log(kwdUrl);
 			
 			$.ajax({
 				type : "GET",

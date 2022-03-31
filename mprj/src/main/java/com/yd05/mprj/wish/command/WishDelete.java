@@ -16,7 +16,7 @@ public class WishDelete implements Command {
 		WishVO vo = new WishVO();
 		
 		vo.setContentId((String)request.getParameter("contentId"));
-		//System.out.println(request.getParameter("contentId"));
+		System.out.println(request.getParameter("contentId"));
 		
 		int n = dao.deleteWish(vo);
 		

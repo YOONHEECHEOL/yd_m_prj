@@ -28,8 +28,8 @@
                   <select name="contentType" id="contentTypeSel" class="form-select">
                     <option value="">contentType 선택</option>
                     <option value="12">관광지</option>
-                    <!-- <option value="32">숙박</option>
-                                <option value="39">음식점</option>                             -->
+<!--                     <option value="32">숙박</option> -->
+<!--                      <option value="39">음식점</option>                             -->
                   </select>
                 </div>
                 <div class="col-auto">

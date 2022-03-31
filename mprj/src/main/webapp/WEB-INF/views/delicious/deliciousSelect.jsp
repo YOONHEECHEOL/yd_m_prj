@@ -155,7 +155,20 @@ img{
 					input5.setAttribute('name', 'addr1');
 					input5.setAttribute('value', commInfo.addr1);
 					input4.after(input5);
-		
+					
+					// mapx
+					let input6 = document.createElement('input');
+					input6.setAttribute('type', 'hidden');
+					input6.setAttribute('name', 'mapx');
+					input6.setAttribute('value', commInfo.mapx);
+					input5.after(input6);
+					
+					// mapy
+					let input7 = document.createElement('input');
+					input7.setAttribute('type', 'hidden');
+					input7.setAttribute('name', 'mapy');
+					input7.setAttribute('value', commInfo.mapy);
+					input6.after(input7);
 				}
 			})
 	}	
@@ -233,7 +246,6 @@ img{
 	// 지도
 	let mapx = '${DeliMapx}';
 	let mapy = '${DeliMapy}';
-	let mlevel = ${DeliMlevel};
 
 	mapx = mapx.replace(mapx.slice(-4), '');
 	mapy = mapy.replace(mapy.slice(-4), '');
@@ -244,7 +256,7 @@ img{
 	let mapDiv = document.querySelector('#map');
 	let options = {
 			center: new kakao.maps.LatLng(mapy, mapx),
-			level: mlevel
+			level: 6
 	}
 	let map = new kakao.maps.Map(mapDiv, options);
 	
