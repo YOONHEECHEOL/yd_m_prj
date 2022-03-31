@@ -12,9 +12,10 @@ public class DeliciousSelect implements Command {
 		String ctId = request.getParameter("contentTypeId");
 		
 		if(ctId == "12") {
-			// 관광지
+			// 관광지			
+			request.setAttribute("contentId", request.getParameter("contentId"));			
 			
-			return null;
+			return "viewSpot.do";
 		} else if(ctId == "32") {
 			// 숙박
 			return null;
@@ -24,7 +25,6 @@ public class DeliciousSelect implements Command {
 			request.setAttribute("DeliCid", request.getParameter("contentId"));
 			request.setAttribute("DeliMapx", request.getParameter("mapx"));
 			request.setAttribute("DeliMapy", request.getParameter("mapy"));
-			request.setAttribute("DeliMlevel", request.getParameter("mlevel"));
 			
 			return "delicious/deliciousSelect.tiles";
 		}
