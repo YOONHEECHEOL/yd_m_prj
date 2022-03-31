@@ -1,19 +1,23 @@
 package com.yd05.mprj.weather.command;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.yd05.mprj.comm.Command;
-import com.yd05.mprj.weather.service.WeatherService;
-import com.yd05.mprj.weather.serviceImpl.WeatherServiceImpl;
+import com.yd05.mprj.weather.service.WeatherVO;
 
 public class WeatherView implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		WeatherService item = new WeatherServiceImpl();
+		ArrayList<WeatherVO> item = new ArrayList<>();
 		WeatherVO vo = new WeatherVO();
-		return null;
+		vo.setSpotname(request.getParameter("Spotname"));
+		request.setAttribute("weathers", vo);
+		
+		return "weather/weatherView.tiles";
 	}
 
 }
