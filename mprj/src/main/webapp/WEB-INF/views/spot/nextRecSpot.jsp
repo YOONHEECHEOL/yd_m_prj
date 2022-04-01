@@ -1,52 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>상 세 보 기</title>
-</head>
-<body>
-<form action="choiceSpotView.do" method="POST" name="myForm" id="myForm">
-	<input type="hidden" id="choiceSpot" name="choiceSpot" value="">
-	<input type="hidden" id="areaCode" name="areaCode" value="${areaCode }">
-	<input type="hidden" id="contentid" name="contentId" value="">
-	<input type="hidden" id="title" name="title" value="">
-	<input type="hidden" id="addr1" name="addr1" value="">
-	<input type="hidden" id="firstimage" name="firstImage" value="">
-	<input type="hidden" id="mapx" name="mapx" value="">
-	<input type="hidden" id="mapy" name="mapy" value="">
-</form>
-<div>
-<input type="button" onclick="location.href='home.do'" value="홈가기" />
-<input type="button" onclick="location.href='recSpot.do'" value="뒤로가기" />
-</div>
-<table class="table table-striped">
 
-<thead>
- 
-<tr id="firstTr">
-<th>코드</th>
-<th>상호명</th>
-<th>주 소</th>
-<th>전화번호</th>
-<th>썸네일</th>
-</tr>
-</thead>
+		<h2 class="myH text-center">Accommodation by Region</h2>
+		<h5 class="text-center">지역별 숙박시설</h5>
+		<p class="text-center mt20">관광지를 모아 코스를 만들어서 공유해보세요!</p>
+		
+		<hr class="border-bottom border-primary">
 
-<tbody id="output">
+		<div class="row text-center justify-content-center mt36">
+			<div class="col-7">
+				<form action="choiceSpotView.do" method="POST" name="myForm" id="myForm">
+					<input type="hidden" id="choiceSpot" name="choiceSpot" value="">
+					<input type="hidden" id="areaCode" name="areaCode" value="${areaCode }">
+					<input type="hidden" id="contentid" name="contentId" value="">
+					<input type="hidden" id="title" name="title" value="">
+					<input type="hidden" id="addr1" name="addr1" value="">
+					<input type="hidden" id="firstimage" name="firstImage" value="">
+					<input type="hidden" id="mapx" name="mapx" value="">
+					<input type="hidden" id="mapy" name="mapy" value="">
+				</form>
+				<div>
+				<input type="button" onclick="location.href='home.do'" value="홈가기" class="btn btn-primary" />
+				<input type="button" onclick="location.href='recSpot.do'" value="뒤로가기" class="btn btn-primary" />
+				</div>
+				<table class="table table-hover mt20">
+				
+				<thead>
+				 
+				<tr id="firstTr">
+				<th>코드</th>
+				<th>상호명</th>
+				<th>주 소</th>
+				<th>전화번호</th>
+				<th>썸네일</th>
+				</tr>
+				</thead>
+				
+				<tbody id="output">
+				
+				</tbody>
+				
+				</table>
+			</div>
+		</div>
 
-</tbody>
 
-</table>
 
 <!-- <span>${areaCode }</span> -->
 
 <script>
-
-alert("보고싶은 장소를 클릭해주세요.");
-
-
 
 var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchStay?serviceKey=vExVsx1FJkY9Uma%2BjJadUHgr%2BPmrFWpSYvG64oal%2FQDNkwHqVRw%2B68%2Bl3hmjmyB7SNjoN%2BtUI9j%2FljKQObjoFg%3D%3D&numOfRows=12&pageNo=1&MobileOS=ETC&MobileApp=AppTest&arrange=A&listYN=Y&areaCode="+ ${areaCode };
 console.log(url)
@@ -148,5 +150,3 @@ var table = document.createElement('table');
 	})
 	
 </script>
-</body>
-</html>
