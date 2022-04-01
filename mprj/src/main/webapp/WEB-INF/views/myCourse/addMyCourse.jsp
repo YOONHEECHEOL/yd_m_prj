@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<h1>관광코스 만들기</h1>
-	<div class="row text-center justify-content-center">
+<h2 class="myH text-center">Add Course</h2>
+<h5 class="text-center">코스 만들기</h5>
+<p class="text-center mt20">관광지를 모아 코스를 만들어서 공유해보세요!</p>
+
+<hr class="border-bottom border-primary">
+
+	<div class="row text-center justify-content-center mt36">
 		<div class="col-7">
 			<div class="row">
 				<div class="col-12">

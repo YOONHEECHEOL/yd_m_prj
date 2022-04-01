@@ -57,6 +57,7 @@
 		for(i of data){
 			if(i.querySelector('spotAreaId').textContent==="${spotAreaId}"){
 				var tr = document.createElement('tr');
+				tr.setAttribute('class', 'cpoint');
 				var td1 = document.createElement('td');//지역이름
 				var td2 = document.createElement('td');// 코스이름
 				var td3 = document.createElement('td');//관광지명

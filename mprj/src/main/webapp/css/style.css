@@ -293,7 +293,7 @@ h2.myH {
     display: block;
     text-align: center;
     line-height: 60px;
-    width: 184px;
+    width: 148px;
     transition: all .3s ease-in-out;
 }
 .btn-main:hover {
@@ -352,4 +352,7 @@ h2.myH {
     z-index: 10001;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
+}
+.cpoint > td, .cpoint > th {
+	cursor: pointer;
 }
