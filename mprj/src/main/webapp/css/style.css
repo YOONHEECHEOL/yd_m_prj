@@ -356,3 +356,9 @@ h2.myH {
 .cpoint > td, .cpoint > th {
 	cursor: pointer;
 }
+.mcI {
+	overflow: hidden;
+}
+.mcI > img {
+	width: 100%;
+}

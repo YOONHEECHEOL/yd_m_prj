@@ -66,6 +66,10 @@
 						</tbody>
 					</table>
 				</div>
+				<div class="col-12 text-center mt20">
+					<button class="btn btn-primary" onclick="prevPage()">이전페이지</button>
+					<button class="btn btn-primary" onclick="nexPage()">다음페이지</button>
+				</div>
 			</div>
 		</div>
 		<div class="col-5">
@@ -121,6 +125,31 @@
 	</div>
 
 	<script>
+		let pno = 1;
+
+		function prevPage() {
+			if(pno != 1){            
+				pno -= 1;
+
+					while(output.firstChild) {
+					output.removeChild(output.firstChild);
+				}
+
+				submitFrm(pno);
+			} else {
+				alert('이전 페이지가 없습니다.')
+			}
+		}
+		function nexPage() {
+			pno += 1;
+
+			while(output.firstChild) {
+					output.removeChild(output.firstChild);
+				}
+				
+			submitFrm(pno);
+		}
+
 		function addEmptyOption(key) {
 			let option = document.createElement('option');
 			option.innerText = '선택';
@@ -269,7 +298,7 @@
 			fetch(
 				'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=YEoy%2B93A%2Fp1nbyehg%2F0UcWMYX5ZjT73RId2NuFd3L0M6%2FEMlAYbTyjfB7gJzZvC5t2qVeHOrFCaviPGo%2BWx5rA%3D%3D&contentTypeId=' +
 				contentTypeSel + '&areaCode=' + areaVal + '&sigunguCode=&cat1=' + cat1 + '&cat2=' + cat2 + '&cat3=' + cat3 +
-				'&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1', {
+				'&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=' + pno, {
 				method: 'get'
 			})
 				.then(res => res.text())
