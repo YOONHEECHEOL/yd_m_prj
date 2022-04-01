@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,8 +30,9 @@
 </div>
 <!-- 화면을 전환할 div -->
 <div align="right">
+<c:if test="${not empty id}">
 <button type="button" id="btnWish" name="btnWish" value="위시리스트">가보고싶어요!</button>
-
+</c:if>
 <input type="button" onclick="location.href='home.do'" value="홈가기" />
 <input type="button" onclick="location.href='recSpot.do'" value="리스트" />
 </div>

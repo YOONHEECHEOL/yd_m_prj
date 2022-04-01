@@ -10,9 +10,10 @@ public class ChoiceSpotView implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		HttpSession session = request.getSession();
+		
+		 
 		// 세션 ID 가져오기
-		request.setAttribute("id", session.getId());
+		request.setAttribute("id", request.getSession().getAttribute("uId"));
 		// 선택한 숙박소의 정보를 넘겨받는다
 		// 넘겨줄 정보를 만들어준다
 		request.setAttribute("choiceSpot", request.getParameter("choiceSpot"));
@@ -22,13 +23,15 @@ public class ChoiceSpotView implements Command {
 		request.setAttribute("addr1", request.getParameter("addr1"));
 		request.setAttribute("firstImage", request.getParameter("firstImage"));
 		
-		System.out.println(request.getParameter("choiceSpot"));
-		System.out.println(request.getParameter("areaCode"));
-		System.out.println(request.getParameter("contentId"));
-		System.out.println(request.getParameter("contentTypeId"));
-		System.out.println(request.getParameter("title"));
-		System.out.println(request.getParameter("addr1"));
-		System.out.println(request.getParameter("firstimage"));
+		
+//		  System.out.println(request.getParameter("choiceSpot"));
+//		  System.out.println(request.getParameter("areaCode"));
+//		  System.out.println(request.getParameter("contentId"));
+//		  System.out.println(request.getParameter("contentTypeId"));
+//		  System.out.println(request.getParameter("title"));
+//		  System.out.println(request.getParameter("addr1"));
+//		  System.out.println(request.getParameter("firstImage"));
+//		 
 		
 		return "spot/choiceSpotView.tiles";
 	}
