@@ -59,6 +59,22 @@
 							</div>
 						</c:if>
 
+						<nav aria-label="Page navigation example">
+							<ul class="pagination justify-content-center">
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item">
+									<a class="page-link" href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+
 						<div class="row mt36 justify-content-center g-1">
 							<div class="col-auto">
 								<select id="searchKey" name="searchKey" class="form-select">
@@ -67,6 +83,7 @@
 									<option value="내용">내용</option>
 								</select>
 							</div>
+
 							<div class="col-auto">
 								<span>
 									<input type="text" id="searchVal" name="searchVal" class="form-control">

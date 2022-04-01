@@ -47,7 +47,7 @@
                   <select name="cat3" id="cat3" class="form-select wid140"></select>
                 </div>
                 <div class="col-auto">
-                  <button type="button" class="btn btn-primary btn-block" onclick="submitFrm()">확인하기</button>
+                  <button type="button" class="btn btn-primary btn-block" onclick="submitFrm(1)">확인하기</button>
                 </div>
               </div>
             </div>
@@ -66,12 +66,41 @@
                 </tbody>
               </table>
             </div>
+            <div class="col-12 text-center">
+              <button class="btn btn-primary" onclick="prevPage()">이전페이지</button>
+              <button class="btn btn-primary" onclick="nexPage()">다음페이지</button>
+            </div>
           </div>
         </div>
       </div>
       </div>
 
       <script>
+        let pno = 1;
+
+        function prevPage() {
+          if(pno != 1){            
+            pno -= 1;
+
+              while(output.firstChild) {
+              output.removeChild(output.firstChild);
+            }
+
+            submitFrm(pno);
+          } else {
+            alert('이전 페이지가 없습니다.')
+          }
+        }
+        function nexPage() {
+          pno += 1;
+
+          while(output.firstChild) {
+              output.removeChild(output.firstChild);
+            }
+            
+          submitFrm(pno);
+        }
+
         function addEmptyOption(key) {
           let option = document.createElement('option');
           option.innerText = '선택';
@@ -209,11 +238,11 @@
 
         let contentIdListObj = document.querySelector('#contentIdList');
 
-        function submitFrm() {
+        function submitFrm(t) {
           // output 초기화
-          // while(output.firstChild) {
-          // 	output.removeChild(output.firstChild);
-          // }
+          while(output.firstChild) {
+          	output.removeChild(output.firstChild);
+          }
 
           // request값 받아오기
           let contentTypeSel = document.querySelector('#contentTypeSel').value;
@@ -228,7 +257,7 @@
           fetch(
             'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey=YEoy%2B93A%2Fp1nbyehg%2F0UcWMYX5ZjT73RId2NuFd3L0M6%2FEMlAYbTyjfB7gJzZvC5t2qVeHOrFCaviPGo%2BWx5rA%3D%3D&contentTypeId=' +
             contentTypeSel + '&areaCode=&sigunguCode=&cat1=' + cat1 + '&cat2=' + cat2 + '&cat3=' + cat3 +
-            '&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1', {
+            '&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=' + t, {
             method: 'get'
           })
             .then(res => res.text())

@@ -49,6 +49,11 @@
 					</tbody>
 				</table>
 			</div>
+
+			<div class="mt36 text-center">
+				<button class="btn btn-primary" onclick="prevPage()">이전페이지</button>
+				<button class="btn btn-primary" onclick="nexPage()">다음페이지</button>
+			</div>
 		</div>
 	</div>
 
@@ -59,9 +64,33 @@
 <!-- 	<input type="text" placeholder="numOfRows=12"> -->
 <!-- 	<input type="text" placeholder="pageNo=1"> -->
 <!-- </div> -->
-<br /> <br />
 
 <script>
+	let pno = 1;
+
+	function prevPage() {
+          if(pno != 1){            
+            pno -= 1;
+
+              while(output.firstChild) {
+              output.removeChild(output.firstChild);
+            }
+
+            submitFrm(pno);
+          } else {
+            alert('이전 페이지가 없습니다.')
+          }
+        }
+        function nexPage() {
+          pno += 1;
+
+          while(output.firstChild) {
+              output.removeChild(output.firstChild);
+            }
+            
+          submitFrm(pno);
+        }
+
 	// childNode 전부 삭제
 	function childRm(input) {
 		while (input.firstChild) {
@@ -85,7 +114,7 @@
 			+'ServiceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D'
 			+'&contentTypeId=39' +'&areaCode=&sigunguCode='
 			+'&cat1=A05'+'&cat2=A0502' + '&cat3=' + cat3 + '&listYN=Y&MobileOS=ETC'
-			+'&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1';
+			+'&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=' + pno;
 		
 		let n = document.querySelector('#keyword').value;
 		console.log(n);
@@ -96,7 +125,7 @@
 			// 키워드가 있는경우
 			let kwdUrl = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword?'
 				+'serviceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D'
-				+'&MobileApp=AppTest&MobileOS=ETC&pageNo=1&numOfRows=20&listYN=Y&arrange=A'
+				+'&MobileApp=AppTest&MobileOS=ETC&pageNo=' + pno + '&numOfRows=20&listYN=Y&arrange=A'
 				+'&contentTypeId=39&cat1=A05&cat2=A0502&cat3=' + cat3 + '&keyword=' + keywordVal;
 			
 			//console.log(kwdUrl);
