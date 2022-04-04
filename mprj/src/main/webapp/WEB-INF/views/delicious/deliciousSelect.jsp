@@ -8,30 +8,38 @@ img{
 }
 </style>
 
-<form id="frm" name="frm">	
-	<div id="output">
-		<div id="title"></div>
-		<div id="subOutput" style="display:inblock">
-			<div id="detailOutput">
-				<ul id="detailOutput"></ul>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb&libraries=services"></script>
+
+<div class="row">
+	<div class="col-12">
+		<form id="frm" name="frm">	
+			<div id="output">
+				<div id="title" class="text-center"></div>
+				<div id="subOutput" style="display:inblock">
+					<div id="detailOutput">
+						<ul id="detailOutput"></ul>
+					</div>
+				</div>
+				<br/>
+				<div id="overviewOutput"></div>
+		
+				<div id="imgs"></div>
+				<br/>
+		
+				<br/>
 			</div>
-		</div>
-		<br/>
-		<div id="overviewOutput"></div>
-
-		<div id="imgs"></div>
-		<br/>
-
-		<br/>
+		</form>
+			<div id="map" style="width:500px;height:400px;">
+			</div>
+			<div>			
+				<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
+				<c:if test="${not empty id}">
+					<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
+					<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
+				</c:if>
+			</div>
 	</div>
-</form>
-		<div>			
-			<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
-			<c:if test="${not empty id}">
-				<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
-				<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
-			</c:if>
-		</div>
+</div>
 
 <script>
 	function wishBtnCheck() {
@@ -59,7 +67,8 @@ img{
 	// 공통정보
  	let commUrl = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?'
  			+'ServiceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D'
- 			+'&contentTypeId=' + contentTypeId + '&contentId=' + contentId +'&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y';
+ 			+'&contentTypeId=' + contentTypeId + '&contentId=' + contentId 
+ 			+'&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y';
 			
 	const f1 = () => {
 			$.ajax({
@@ -147,7 +156,20 @@ img{
 					input5.setAttribute('name', 'addr1');
 					input5.setAttribute('value', commInfo.addr1);
 					input4.after(input5);
-		
+					
+					// mapx
+					let input6 = document.createElement('input');
+					input6.setAttribute('type', 'hidden');
+					input6.setAttribute('name', 'mapx');
+					input6.setAttribute('value', commInfo.mapx);
+					input5.after(input6);
+					
+					// mapy
+					let input7 = document.createElement('input');
+					input7.setAttribute('type', 'hidden');
+					input7.setAttribute('name', 'mapy');
+					input7.setAttribute('value', commInfo.mapy);
+					input6.after(input7);
 				}
 			})
 	}	
@@ -220,5 +242,37 @@ img{
 				}
 			})
 	}
-	f3();	
+	f3();
+	
+	// 지도
+	const f4 = () => {
+		let mapx = '${DeliMapx}';
+		let mapy = '${DeliMapy}';
+
+		mapx = mapx.replace(mapx.slice(-4), '');
+		mapy = mapy.replace(mapy.slice(-4), '');
+
+		console.log(mapx)
+		console.log(mapy)
+		
+		let mapDiv = document.querySelector('#map');
+		let options = {
+				center: new kakao.maps.LatLng(mapy, mapx),
+				level: 6
+		}
+		let map = new kakao.maps.Map(mapDiv, options);
+		
+		// 마커표시
+		var markerPosition = new kakao.maps.LatLng(mapy, mapx);
+		
+		// 마커생성
+		var marker = new kakao.maps.Marker({
+			position: markerPosition
+		});
+		
+		// 마커를 지도위에
+		marker.setMap(map);
+	}
+	f4();
+	
 </script>

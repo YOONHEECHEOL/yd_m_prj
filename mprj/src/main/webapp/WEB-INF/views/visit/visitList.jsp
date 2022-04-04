@@ -86,13 +86,13 @@ function delBtnCheck(){
 	let contentIdVal = document.querySelector('#hContentId').value;
 	contentId.value = contentIdVal;
 	
-	//console.log(contentIdVal + ' ' + contentId.value);
+	console.log(contentIdVal + ' ' + contentId.value);
 	
 	let conf = confirm('삭제하시겠습니까?');
 	if(conf){
 		visitFrm.action="visitDelete.do";
 		visitFrm.method="post";
-		//wishFrm.submit();
+		visitFrm.submit();
 	}
 }
 </script>

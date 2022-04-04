@@ -12,9 +12,9 @@
 <!-- 개인 stylesheet -->
 <link rel="stylesheet" href="css/style.css">
 <!-- logo font -->
-<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <!-- meterial icons -->
 <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 
@@ -25,8 +25,8 @@
 <body>
 	<tiles:insertAttribute name="header" />
 	<tiles:insertAttribute name="nav" />
-	<div class="container-fluid hDisplay">
-		<tiles:insertAttribute name="menu" />
+	<tiles:insertAttribute name="menu" />
+	<div class="container-fluid hDisplay mt80">
 		<tiles:insertAttribute name="body" />	
 	</div>
 	<tiles:insertAttribute name="foot" />

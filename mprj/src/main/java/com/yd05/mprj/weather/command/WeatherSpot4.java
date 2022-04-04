@@ -18,11 +18,7 @@ import org.json.simple.parser.JSONParser;
 import com.yd05.mprj.comm.Command;
 import com.yd05.mprj.weather.service.WeatherVO;
 
-
-
-
-
-public class WeatherSpot implements Command {
+public class WeatherSpot4 implements Command {
 
 	String page = "1";
 	String perPage = "10";
@@ -33,17 +29,6 @@ public class WeatherSpot implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		
-		
-		//response.setHeader('Access-Control-Allow-origin', 'https://localhost.com:8000');
-
-
-		
-		
-		
-		
-		
-		
 		// 관광지 날씨보기 페이지로 이동
 		try {
 			String apiUrl = "http://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst";
@@ -132,28 +117,28 @@ public class WeatherSpot implements Command {
 
 		switch (num) {
 		case 1:
-			result = "맑음";
+			result = "./images/d4b42dfc0884c443b8395dd13d658b1d4022de826f725e10df604bf1b9725cfd.png"; //맑음
 			break;
 		case 2:
-			result = "구름";
+			result = "./images/82229280-kawaii-만화-흰색-이모티콘-귀여운-구름-벡터-일러스트-레이션.webp"; //구름
 			break;
 		case 3:
-			result = "흐림";
+			result = "./images/d4b42dfc0884c443b8395dd13d658b1d41d1a2caccd0c566eab28b91e2e5d306.png"; //흐림
 			break;
 		case 4:
-			result = "비";
+			result = "./images/d4b42dfc0884c443b8395dd13d658b1d8f324a0b9c48f77dbce3a43bd11ce785.png"; //비
 			break;
 		case 5:
-			result = "소나기";
+			result = "./images/24c740699333e8d04843a728c21b38aeeffd194bae87d73dd00522794070855d.png"; //소나기
 			break;
 		case 6:
-			result = "비눈";
+			result = "./images/NB12.png"; //비눈
 			break;
 		case 7:
-			result = "눈비";
+			result = "./images/NB13.png"; //눈비
 			break;
 		case 8:
-			result = "눈";
+			result = "./images/a0cd4c54cd7589e0690b5a674aaff7a241d1a2caccd0c566eab28b91e2e5d306.png"; //눈
 			break;
 
 		}

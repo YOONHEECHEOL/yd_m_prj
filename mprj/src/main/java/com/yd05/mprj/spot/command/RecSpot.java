@@ -9,7 +9,7 @@ public class RecSpot implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		
 		return "spot/recSpot.tiles";
 	}
 

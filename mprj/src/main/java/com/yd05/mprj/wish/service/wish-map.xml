@@ -13,7 +13,7 @@
 	</select>
 	
 	<insert id="insertWish" parameterType="com.yd05.mprj.wish.service.WishVO">
-		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1})
+		INSERT INTO WISH VALUES (#{uId}, #{contentTypeId}, #{contentId}, #{firstImage}, #{title}, #{addr1}, #{mapx}, #{mapy})
 	</insert>
 	
 	<delete id="deleteWish" parameterType="com.yd05.mprj.wish.service.WishVO">

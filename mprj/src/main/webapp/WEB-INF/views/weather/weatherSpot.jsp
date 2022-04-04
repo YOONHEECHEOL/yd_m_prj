@@ -2,13 +2,14 @@
     pageEncoding="UTF-8"%>
 <form id="myForm" class="myForm" action="weatherDetail.do" method="post">
    <input type="hidden" id="spotAreaId" name="spotAreaId" value="">
+   <input type="hidden" id="spotName" name="spotName" value="">
    <input type="hidden" id="courseId" name="courseId" value="">
    <input type="hidden" id="spotName" name="spotName" value="">
 </form>
 <!-- 테이블에 목록을 클릭시 데이터를 추가적으로 뿌려줄수 있도록 구현(안되면 제외) -->
 <!-- tt -->
 
-<table id="weahter" class="table table-hover">
+<table id="weather" class="table table-hover">
 <thead>
 <tr>
 <th>코드번호</th>
@@ -27,6 +28,7 @@
 <script>
 alert("보고싶은 관광지의 코드번호를 눌러주세요.");
 output.addEventListener('click', () => {
+<<<<<<< HEAD
     //console.log(event.target.textContent)
  	//console.log(event.currentTarget.querySelectorAll('td').outerText);
  	console.log(event.currentTarget.querySelectorAll('td'));
@@ -57,6 +59,37 @@ output.addEventListener('click', () => {
  			
 		});
 	
+=======
+	   //console.log(event.target.textContent)
+ 	//console.log(event.currentTarget.querySelectorAll('td').outerText);
+ 	console.log(event.currentTarget.querySelectorAll('td'));
+ 	
+ 	var ect = event.currentTarget.querySelectorAll('td');
+ 	for(let i=0;i<ect.length;i++){
+ 		if(ect[i].outerText == event.target.textContent){
+     			spotAreaId.value = event.target.textContent; // 클릭한 코스 아이디
+			   
+			    spotName.value = ect[i+1].outerText.substr(4); // 클릭한 td의 다음 td의 내용을 담아 넣는다
+			   			    
+ 				}
+ 		}
+		let cId = str; // 세션 코스 아이디 저장
+		courseId.value = cId; 
+	 	
+		console.log('spotAId:'+spotAreaId.value);
+	 	console.log('spotName:'+spotName.value);
+		console.log('courseId:'+courseId.value);
+    
+    //console.log(event.target.next('td'));
+ 
+  	//let sN = i.queruSelector('spotName').textContent;
+     	//console.log('sN:'+sN);
+    
+  	myForm.submit();
+ 			
+		});
+   
+>>>>>>> branch 'woong' of https://github.com/YOONHEECHEOL/yd_m_prj.git
    var ran = 1+(Math.floor(Math.random()*10));
    var str = ran
    var url = 'https://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst?serviceKey=4wXtQhL4%2Bp3AvqsdfdPwtgkfI1IBCmwwlqXi0EToL8o54WbXOfvGf%2ByPYR15kU%2Fj6qTTDJbgKtZfWlrSaqE0NQ%3D%3D&pageNo=1&numOfRows=20&dataType=XML&CURRENT_DATE=2019122010&HOUR=24&COURSE_ID=';
@@ -68,10 +101,10 @@ output.addEventListener('click', () => {
       var data = xml.getElementsByTagName('item');
       console.log(data);
       
-      for(let i of data){
+      for(let i=0;i<data.length;i++){
          
-         if(i.querySelector('sky').textContent){
-            switch(i.querySelector('sky').textContent){
+         if(data[i].querySelector('sky').textContent){
+            switch(data[i].querySelector('sky').textContent){
             case '1':
                var sky = "맑음";
                break;
@@ -105,11 +138,13 @@ output.addEventListener('click', () => {
                var td3 = document.createElement('td');
                var td4 = document.createElement('td');
                var td5 = document.createElement('td');
+               td2.setAttribute("id",i);
                
-               td1.innerText = i.querySelector('spotAreaId').textContent;
-               td2.innerText = i.querySelector('spotName').textContent;
-               td3.innerText = i.querySelector('courseName').textContent;
-               td4.innerText = i.querySelector('thema').textContent;
+               
+               td1.innerText = data[i].querySelector('spotAreaId').textContent;
+               td2.innerText = data[i].querySelector('spotName').textContent;
+               td3.innerText = data[i].querySelector('courseName').textContent;
+               td4.innerText = data[i].querySelector('thema').textContent;
                td5.innerText = sky;
                
                /* td1.setAttribute("id",'n');

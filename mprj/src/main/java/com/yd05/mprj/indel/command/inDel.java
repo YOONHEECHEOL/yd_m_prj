@@ -27,6 +27,8 @@ public class inDel implements Command {
 		vVo.setFirstImage(request.getParameter("firstImage"));
 		vVo.setTitle(request.getParameter("title"));
 		vVo.setAddr1(request.getParameter("addr1"));
+		vVo.setMapx(request.getParameter("mapx"));
+		vVo.setMapy(request.getParameter("mapy"));
 
 		WishService wDao = new WishServiceImpl();
 		WishVO wVo = new WishVO();

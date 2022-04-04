@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<nav class="navbar navbar-expand-lg navbar-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12">
@@ -13,7 +13,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="home.do">HOME</a>
-              <!-- active 클래스 부여하면 활성화됨 -->
+
             </li>   
             <li class="nav-item">
               <a class="nav-link" href="myCourseList.do">나만의 관광코스(yoon)</a>
@@ -37,13 +37,9 @@
               <a href="weatherSpot.do" class="nav-link">관광지 날씨 보기</a>
             </li>
           </ul>
-          
-          <!-- <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-          </form> -->
+
         </div>
       </div>
     </div>
   </div>
-</nav>
+</nav> -->
