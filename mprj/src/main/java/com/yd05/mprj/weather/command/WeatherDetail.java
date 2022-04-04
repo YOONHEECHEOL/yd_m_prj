@@ -10,7 +10,7 @@ public class WeatherDetail implements Command {
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
 		
-		
+		request.setAttribute("spotName", request.getParameter("spotName"));
 		request.setAttribute("spotAreaId", request.getParameter("spotAreaId"));
 		request.setAttribute("courseId", request.getParameter("courseId"));
 		

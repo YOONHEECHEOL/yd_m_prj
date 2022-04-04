@@ -3,6 +3,7 @@
 <form id="myForm" class="myForm" action="weatherDetail.do" method="post">
    <input type="hidden" id="spotAreaId" name="spotAreaId" value="">
    <input type="hidden" id="courseId" name="courseId" value="">
+   <input type="hidden" id="spotName" name="spotName" value="">
 </form>
 <!-- 테이블에 목록을 클릭시 데이터를 추가적으로 뿌려줄수 있도록 구현(안되면 제외) -->
 <!-- tt -->
@@ -26,21 +27,36 @@
 <script>
 alert("보고싶은 관광지의 코드번호를 눌러주세요.");
 output.addEventListener('click', () => {
-      //console.log(event.target.textContent)
-   
-      let AreaIdVal = event.target.textContent; // 클릭한 코스아이디
-      console.log('AreaIdVal:'+AreaIdVal);
-      spotAreaId.value = AreaIdVal;
-      
-      let cId = str; // 세션 코스 아이디 저장
-      console.log('cId:'+cId);
-      courseId.value = cId; 
-      
-      myForm.submit();
-   
-      
-      });
-   
+    //console.log(event.target.textContent)
+ 	//console.log(event.currentTarget.querySelectorAll('td').outerText);
+ 	console.log(event.currentTarget.querySelectorAll('td'));
+ 	
+ 	var ect = event.currentTarget.querySelectorAll('td');
+ 	for(let i=0;i<ect.length;i++){
+ 		if(ect[i].outerText == event.target.textContent){
+     
+			    spotAreaId.value = event.target.textContent; // 클릭한 코스 아이디
+			   
+			    spotName.value = ect[i+1].outerText.substr(4); // 클릭한 td의 다음 td의 내용을 담아 넣는다
+			   
+			    
+ 			}
+ 	}
+	 		 console.log(spotAreaId.value);
+	 		 console.log(spotName.value);
+		    let cId = str; // 세션 코스 아이디 저장
+		    console.log('cId:'+cId);
+		    courseId.value = cId; 
+    
+    //console.log(event.target.next('td'));
+ 
+  	//let sN = i.queruSelector('spotName').textContent;
+     	//console.log('sN:'+sN);
+    
+  			 myForm.submit();
+ 			
+		});
+	
    var ran = 1+(Math.floor(Math.random()*10));
    var str = ran
    var url = 'https://apis.data.go.kr/1360000/TourStnInfoService/getTourStnVilageFcst?serviceKey=4wXtQhL4%2Bp3AvqsdfdPwtgkfI1IBCmwwlqXi0EToL8o54WbXOfvGf%2ByPYR15kU%2Fj6qTTDJbgKtZfWlrSaqE0NQ%3D%3D&pageNo=1&numOfRows=20&dataType=XML&CURRENT_DATE=2019122010&HOUR=24&COURSE_ID=';
@@ -96,12 +112,21 @@ output.addEventListener('click', () => {
                td4.innerText = i.querySelector('thema').textContent;
                td5.innerText = sky;
                
+               /* td1.setAttribute("id",'n');
+               td2.setAttribute("id",'m');
+               td2.setAttribute('onclick','weatherDetail.do');
+               td2.setAttribute("value",i.querySelector('spotName').textContent); */
+               
                tr.append(td1, td2, td3, td4, td5);
                output.append(tr);
-                           
-            
-            }
-      
+               
+               
+               
+               
+
+           		
+            	
+              
          
          /* for(let i of data){
             // 하늘 상태 switch
@@ -152,6 +177,12 @@ output.addEventListener('click', () => {
             
          } */
          
+     	  
+          
+        
+           
+           	}
+   		
       } 
       
       
