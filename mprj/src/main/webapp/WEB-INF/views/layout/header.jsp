@@ -2,20 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div class="loading">
-  <div class="loading__cont">
-    <span>데이터를 로딩 중 입니다..</span>
-    <img src="images/logo.svg" class="loading__logo" alt="">
-    <div class="loading__bg"></div>
-  </div>
-</div>
-
-<script>
-  window.onload = () => {
-      $('.loading').delay('500').fadeOut();
-  }
-</script>
-
 <header class="header container-fluid">
 	<div class="row header__cont">
 		<div class="col-2 text-start align-self-center">			

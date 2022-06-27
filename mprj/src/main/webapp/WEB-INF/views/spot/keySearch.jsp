@@ -1,25 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<h2 class="myH text-center">Keyword Search</h2>
-<h5 class="text-center">검색결과</h5>
+  <h1>keySearch</h1>
 
-<hr class="border-bottom border-primary">
-
-<div class="row text-center justify-content-center mt36">
-  <div class="col-7">
-    <table class="table table-hover">
-      <thead>
+  <table class="table table-hover">
+    <thead>
       <tr>
         <th scope="col" colspan="2">관광지</th>
         <th scope="col">주소</th>
         <th scope="col">&nbsp;</th>
       </tr>
-      </thead>
-      <tbody id="output">
+    </thead>
+    <tbody id="output">
       <!-- 이곳에 출력 -->
-      </tbody>
-    </table>
-  </div>
-</div>
+    </tbody>
+  </table>
 
   <script>
     function addEmptyOption(key) {

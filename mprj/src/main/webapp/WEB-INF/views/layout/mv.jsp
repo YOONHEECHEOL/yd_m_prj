@@ -15,22 +15,22 @@
         <div class="carousel-item active">
           <img src="images/mv0.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>관광지 조회</h5>
-            <p>봄에 떠날 여행지를 찾아보세요!</p>
+            <h5>First slide label</h5>
+            <p>Some representative placeholder content for the first slide.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="images/mv1.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>음식점 조회</h5>
-            <p>전국에 유명한 맛집들을 찾아보세요!</p>
+            <h5>Second slide label</h5>
+            <p>Some representative placeholder content for the second slide.</p>
           </div>
         </div>
         <div class="carousel-item">
           <img src="images/mv2.png" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>숙박 정보 조회</h5>
-            <p>숙박 업소들의 정보를 조회할 수 있습니다!</p>
+            <h5>Third slide label</h5>
+            <p>Some representative placeholder content for the third slide.</p>
           </div>
         </div>
       </div>
@@ -45,28 +45,22 @@
     </div>
     <!-- 오늘의 추천 관광지 -->
     <div class="main__recomm">      
-      <!--<h5>관광지·숙박·음식점 통합검색</h3> -->
-      <div class="row gx-0">
+      <h5>관광지·숙박·음식점 통합검색</h3>
+      <div class="row gx-1 mt20">
         <div class="col-auto">
-          <select name="contentType" id="contentTypeSel" class="form-select wid140 h60">
+          <select name="contentType" id="contentTypeSel" class="form-select wid140">
             <option value="">contentType 선택</option>
             <option value="12">관광지</option>								
             <option value="32">숙박</option>
             <option value="39">음식점</option>
           </select>
         </div>
-        <!--
-        <div class="col-auto"><select name="cat1" id="cat1" class="form-select wid140 h60"></select></div>
-        <div class="col-auto"><select name="cat2" id="cat2" class="form-select wid140 h60"></select></div>
-        <div class="col-auto"><select name="cat3" id="cat3" class="form-select wid140 h60"></select></div>
-        -->
-        <div class="col-auto"><input type="text" placeholder="검색어를 입력하세요..." id="keywordVal" class="form-control h60" size="90"></div>
+        <div class="col-auto"><select name="cat1" id="cat1" class="form-select wid140"></select></div>
+        <div class="col-auto"><select name="cat2" id="cat2" class="form-select wid140"></select></div>
+        <div class="col-auto"><select name="cat3" id="cat3" class="form-select wid140"></select></div>
+        <div class="col-auto"><input type="text" placeholder="검색어를 입력하세요..." id="keywordVal" class="form-control"></div>
         <div class="col-auto">
-          <button type="button" class="btn-main h60" onclick="searchSpots()">
-            <i class="material-icons">
-              search
-            </i>
-          </button>
+          <button type="button" class="btn btn-primary btn-block" onclick="searchSpots()">확인하기</button>
         </div>
       </div>
     </div>
@@ -90,17 +84,117 @@
     function searchSpots() {
 
       let contentTypeSelVal = document.querySelector('#contentTypeSel').value;
-      // let cat1 = document.querySelector('#cat1').value;
-      // let cat2 = document.querySelector('#cat2').value;
-      // let cat3 = document.querySelector('#cat3').value;
+      let cat1 = document.querySelector('#cat1').value;
+      let cat2 = document.querySelector('#cat2').value;
+      let cat3 = document.querySelector('#cat3').value;
       let keyVal = document.querySelector('#keywordVal').value;
 
-      let kwdUrl = 'keySearch.do?'	+'contentTypeId=' + contentTypeSelVal + '&cat1=' + '&cat2=' + '&cat3=' + '&keyword=' + keyVal;
+      let kwdUrl = 'keySearch.do?'	+'contentTypeId=' + contentTypeSelVal + '&cat1=' + cat1 + '&cat2=' + cat2 + '&cat3=' + cat3 + '&keyword=' + keyVal;   
       
       console.log(kwdUrl)
 
       location.href = kwdUrl;
     }
 
+    document.addEventListener('DOMContentLoaded', () => {
+			// cat1 값 불러오기
+			const f1 = () => {
+				contentTypeSel.addEventListener('change', () => {
+						let eventVal = event.target.value;
+
+						fetch('ajaxContentTypeList.do?req=cat1&contentTypeId=' + eventVal, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
+						})
+						.then(res => res.text())
+						.then(res => {
+							let resultVal = JSON.parse(res);
+
+							// 초기화 initialize
+							childRm(cat1);
+
+							// add empty option 
+							addEmptyOption(cat1);
+
+							let cat1Loc = document.querySelector('#cat1');
+							// print
+							for(let i of resultVal) {
+								let option = document.createElement('option');
+								option.innerText = i.cat1Name;
+								option.value = i.cat1;
+								cat1Loc.append(option);
+							}
+						})
+					})
+			}
+
+			const f2 = () => {
+				cat1.addEventListener('change', (res) => {
+						let contentTypeVal = document.querySelector('#contentTypeSel').value;
+						let cat1Val = event.target.value;				
+
+						fetch('ajaxContentTypeList.do?req=cat2&contentTypeId=' + contentTypeVal + '&cat1=' + cat1Val, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
+						})
+						.then(res => res.text())
+						.then(res => {
+							let resultVal = JSON.parse(res);
+
+							// 초기화 initialize
+							childRm(cat2);
+
+							// add empty option
+							addEmptyOption(cat2);
+
+							let cat2Loc = document.querySelector('#cat2');
+							// print
+							for(let i of resultVal) {
+								let option = document.createElement('option');
+								option.innerText = i.cat2Name;
+								option.value = i.cat2;
+								cat2Loc.append(option);
+							}
+						})
+					})
+			}
+
+			const f3 = () => {
+				cat2.addEventListener('change', (res) => {
+						let contentTypeVal = document.querySelector('#contentTypeSel').value;
+						let cat1Val = document.querySelector('#cat1').value;		
+						let cat2Val = event.target.value;
+
+						fetch('ajaxContentTypeList.do?req=cat3&contentTypeId=' + contentTypeVal + '&cat1=' + cat1Val + '&cat2=' + cat2Val, {
+							method: 'get',
+							headers: {'Content-type': 'application/x-www-form-urlencoded'}
+						})
+						.then(res => res.text())
+						.then(res => {
+							let resultVal = JSON.parse(res);
+
+							// 초기화 initialize
+							childRm(cat3);
+
+							// add empty option
+							addEmptyOption(cat3);
+
+							let cat3Loc = document.querySelector('#cat3');
+							// print
+							for(let i of resultVal) {
+								let option = document.createElement('option');
+								option.innerText = i.cat3Name;
+								option.value = i.cat3;
+								cat3Loc.append(option);
+							}
+						})
+					})
+			}
+			// 실행
+			f1()
+			f2()
+			f3()
+		})
+    
     
   </script>

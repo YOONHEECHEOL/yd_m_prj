@@ -212,7 +212,6 @@
 						let td1 = document.createElement('td');
 
 						let img = document.createElement('img');
-            img.setAttribute('class', 'np');
 						if(item.firstimage != null){
 							img.setAttribute('src', item.firstimage);
 						} else {
@@ -257,20 +256,17 @@
 }
 	// yoon
 	output.addEventListener('click', () => {
-    let tg = event.target.parentNode;
-    let firstImage = tg.childNodes[0].querySelector('img').getAttribute('src');
-    let contentIdVal = tg.childNodes[2].childNodes[1].value;
-		let mapxVal = tg.childNodes[2].childNodes[2].value;
-		let mapyVal = tg.childNodes[2].childNodes[3].value;
-		let mlevelVal = tg.childNodes[2].childNodes[4].value;
-
-		console.log(event.target);
-    console.log(contentIdVal, mapxVal, mapyVal, mlevelVal)
+		let contentIdVal = event.target.childNodes[2].getAttribute('value');
+		let mapxVal = event.target.childNodes[3].getAttribute('value');
+		let mapyVal = event.target.childNodes[4].getAttribute('value');
+		let mlevelVal = event.target.childNodes[5].getAttribute('value');
+		
+		//console.log(event.target);
 		
 		contentId.value = contentIdVal;
 		mapx.value = mapxVal;
 		mapy.value = mapyVal;
-		mlevel.value = mlevelVal;
+		mlevel.value = mlevelVal; 
 		
 		DeliFrm.action="deliciousSelect.do";
 		DeliFrm.method="post";

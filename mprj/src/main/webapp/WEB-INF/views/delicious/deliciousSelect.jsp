@@ -2,41 +2,42 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<style>
+img{
+	margin:30px;
+}
+</style>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24f95848773ee0928c720fe1e8af86eb&libraries=services"></script>
 
-<div class="row justify-content-center">
-	<div class="col-5">
-
-    <div class="card" id="cardOutput">
-      <div class="card-body">
-        <form id="frm" name="frm">
-          <div id="output">
-            <div id="title" class="text-center"></div>
-            <div id="subOutput">
-              <div>
-                <ul id="detailOutput"></ul>
-              </div>
-            </div>
-            <div id="overviewOutput"></div>
-            <div id="imgs"></div>
-          </div>
-        </form>
-      </div>
-
-      <div id="map" style="width:100%;height:400px;">
-      </div>
-    </div>
-
-    <div>
-      <a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
-      <c:if test="${not empty id}">
-        <button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
-        <button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
-      </c:if>
-    </div>
-
-
+<div class="row">
+	<div class="col-12">
+		<form id="frm" name="frm">	
+			<div id="output">
+				<div id="title" class="text-center"></div>
+				<div id="subOutput" style="display:inblock">
+					<div id="detailOutput">
+						<ul id="detailOutput"></ul>
+					</div>
+				</div>
+				<br/>
+				<div id="overviewOutput"></div>
+		
+				<div id="imgs"></div>
+				<br/>
+		
+				<br/>
+			</div>
+		</form>
+			<div id="map" style="width:500px;height:400px;">
+			</div>
+			<div>			
+				<a href="deliciousList.do" class="btn btn-primary mt20">목록</a>
+				<c:if test="${not empty id}">
+					<button type="submit" class="btn btn-primary mt20" onclick="wishBtnCheck()">가보고싶어요!</button>
+					<button type="submit" class="btn btn-primary mt20" onclick="visitBtnCheck()">가봤어요!</button>
+				</c:if>
+			</div>
 	</div>
 </div>
 
@@ -82,8 +83,7 @@
 					
 					// 상호명
 					let title = document.querySelector('#title');
-					let h1 = document.createElement('h4');
-          h1.setAttribute('class', 'mt20');
+					let h1 = document.createElement('h1');
 					h1.innerText = commInfo.title;
 					title.append(h1);
 					
@@ -94,17 +94,16 @@
 					if(commInfo.firstimage != null){
 						img.setAttribute('src', commInfo.firstimage);
 						img.setAttribute('display', 'inline');
+						subOutput.append(img);
 						//없을경우
 					} else{
 						img.setAttribute('src', 'images/noImage.jpg');
 						img.setAttribute('display', 'inline');
+						subOutput.append(img);
 					}
-            img.setAttribute('class', 'card-img-top');
-            cardOutput.prepend(img);
 					
 					// 정보
 					let ul = document.querySelector('#detailOutput');
-          ul.setAttribute('class', 'mt20')
 					let li1 = document.createElement('li');
 					li1.innerText = '주소 ' + commInfo.addr1;
 					ul.append(li1);
