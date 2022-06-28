@@ -14,7 +14,7 @@ img{
 	<div class="col-12">
 		<form id="frm" name="frm">	
 			<div id="output">
-				<div id="title"></div>
+				<div id="title" class="text-center"></div>
 				<div id="subOutput" style="display:inblock">
 					<div id="detailOutput">
 						<ul id="detailOutput"></ul>
@@ -67,7 +67,8 @@ img{
 	// 공통정보
  	let commUrl = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?'
  			+'ServiceKey=6VD6FZMkQZA%2FMpsor0GA4p5HGALEVJf9ztzYbdHlBbm13%2BTeIVqjuD4ybrO2mOcFixFwaPZB8Eb%2FZZ6Qw8knIw%3D%3D'
- 			+'&contentTypeId=' + contentTypeId + '&contentId=' + contentId +'&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y';
+ 			+'&contentTypeId=' + contentTypeId + '&contentId=' + contentId 
+ 			+'&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y';
 			
 	const f1 = () => {
 			$.ajax({
@@ -244,30 +245,34 @@ img{
 	f3();
 	
 	// 지도
-	let mapx = '${DeliMapx}';
-	let mapy = '${DeliMapy}';
+	const f4 = () => {
+		let mapx = '${DeliMapx}';
+		let mapy = '${DeliMapy}';
 
-	mapx = mapx.replace(mapx.slice(-4), '');
-	mapy = mapy.replace(mapy.slice(-4), '');
+		mapx = mapx.replace(mapx.slice(-4), '');
+		mapy = mapy.replace(mapy.slice(-4), '');
 
-	console.log(mapx)
-	console.log(mapy)
-	
-	let mapDiv = document.querySelector('#map');
-	let options = {
-			center: new kakao.maps.LatLng(mapy, mapx),
-			level: 6
+		console.log(mapx)
+		console.log(mapy)
+		
+		let mapDiv = document.querySelector('#map');
+		let options = {
+				center: new kakao.maps.LatLng(mapy, mapx),
+				level: 6
+		}
+		let map = new kakao.maps.Map(mapDiv, options);
+		
+		// 마커표시
+		var markerPosition = new kakao.maps.LatLng(mapy, mapx);
+		
+		// 마커생성
+		var marker = new kakao.maps.Marker({
+			position: markerPosition
+		});
+		
+		// 마커를 지도위에
+		marker.setMap(map);
 	}
-	let map = new kakao.maps.Map(mapDiv, options);
+	f4();
 	
-	// 마커표시
-	var markerPosition = new kakao.maps.LatLng(mapy, mapx);
-	
-	// 마커생성
-	var marker = new kakao.maps.Marker({
-		position: markerPosition
-	});
-	
-	// 마커를 지도위에
-	marker.setMap(map);
 </script>

@@ -9,18 +9,20 @@ public class ChoiceSpotView implements Command {
 
 	@Override
 	public String excute(HttpServletRequest request, HttpServletResponse response) {
+		
 		// 선택한 숙박소의 정보를 넘겨받는다
 		// 넘겨줄 정보를 만들어준다
 		request.setAttribute("choiceSpot", request.getParameter("choiceSpot"));
 		request.setAttribute("areaCode", request.getParameter("areaCode"));
-		request.setAttribute("contentid", request.getParameter("contentid"));
+		request.setAttribute("contentId", request.getParameter("contentId"));
 		request.setAttribute("title", request.getParameter("title"));
 		request.setAttribute("addr1", request.getParameter("addr1"));
-		request.setAttribute("firstimage", request.getParameter("firstimage"));
+		request.setAttribute("firstImage", request.getParameter("firstImage"));
 		
 		System.out.println(request.getParameter("choiceSpot"));
 		System.out.println(request.getParameter("areaCode"));
-		System.out.println(request.getParameter("contentid"));
+		System.out.println(request.getParameter("contentId"));
+		System.out.println(request.getParameter("contentTypeId"));
 		System.out.println(request.getParameter("title"));
 		System.out.println(request.getParameter("addr1"));
 		System.out.println(request.getParameter("firstimage"));

@@ -10,11 +10,12 @@
 <form action="choiceSpotView.do" method="POST" name="myForm" id="myForm">
 	<input type="hidden" id="choiceSpot" name="choiceSpot" value="">
 	<input type="hidden" id="areaCode" name="areaCode" value="${areaCode }">
-	<input type="hidden" id="contentid" name="contentid" value="">
+	<input type="hidden" id="contentid" name="contentId" value="">
 	<input type="hidden" id="title" name="title" value="">
 	<input type="hidden" id="addr1" name="addr1" value="">
-	<input type="hidden" id="firstimage" name="firstimage" value="">
-	
+	<input type="hidden" id="firstimage" name="firstImage" value="">
+	<input type="hidden" id="mapx" name="mapx" value="">
+	<input type="hidden" id="mapy" name="mapy" value="">
 </form>
 <div>
 <input type="button" onclick="location.href='home.do'" value="홈가기" />
@@ -64,7 +65,7 @@ var table = document.createElement('table');
 	for(let i of data) {
 		//if(i.querySelector('contentid')) 속성값이 없는 부분이 곳곳마다 있어서 contentid 고유값이 있다는 공통점으로 출력 강제
 		if(i.querySelector('firstimage')){ // 썸네일이 있는거만 출력
-			
+			console.log(data);
 
 			
 			var tr = document.createElement('tr');
@@ -132,16 +133,16 @@ var table = document.createElement('table');
 }
 	
 	output.addEventListener('click', () => {
-		console.log(event.target.parentNode)
+		console.log(event.target.parentNode);
 		let row = event.target.parentNode;
 				
-		choiceSpot.value = row.childNodes[1].innerText;		
+		choiceSpot.value = row.childNodes[1].innerText.replaceAll(" ","");		
 		contentid.value = row.childNodes[0].innerText;
-		title.value = row.childNodes[1].innerText;
+		title.value = row.childNodes[1].innerText.replaceAll(" ","");
 		addr1.value = row.childNodes[2].innerText;
 		firstimage.value = row.childNodes[4].querySelector('img').getAttribute('src');
 		
-		console.log(choiceSpot.value, contentid.value, title.value, addr1.value, firstimage.value)
+		console.log(choiceSpot.value, contentid.value ,title.value, addr1.value, firstimage.value)
 		
 		myForm.submit()
 	})

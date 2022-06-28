@@ -2,9 +2,15 @@
     pageEncoding="UTF-8"%>
 		<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+	<h2 class="myH text-center">My Course List</h2>
+	<h5 class="text-center">나의 관광코스 리스트</h5>
+	<p class="text-center mt20">My Page > My Course List</p>
 
-<div class="row text-center justify-content-center align-items-center">
+	<hr class="border-bottom border-primary">
+
+<div class="row text-center justify-content-center align-items-center mt36">
 	<div class="col-4">
+		<a href="javascript:history.go(-1);" class="btn btn-primary">뒤로가기</a>
 		<a href="myCourseList.do" class="btn btn-primary">나의 관광코스 리스트</a>
 		<a href="addMyCourse.do" class="btn btn-primary">관광코스 추가하기</a>
 	</div>
